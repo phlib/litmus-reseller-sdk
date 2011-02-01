@@ -14,7 +14,7 @@ require "/class/PageTestClient.class.php";
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  * @package   LitmusAPI
- * @version   1.0
+ * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
  */
@@ -147,9 +147,22 @@ class LitmusAPI
      */
     public function getPageTest($id)
     {
-        $result = $this->soap_client->__soapCall('getPageTest', array($this->getApiKey(), $this->getApiPass()));
+        $result = $this->soap_client->__soapCall('GetPageTest', array($this->getApiKey(), $this->getApiPass()));
 
         return new PageTest($result);
+    }
+
+    /**
+     * Retreive the spam addresses to send your email
+     *
+     * @return array The array with data filled in.
+     * @access public
+     */
+    public function getSpamSeedAddresses()
+    {
+        $result = $this->soap_client->__soapCall('GetSpamSeedAddresses', array($this->getApiKey(), $this->getApiPass()));
+        
+        return $result;
     }
 
     /**
@@ -179,7 +192,7 @@ class LitmusAPI
      */
     private function setupSoapClient()
     {
-        $this->soap_client = new SoapClient("http://soap.litmusapp.com/soap/wsdl");
+        $this->soap_client = new SoapClient("https://soapapi.litmusapp.com/2010-06-21/api.asmx?wsdl");
     }
 
     /**
@@ -227,3 +240,5 @@ class LitmusAPI
         return $this->api_pass;
     }
 }
+
+?>
