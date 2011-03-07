@@ -10,7 +10,7 @@ It runs on *nix and Windows platforms.
 Requirements
 -------
 The SoapClient php extension is required.
-See http://fr.php.net/manual/fr/book.soap.php for more informations.
+See http://us.php.net/manual/en/book.soap.php for more informations.
 
 
 LICENSE
