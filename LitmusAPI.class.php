@@ -209,7 +209,7 @@ class LitmusAPI
           throw new Exception('You must specify an API Key.');
         }
 
-        if (is_null($key))
+        if (is_null($pass))
         {
           throw new Exception('You must specify an API Password.');
         }
