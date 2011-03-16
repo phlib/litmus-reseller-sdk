@@ -1,11 +1,11 @@
 <?php
 
-require "/class/LitmusTest.class.php";
-require "/class/EmailTest.class.php";
-require "/class/PageTest.class.php";
-require "/class/LitmusClient.class.php";
-require "/class/EmailTestClient.class.php";
-require "/class/PageTestClient.class.php";
+require "class/LitmusTest.class.php";
+require "class/EmailTest.class.php";
+require "class/PageTest.class.php";
+require "class/LitmusClient.class.php";
+require "class/EmailTestClient.class.php";
+require "class/PageTestClient.class.php";
 
 /**
  * LitmusAPI class
