@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestResult type="mail">
+  <Id>39420654</Id>
+  <ApiId>GMAILNEW</ApiId>
+  <SupportsContentBlocking>False</SupportsContentBlocking>
+  <ResultImageSet>
+    <ImagesOnUrls>
+      <WindowUrls>
+        <ImageUrl>http://s3.amazonaws.com/resultcaptures/289d6144-60ae-4af9-849f-81ef2e1b5735.windowon.png</ImageUrl>
+        <ThumbUrl>http://s3.amazonaws.com/resultcaptures/d929a78c-9a03-49d7-adc4-07c39c32c952.windowonthumb.png</ThumbUrl>
+      </WindowUrls>
+      <FullPageUrls>
+        <ImageUrl>http://s3.amazonaws.com/resultcaptures/5365d2a8-169d-4fc5-89cf-f5df8e62b9ab.fullpageon.png</ImageUrl>
+        <ThumbUrl>http://s3.amazonaws.com/resultcaptures/83d4b62f-a24b-44bb-807d-98a78497aa6b.fullpageonthumb.png</ThumbUrl>
+      </FullPageUrls>
+    </ImagesOnUrls>
+    <ImagesOffUrls>
+      <WindowUrls>
+        <ImageUrl>http://s3.amazonaws.com/resultcaptures/30519d81-2df7-499c-a561-89e1ff0664a0.windowoff.png</ImageUrl>
+        <ThumbUrl>http://s3.amazonaws.com/resultcaptures/c99eb663-546b-4198-b182-952f16560c0e.windowoffthumb.png</ThumbUrl>
+      </WindowUrls>
+      <FullPageUrls>
+        <ImageUrl>http://s3.amazonaws.com/resultcaptures/9ecf8022-cbad-43e1-b784-b1c9a3f628c8.fullpageoff.png</ImageUrl>
+        <ThumbUrl>http://s3.amazonaws.com/resultcaptures/e29bf78c-ffdb-4b85-8fb0-47c814325654.fullpageoffthumb.png</ThumbUrl>
+      </FullPageUrls>
+    </ImagesOffUrls>
+  </ResultImageSet>
+  <SpamResult />
+  <State>Completed</State>
+  <CallbackUrl>http://litmus.mailingreport.com/litmus-api-callback/</CallbackUrl>
+</TestResult>

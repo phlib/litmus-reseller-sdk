@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestResult type="spam">
+  <Id>39420732</Id>
+  <ApiId>FASTMAILSPAM</ApiId>
+  <SupportsContentBlocking>false</SupportsContentBlocking>
+  <ResultImageSet />
+  <SpamResult>
+    <SpamScore>0</SpamScore>
+    <IsSpam>False</IsSpam>
+    <SpamHeaders />
+  </SpamResult>
+  <State>Completed</State>
+  <CallbackUrl>http://litmus.mailingreport.com/litmus-api-callback/</CallbackUrl>
+</TestResult>

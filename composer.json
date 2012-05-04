@@ -1,0 +1,21 @@
+{
+    "name": "litmus",
+    "type": "library",
+    "description": "Litmus API Wrapper",
+    "keywords": [],
+    "homepage": "http://litmus.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin Laugueux",
+            "email": "benjamin@yzalis.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-0": { "Litmus": "" }
+    },
+    "target-dir": "Litmus"
+}
