@@ -58,7 +58,7 @@ class EmailTest extends BaseTest
      * @var boolean
      * @access private
      */
-    private $Sandbox;
+    private $Sandbox = false;
 
     /**
      * Once you've sent an email, this will contain your email's raw source
