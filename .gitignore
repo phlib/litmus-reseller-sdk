@@ -1,1 +1,8 @@
+# OSX files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# project files
 parameters.ini
