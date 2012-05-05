@@ -1,12 +1,19 @@
 <?php
 
-include "parameters.php";
+# include parameters an boostraping class
+if (file_exists(__DIR__ . "/../../parameters.ini")) {
+    $ini_array = parse_ini_file(__DIR__ . "/../../parameters.ini");
+}
 include dirname(dirname(__FILE__)) . '/../Tests/bootstrap.php';
 
+# use required class
 use Litmus\LitmusAPI;
 
-$LitmusAPI = new LitmusAPI($apiKey, $apiPass);
+# Instance a new Litmus API
+$LitmusAPI = new LitmusAPI($ini_array['apiKey'], $ini_array['apiPass']);
 
-$result = $LitmusAPI->getResult(7380204);
+# launch request an get the result
+$result = $LitmusAPI->getResult($ini_array['emailTestId']);
 
+# show the result
 var_dump($result);

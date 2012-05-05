@@ -1,13 +1,19 @@
 <?php
 
-include "parameters.php";
+# include parameters an boostraping class
+if (file_exists(__DIR__ . "/../../parameters.ini")) {
+    $ini_array = parse_ini_file(__DIR__ . "/../../parameters.ini");
+}
 include dirname(dirname(__FILE__)) . '/../Tests/bootstrap.php';
 
+# use required class
 use Litmus\LitmusAPI;
-use Litmus\Page\PageTest;
+use Litmus\Email\EmailTest;
 
-$LitmusAPI = new LitmusAPI($apiKey, $apiPass);
+# Instance a new Litmus API
+$LitmusAPI = new LitmusAPI($ini_array['apiKey'], $ini_array['apiPass']);
 
+# Instance a new EmailTest
 $PageTest = new PageTest();
 
 # Use the Sandbox environment
@@ -19,6 +25,7 @@ $PageTest->setURL('http://www.mailingreport.com');
 # Reuest a free of charge test
 $PageTest->initializeFreeTest();
 
+# launch request an get the result
 $PageTest = $LitmusAPI->createPageTest($PageTest);
 
 # show the result
