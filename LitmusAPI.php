@@ -37,6 +37,15 @@ class LitmusAPI
      */
     private $api_pass;
 
+
+    /**
+     * API endpoint.
+     *
+     * @var string
+     * @access private
+     */
+    private $api_url = 'https://soapapi.litmusapp.com/2010-06-21/api.asmx?wsdl';
+
     /**
      * Identification for HTTP headers.
      *
@@ -193,7 +202,7 @@ class LitmusAPI
      */
     private function setupSoapClient()
     {
-        $this->soap_client = new \SoapClient("https://soapapi.litmusapp.com/2010-06-21/api.asmx?wsdl");
+        $this->soap_client = new \SoapClient($this->getApiUrl());
     }
 
     /**
@@ -218,6 +227,17 @@ class LitmusAPI
     }
 
     /**
+     * Configure API endpoint url
+     *
+     * @param string $v
+     * @access private
+     */
+    private function setApiUrl($v)
+    {
+        $this->api_url = $v;
+    }
+
+    /**
      * This is your own API Key provided by Litmus
      *
      * @return string The API Key
@@ -237,5 +257,16 @@ class LitmusAPI
     private function getApiPass()
     {
         return $this->api_pass;
+    }
+
+    /**
+     * This is the Litmus endpoint
+     *
+     * @return string The Url
+     * @access private
+     */
+    private function getApiUrl()
+    {
+        return $this->api_url;
     }
 }
