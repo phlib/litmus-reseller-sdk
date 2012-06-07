@@ -1,3 +1,7 @@
+# project files and directory
+vendor/
+composer.lock
+
 # OSX files
 .DS_Store
 ._*
