@@ -1,8 +1,6 @@
 LitmusResellerAPI
 -----------------
 
-[![Build Status](https://secure.travis-ci.org/yzalis/Litmus.png)](http://travis-ci.org/yzalis/Litmus)
-
 **LitmusResellerAPI** is a kit allows you to dialog with the Litmus API service. You can
 retreive all available clients, create test and get the results.
 
