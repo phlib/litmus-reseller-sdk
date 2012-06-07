@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestResult type="spam">
+  <Id>39420690</Id>
+  <ApiId>SPAMASSASSIN3</ApiId>
+  <SupportsContentBlocking>false</SupportsContentBlocking>
+  <ResultImageSet />
+  <SpamResult>
+    <SpamScore>0.8</SpamScore>
+    <IsSpam>False</IsSpam>
+    <SpamHeaders>
+      <SpamHeader>
+        <Key>AWL</Key>
+        <Description>Your emailed triggered the SpamAssassin rule: AWL. We currently don't have any information about this rule, please email support and we'll investigate and update our rules ASAP.</Description>
+        <Rating>2</Rating>
+      </SpamHeader>
+      <SpamHeader>
+        <Key>HTML_MESSAGE</Key>
+        <Description>Your email contains HTML content. This won't usually cause you to fail any spam filters.</Description>
+        <Rating>2</Rating>
+      </SpamHeader>
+    </SpamHeaders>
+  </SpamResult>
+  <State>Completed</State>
+  <CallbackUrl>http://litmus.mailingreport.com/litmus-api-callback/</CallbackUrl>
+</TestResult>

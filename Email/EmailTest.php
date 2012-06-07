@@ -1,15 +1,20 @@
 <?php
 
-/*
+namespace Yzalis\Components\Litmus\Email;
+
+use Yzalis\Components\Litmus\Base\BaseTest;
+use Yzalis\Components\Litmus\Email\EmailClient;
+
+/**
  * EmailTest class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
- * @version   1.0
+ * @package   LitmusResellerAPI
+ * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
  */
-class EmailTest extends LitmusTest
+class EmailTest extends BaseTest
 {
     /**
      * Reserved. Please ignore.
@@ -53,7 +58,7 @@ class EmailTest extends LitmusTest
      * @var boolean
      * @access private
      */
-    private $Sandbox;
+    private $Sandbox = false;
 
     /**
      * Once you've sent an email, this will contain your email's raw source
@@ -108,160 +113,159 @@ class EmailTest extends LitmusTest
      */
     private $ZipFile;
 
-    /*
+    /**
      * Reserved. Please ignore.
      *
      * @return string
      */
     public function getHtml()
     {
-      return $this->Html;
+        return $this->Html;
     }
 
-    /*
+    /**
      * Get the unique identifier of the test.
      *
      * @return int
      */
     public function getID()
     {
-      return $this->ID;
+        return $this->ID;
     }
 
-    /*
+    /**
      * Get the inbox global unique identifier
      *
      * @return string
      */
     public function getInboxGUID()
     {
-      return $this->InboxGUID;
+        return $this->InboxGUID;
     }
 
-    /*
+    /**
      * Get an array of result EmailTestClient.
      *
      * @return array
      */
     public function getResults()
     {
-      return $this->Results;
+        return $this->Results;
     }
 
-    /*
+    /**
      * Get if the test is in sandbox environment.
      *
      * @return boolean
      */
     public function getSandbox()
     {
-      return $this->Sandbox;
+        return $this->Sandbox;
     }
 
-    /*
+    /**
      * Get the source of the tested email.
      *
      * @return string
      */
     public function getSource()
     {
-      return $this->Source;
+        return $this->Source;
     }
 
-    /*
+    /**
      * Get the state of the test.
      *
      * @return string
      */
     public function getState()
     {
-      return $this->State;
+        return $this->State;
     }
 
-    /*
+    /**
      * Get the subject of your tested email
      *
      * @return string
      */
     public function getSubject()
     {
-      return $this->Subject;
+        return $this->Subject;
     }
 
-    /*
+    /**
      * Get the test type.
      *
      * @return string
      */
     public function getTestType()
     {
-      return $this->TestType;
+        return $this->TestType;
     }
 
-    /*
+    /**
      * ?
      *
      * @return string
      */
     public function getUserGuid()
     {
-      return $this->UserGuid;
+        return $this->UserGuid;
     }
 
-    /*
+    /**
      * Get the url of the screenshot zip file.
      *
      * @return string
      */
     public function getZipFile()
     {
-      return $this->ZipFile;
+        return $this->ZipFile;
     }
 
-    /*
+    /**
      * Reserved. Please ignore.
      *
      * @param string $value
      */
     public function setHtml($value)
     {
-      $this->Html = $value;
+        $this->Html = $value;
     }
 
-    /*
+    /**
      * Set the unique identifier of the test.
      *
      * @param string $value
      */
     public function setID($value)
     {
-      $this->ID = $value;
+        $this->ID = $value;
     }
 
-    /*
+    /**
      * Set the unique inbox global unique identifier.
      *
      * @param string $value
      */
     public function setInboxGUID($value)
     {
-      $this->InboxGUID = $value;
+        $this->InboxGUID = $value;
     }
 
-    /*
+    /**
      * Set all the test client results
      *
      * @param array $values
      */
     public function setResults($values)
     {
-        foreach ($values as $client_params)
-        {
-            $this->addResult(new EmailTestClient($client_params));
+        foreach ($values as $client_params) {
+            $this->addResult(new EmailClient($client_params));
         }
     }
 
-    /*
+    /**
      * Set the sandbox mode.
      *
      * @param boolean $value
@@ -271,87 +275,84 @@ class EmailTest extends LitmusTest
         $this->Sandbox = $value;
     }
 
-    /*
+    /**
      * Set the source code of the tested email
      *
      * @param string $value
      */
     public function setSource($value)
     {
-      $this->Source = $value;
+        $this->Source = $value;
     }
 
-    /*
+    /**
      * Set the state of the test.
      *
      * @param string $value
      */
     public function setState($value)
     {
-      $this->State = $value;
+        $this->State = $value;
     }
 
-    /*
+    /**
      * Set the subject of the tested email.
      *
      * @param string $value
      */
     public function setSubject($value)
     {
-      $this->Subject = $value;
+        $this->Subject = $value;
     }
 
-    /*
+    /**
      * Set the test type result
      *
      * @param string $value
      */
     public function setTestType($value)
     {
-      $this->TestType = $value;
+        $this->TestType = $value;
     }
 
-    /*
+    /**
      * ?
      *
      * @param string $value
      */
     public function setUserGuid($value)
     {
-      $this->UserGuid = $value;
+        $this->UserGuid = $value;
     }
 
-    /*
+    /**
      * Set the url of the screesnhots zip file.
      *
      * @param string $value
      */
     public function setZipFile($value)
     {
-      $this->ZipFile = $value;
+        $this->ZipFile = $value;
     }
 
-    /*
-     * Add an EmailTestClient to the Results array
+    /**
+     * Add an EmailClient to the Results array
      */
-    public function addResult(EmailTestClient $EmailTestClient)
+    public function addResult(EmailClient $EmailClient)
     {
-      $this->Results[] = $EmailTestClient;
+        $this->Results[] = $EmailClient;
     }
 
-    /*
+    /**
      * Initialize clients to request a free test.
      */
     public function initializeFreeTest()
     {
-      foreach (array('gmailnew', 'ol2003') as $client_name)
-      {
-          $LitmusClient = new EmailTestClient();
-          $LitmusClient->setApplicationName($client_name);
-
-          $this->addResult($LitmusClient);
-      }
+          foreach (array('gmailnew', 'ol2003') as $client_name)
+          {
+              $LitmusClient = new EmailClient();
+              $LitmusClient->setApplicationName($client_name);
+              $this->addResult($LitmusClient);
+          }
     }
 }
-
-?>

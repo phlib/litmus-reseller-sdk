@@ -1,0 +1,21 @@
+{
+    "name": "Litmus",
+    "type": "library",
+    "description": "Litmus API Wrapper allows you to run email, spam test and email subject preview.",
+    "keywords": ["email testing", "email preview", "email subject preview", "spam testing"],
+    "homepage": "http://litmus.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin Laugueux",
+            "email": "benjamin@yzalis.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-0": { "Yzalis\\Components\\Litmus": "" }
+    }
+    "target-dir": "Yzalis/Components/Litmus"
+}

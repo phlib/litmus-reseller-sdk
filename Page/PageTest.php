@@ -1,16 +1,22 @@
 <?php
 
+namespace Yzalis\Components\Litmus\Page;
+
+use Yzalis\Components\Litmus\Base\BaseTest;
+use Yzalis\Components\Litmus\Page\PageTest;
+use Yzalis\Components\Litmus\Page\PageClient;
+
 /**
  * PageTest class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
- * @version   1.0
+ * @package   LitmusResellerAPI
+ * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
  */
-class PageTest extends LitmusTest
-{    
+class PageTest extends BaseTest
+{
     /**
      * The title of the web page that will be test.
      *
@@ -73,7 +79,7 @@ class PageTest extends LitmusTest
      */
     private $Results;
 
-    /*
+    /**
      * Get the unique identifier of the test.
      *
      * @return int
@@ -83,7 +89,7 @@ class PageTest extends LitmusTest
         return $this->ID;
     }
 
-    /*
+    /**
      * Get an array of result PageTestClient.
      *
      * @return array
@@ -93,7 +99,7 @@ class PageTest extends LitmusTest
         return $this->Results;
     }
 
-    /*
+    /**
      * Get if the test is in sandbox environment.
      *
      * @return boolean
@@ -103,7 +109,7 @@ class PageTest extends LitmusTest
         return $this->Sandbox;
     }
 
-    /*
+    /**
      * Get the state of the test.
      *
      * @return string
@@ -113,7 +119,7 @@ class PageTest extends LitmusTest
         return $this->State;
     }
 
-    /*
+    /**
      * Get the type of the test.
      *
      * @return string
@@ -123,7 +129,7 @@ class PageTest extends LitmusTest
         return $this->TestType;
     }
 
-    /*
+    /**
      * Get the title of the tested web page.
      *
      * @return string
@@ -133,7 +139,7 @@ class PageTest extends LitmusTest
         return $this->Title;
     }
 
-    /*
+    /**
      * Get the url of the tested web page.
      *
      * @return string
@@ -142,22 +148,30 @@ class PageTest extends LitmusTest
     {
         return $this->URL;
     }
-    
 
-    /*
+    /**
+     * Set the unique identifier of the test.
+     *
+     * @param string $value
+     */
+    public function setID($value)
+    {
+        $this->ID = $value;
+    }
+
+    /**
      * Set all the test clients results.
      *
      * @param array $values
      */
     public function setResults($values = array())
     {
-        foreach ($values as $client_params)
-        {
-            $this->addResult(new PageTestClient($client_params));
+        foreach ($values as $client_params) {
+            $this->addResult(new PageClient($client_params));
         }
     }
 
-    /*
+    /**
      * Activate or disactivate the sandox mode.
      *
      * @param boolean $value
@@ -167,7 +181,7 @@ class PageTest extends LitmusTest
         $this->Sandbox = $value;
     }
 
-    /*
+    /**
      * Set the state of the test.
      *
      * @param boolean $value
@@ -177,7 +191,7 @@ class PageTest extends LitmusTest
         $this->State = $value;
     }
 
-    /*
+    /**
      * Set the result type
      *
      * @param string $value
@@ -187,7 +201,7 @@ class PageTest extends LitmusTest
         $this->TestType = $value;
     }
 
-    /*
+    /**
      * Set the web page title.
      *
      * @param string $value
@@ -197,7 +211,7 @@ class PageTest extends LitmusTest
         $this->Title = $value;
     }
 
-    /*
+    /**
      * Set the webpage url to test.
      *
      * @param string $url
@@ -207,29 +221,35 @@ class PageTest extends LitmusTest
         $this->URL = $url;
     }
 
-    /*
+    /**
+     * ?
+     *
+     * @param string $value
+     */
+    public function setUserGuid($value)
+    {
+        $this->UserGuid = $value;
+    }
+
+    /**
      * Initialize clients to request a free test.
      */
     public function initializeFreeTest()
     {
-        foreach (array('ie7') as $application_name)
-        {
-            $PageTestClient = new PageTestClient();
-            $PageTestClient->setApplicationName($application_name);
-
-            $this->addResults($PageTestClient);
+        foreach (array('ie7') as $application_name) {
+            $PageClient = new PageClient();
+            $PageClient->setApplicationName($application_name);
+            $this->addResult($PageClient);
         }
     }
 
-    /*
-     * Add a PageTestClient object to the results array
+    /**
+     * Add a PageClient object to the results array
      *
-     * @param PageTestClient $PageTestClient
+     * @param PageClient $PageClient
      */
-    public function addResult(PageTestClient $PageTestClient)
+    public function addResult(PageClient $PageClient)
     {
-        $this->Results[] = $PageTestClient;
+        $this->Results[] = $PageClient;
     }
 }
-
-?>

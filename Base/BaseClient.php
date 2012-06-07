@@ -1,15 +1,17 @@
 <?php
 
-/*
- * LitmusClients class
+namespace Yzalis\Components\Litmus\Base;
+
+/**
+ * BaseClient class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
- * @version   1.0
+ * @package   LitmusResellerAPI
+ * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
  */
-class LitmusClient
+class BaseClient
 {
     public $ApplicationLongName;
     public $ApplicationName;
@@ -41,21 +43,29 @@ class LitmusClient
     public $WindowImageThumbContentBlocking;
     public $WindowImageThumbNoContentBlocking;
 
-    /*
-     * @param array $params 
+    /**
+     * @param array $params
      */
     function __construct($params = array())
     {
-        if ($params != array())
-        {
-            foreach ($params as $k => $v)
-            {
-                $this->$k = $v;
+        $this->SpamHeaders = array();
+
+        if ($params != array()) {
+            foreach ($params as $k => $v) {
+                $this->{'set' . $k}($v);
             }
         }
     }
 
-    /*
+    /**
+     * Add a SpamHeader to the SpamHeaders array
+     */
+    public function addSpamHeader(SpamHeader $SpamHeader)
+    {
+        $this->SpamHeaders[] = $SpamHeader;
+    }
+
+    /**
      * Return the longer, friendlier name of this client that you can show to your users.
      *
      * @return string
@@ -65,7 +75,7 @@ class LitmusClient
         return $this->ApplicationLongName;
     }
 
-    /*
+    /**
      * Return a unique identifier for this client.
      *
      * @return string
@@ -75,7 +85,7 @@ class LitmusClient
         return $this->ApplicationName;
     }
 
-    /*
+    /**
      * Return the average amount of time (in seconds) it is currently taking to process a result in this client.
      *
      * @return int
@@ -85,12 +95,15 @@ class LitmusClient
         return $this->AverageTimeToProcess;
     }
 
+    /**
+     *
+     */
     public function getBusinessOrPopular()
     {
         return $this->BusinessOrPopular;
     }
 
-    /*
+    /**
      * Return if the test is completed.
      *
      * @return boolean
@@ -100,7 +113,7 @@ class LitmusClient
         return $this->Completed;
     }
 
-    /*
+    /**
      * Desktop clients are those that run locally, on the desktop. Examples include Outlook, Lotus Notes, Apple Mail and Thunderbird. Email clients such as Gmail, AOL and Hotmail would have a DesktopClient value of false.
      *
      * @return boolean
@@ -110,7 +123,7 @@ class LitmusClient
         return $this->DesktopClient;
     }
 
-    /*
+    /**
      * Indicates if the email was found in this client's spam folder. Since not all clients support this property, it may always be false for some cilents.
      *
      * @return boolean
@@ -120,7 +133,7 @@ class LitmusClient
         return $this->FoundInSpam;
     }
 
-    /*
+    /**
      * The uri of a capture of the email opened in the client. You should only use this property if SupportsContentBlocking is false.
      *
      * @return string
@@ -130,7 +143,7 @@ class LitmusClient
         return $this->FullpageImage;
     }
 
-    /*
+    /**
      * The url of a capture of the email opened by the client with external content blocking enabled, this is the "images off" capture. You should only use this property if SupportsContentBlocking is true.
      *
      * @return string
@@ -140,7 +153,7 @@ class LitmusClient
         return $this->FullpageImageContentBlocking;
     }
 
-    /*
+    /**
      * The url of a capture of the email opened by the client with external content blocking disabled, this is the "images on" capture. You should only use this property if SupportsContentBlocking is true.
      *
      * @return string
@@ -150,7 +163,7 @@ class LitmusClient
         return $this->FullpageImageNoContentBlocking;
     }
 
-    /*
+    /**
      * Return the url of the full page image thumbnail with content blocking.
      *
      * @return string
@@ -160,7 +173,7 @@ class LitmusClient
         return $this->FullpageImageThumb;
     }
 
-    /*
+    /**
      * Return the url of the full page image thumbnail with content blocking.
      *
      * @return string
@@ -170,7 +183,7 @@ class LitmusClient
         return $this->FullpageImageThumbContentBlocking;
     }
 
-    /*
+    /**
      * Return the url of the full page image thumbnail without content blocking.
      *
      * @return string
@@ -180,7 +193,7 @@ class LitmusClient
         return $this->FullpageImageThumbNoContentBlocking;
     }
 
-    /*
+    /**
      * Return the unique identifier of this client test.
      *
      * @return string
@@ -190,7 +203,7 @@ class LitmusClient
         return $this->Id;
     }
 
-    /*
+    /**
      * The long, friendly name of the platform this client is running on.
      *
      * @return string
@@ -200,7 +213,7 @@ class LitmusClient
         return $this->PlatformLongName;
     }
 
-    /*
+    /**
      * The shorter name of the platform, usually excludes the manufacturer of the operating system.
      *
      * @return string
@@ -210,7 +223,7 @@ class LitmusClient
         return $this->PlatformName;
     }
 
-    /*
+    /**
      * Reserved. Please ignore.
      *
      * @return string
@@ -220,7 +233,7 @@ class LitmusClient
         return $this->RenderedHtmlUrl;
     }
 
-    /*
+    /**
      * Return the result type of the client test. Contains either "email", "spam" or "page".
      *
      * @return string
@@ -230,17 +243,15 @@ class LitmusClient
         return $this->ResultType;
     }
 
-    /*
+    /**
      *
-     *
-     * @return
      */
     public function getSpamHeaders()
     {
         return $this->SpamHeaders;
     }
 
-    /*
+    /**
      * If the ResultType was equal to "spam", this property may contain a score left by the spam filter this Client object represents.
      *
      * @return double
@@ -250,7 +261,7 @@ class LitmusClient
         return $this->SpamScore;
     }
 
-    /*
+    /**
      * Return the current state of the result test, it can be either "pending", "complete" or "error".
      *
      * @return string
@@ -260,7 +271,7 @@ class LitmusClient
         return $this->State;
     }
 
-    /*
+    /**
      * Represents a client's current status. A status of 0 indicates all is
      * well, no delays. A status of 1 indicate the client is running slower than
      * usual, expect delays of up to 15 minutes. A status of 2 indicate the
@@ -275,7 +286,7 @@ class LitmusClient
         return $this->Status;
     }
 
-     /*
+    /**
      * Return if the client test support content blocking.
      *
      * @return int
@@ -285,7 +296,7 @@ class LitmusClient
         return $this->SupportsContentBlocking;
     }
 
-    /*
+    /**
      * Return the url of the window image.
      *
      * @return string
@@ -295,7 +306,7 @@ class LitmusClient
         return $this->WindowImage;
     }
 
-    /*
+    /**
      * The url of a capture of the client's inbox with external content blocking disabled, this is the "images on" capture. You should only use this property if SupportsContentBlocking is true.
      *
      * @return string
@@ -305,7 +316,7 @@ class LitmusClient
         return $this->WindowImageContentBlocking;
     }
 
-    /*
+    /**
      * The url of a capture of the client's inbox with external content blocking enabled, this is the "images off" capture. You should only use this property if SupportsContentBlocking is true.
      *
      * @return string
@@ -315,7 +326,7 @@ class LitmusClient
         return $this->WindowImageNoContentBlocking;
     }
 
-    /*
+    /**
      * Return the url of the window image thumbnail.
      *
      * @return string
@@ -325,7 +336,7 @@ class LitmusClient
         return $this->WindowImageThumb;
     }
 
-    /*
+    /**
      * Return the url of the window image thumbnail with content blocking.
      *
      * @return string
@@ -335,160 +346,305 @@ class LitmusClient
         return $this->WindowImageThumbContentBlocking;
     }
 
-    /*
+    /**
      * Return the url of the window image thumbnail without content blocking.
      *
-     * @return string 
+     * @return string
      */
     public function getWindowImageThumbNoContentBlocking()
     {
         return $this->WindowImageThumbNoContentBlocking;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setApplicationLongName($value)
     {
         $this->ApplicationLongName = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setApplicationName($value)
     {
         $this->ApplicationName = $value;
     }
 
-    public function setAverasetimeToProcess($value)
+    /**
+     *
+     *
+     * @return
+     */
+    public function setAverageTimeToProcess($value)
     {
-        $this->AverasetimeToProcess = $value;
+        $this->AverageTimeToProcess = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setBusinessOrPopular($value)
     {
         $this->BusinessOrPopular = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setCompleted($value)
     {
         $this->Completed = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setDesktopClient($value)
     {
         $this->DesktopClient = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setFoundInSpam($value)
     {
         $this->FoundInSpam = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setFullpageImage($value)
     {
         $this->FullpageImage = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setFullpageImageContentBlocking($value)
     {
         $this->FullpageImageContentBlocking = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setFullpageImageNoContentBlocking($value)
     {
         $this->FullpageImageNoContentBlocking = $value;
     }
 
-    public function setFullpageImasethumb($value)
+    /**
+     *
+     *
+     * @return
+     */
+    public function setFullpageImageThumb($value)
     {
-        $this->FullpageImasethumb = $value;
+        $this->FullpageImageThumb = $value;
     }
 
-    public function setFullpageImasethumbContentBlocking($value)
+    /**
+     *
+     *
+     * @return
+     */
+    public function setFullpageImageThumbContentBlocking($value)
     {
-        $this->FullpageImasethumbContentBlocking = $value;
+        $this->FullpageImageThumbContentBlocking = $value;
     }
 
-    public function setFullpageImasethumbNoContentBlocking($value)
+    /**
+     *
+     *
+     * @return
+     */
+    public function setFullpageImageThumbNoContentBlocking($value)
     {
-        $this->FullpageImasethumbNoContentBlocking = $value;
+        $this->FullpageImageThumbNoContentBlocking = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setId($value)
     {
         $this->Id = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setPlatformLongName($value)
     {
         $this->PlatformLongName = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setPlatformName($value)
     {
         $this->PlatformName = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setRenderedHtmlUrl($value)
     {
         $this->RenderedHtmlUrl = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setResultType($value)
     {
         $this->ResultType = $value;
     }
 
-    public function setSpamHeaders($value)
+    /**
+     *
+     *
+     * @param string $values The spam headers.
+     */
+    public function setSpamHeaders($values)
     {
-        $this->SpamHeaders = $value;
+        foreach ($values as $spam_header_params) {
+            $this->addSpamHeader(new SpamHeader($spam_header_params));
+        }
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setSpamScore($value)
     {
-        $this->SpamScore = $value;
+        $this->SpamScore = (double)$value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setState($value)
     {
         $this->State = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setStatus($value)
     {
         $this->Status = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setSupportsContentBlocking($value)
     {
         $this->SupportsContentBlocking = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setWindowImage($value)
     {
         $this->WindowImage = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setWindowImageContentBlocking($value)
     {
         $this->WindowImageContentBlocking = $value;
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public function setWindowImageNoContentBlocking($value)
     {
         $this->WindowImageNoContentBlocking = $value;
     }
 
-    public function setWindowImasethumb($value)
+    /**
+     *
+     *
+     * @return
+     */
+    public function setWindowImagethumb($value)
     {
-        $this->WindowImasethumb = $value;
+        $this->WindowImageThumb = $value;
     }
 
-    public function setWindowImasethumbContentBlocking($value)
+    /**
+     *
+     *
+     * @return
+     */
+    public function setWindowImageThumbContentBlocking($value)
     {
-        $this->WindowImasethumbContentBlocking = $value;
+        $this->WindowImageThumbContentBlocking = $value;
     }
 
-    public function setWindowImasethumbNoContentBlocking($value)
+    /**
+     *
+     *
+     * @return
+     */
+    public function setWindowImageThumbNoContentBlocking($value)
     {
-        $this->WindowImasethumbNoContentBlocking = $value;
+        $this->WindowImageThumbNoContentBlocking = $value;
     }
 }
-
-?>
