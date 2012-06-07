@@ -13,12 +13,12 @@ Requirements
 The SoapClient php extension is required.
 See [http://us.php.net/manual/en/book.soap.php] for more informations.
 
-[![Build Status](https://secure.travis-ci.org/yzalis/litmus-api-php5.png?branch=master)](http://travis-ci.org/yzalis/litmus-api-php5)
+[![Build Status](https://secure.travis-ci.org/yzalis/Litmus.png?branch=master)](http://travis-ci.org/yzalis/Litmus)
 
 Configuration
 -------------
 
-To use this wrapper, you Litmus resseler credentials. Here is a parameterS.ini example file. It allows you to run a complete unit test and launch examples.
+To use this wrapper, you Litmus resseler credentials. Here is a parameters.ini example file. It allows you to run a complete unit test and launch examples.
 
 License
 -------

@@ -1,8 +1,8 @@
 {
-    "name": "litmus",
+    "name": "Litmus",
     "type": "library",
-    "description": "Litmus API Wrapper",
-    "keywords": [],
+    "description": "Litmus API Wrapper allows you to run email, spam test and email subject preview.",
+    "keywords": ["email testing", "email preview", "email subject preview", "spam testing"],
     "homepage": "http://litmus.com",
     "license": "MIT",
     "authors": [
@@ -12,10 +12,9 @@
         }
     ],
     "require": {
-        "php": ">=5.3.2"
+        "php": ">=5.3.3"
     },
     "autoload": {
         "psr-0": { "Litmus": "" }
-    },
-    "target-dir": "Litmus"
+    }
 }
