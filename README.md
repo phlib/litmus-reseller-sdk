@@ -33,3 +33,11 @@ You can run the unit tests with the following command:
 ```
 phpunit
 ```
+
+Copyright
+---------
+
+LitmusAPI use the API of the Litmus service.
+
+Url:       http://www.litmus.com
+Copyright: Salted Services, Inc
