@@ -1,22 +1,22 @@
 <?php
 
-namespace Litmus\Page;
+namespace Yzalis\Components\Litmus\Page;
 
-use Litmus\Base\BaseTest;
-use Litmus\Page\PageTest;
-use Litmus\Page\PageClient;
+use Yzalis\Components\Litmus\Base\BaseTest;
+use Yzalis\Components\Litmus\Page\PageTest;
+use Yzalis\Components\Litmus\Page\PageClient;
 
 /**
  * PageTest class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
+ * @package   LitmusResellerAPI
  * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
  */
 class PageTest extends BaseTest
-{    
+{
     /**
      * The title of the web page that will be test.
      *
@@ -157,7 +157,7 @@ class PageTest extends BaseTest
     public function setID($value)
     {
         $this->ID = $value;
-    }    
+    }
 
     /**
      * Set all the test clients results.

@@ -15,6 +15,7 @@
         "php": ">=5.3.3"
     },
     "autoload": {
-        "psr-0": { "Litmus": "" }
+        "psr-0": { "Yzalis\\Components\\Litmus": "" }
     }
+    "target-dir": "Yzalis/Components/Litmus"
 }

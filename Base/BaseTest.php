@@ -1,12 +1,12 @@
 <?php
 
-namespace Litmus\Base;
+namespace Yzalis\Components\Litmus\Base;
 
 /**
  * BaseTest class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
+ * @package   LitmusResellerAPI
  * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis

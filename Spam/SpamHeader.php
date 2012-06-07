@@ -1,12 +1,12 @@
 <?php
 
-namespace Litmus\Spam;
+namespace Yzalis\Components\Litmus\Spam;
 
 /**
  * SpamHeader class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
+ * @package   LitmusResellerAPI
  * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
@@ -18,7 +18,7 @@ class SpamHeader
 	private $Rating;
 
     /**
-     * @param array $params 
+     * @param array $params
      */
     public function __construct($params = array())
     {
@@ -30,7 +30,7 @@ class SpamHeader
     }
 
     /**
-     * 
+     *
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class SpamHeader
     }
 
     /**
-     * 
+     *
      *
      * @return string
      */
@@ -50,7 +50,7 @@ class SpamHeader
     }
 
     /**
-     * 
+     *
      *
      * @return string
      */
@@ -60,7 +60,7 @@ class SpamHeader
     }
 
     /**
-     * 
+     *
      *
      * @param string $v The key.
      */
@@ -70,7 +70,7 @@ class SpamHeader
     }
 
     /**
-     * 
+     *
      *
      * @param string $v The description.
      */
@@ -80,7 +80,7 @@ class SpamHeader
     }
 
     /**
-     * 
+     *
      *
      * @param string $v The rating.
      */

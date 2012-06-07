@@ -1,16 +1,16 @@
 <?php
 
-namespace Litmus\Base;
+namespace Yzalis\Components\Litmus\Base;
 
-use Litmus\Spam\SpamResult;
-use Litmus\Spam\SpamCallback;
-use Litmus\Email\EmailCallback;
+use Yzalis\Components\Litmus\Spam\SpamResult;
+use Yzalis\Components\Litmus\Spam\SpamCallback;
+use Yzalis\Components\Litmus\Email\EmailCallback;
 
 /**
  * BaseCallback class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
+ * @package   LitmusResellerAPI
  * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
@@ -29,7 +29,7 @@ class BaseCallback
     private $CallbackUrl;
 
     /**
-     * Hydrate a CallBack object with a callback xml.
+     * Hydrate a CallBack object with a callback xml
      *
      * @param $object SpamCallback or EmailCallback
      * @access public
@@ -40,7 +40,7 @@ class BaseCallback
             throw new \InvalidArgumentException("You must provid a callback string.");
         }
 
-        # convert the utf-16 to utf-8
+        // convert the utf-16 to utf-8
         $xmlCallback = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $xmlCallback);
         $xml = simplexml_load_string($xmlCallback);
 
@@ -61,7 +61,7 @@ class BaseCallback
             $object->{'set' . $key}($value);
         }
         $object->setType($callbackType);
-        
+
         self::$instance = $object;
 
         return self::$instance;
@@ -179,7 +179,7 @@ class BaseCallback
     }
 
     /**
-     * The ResultImageSet, as the name would suggest is the collection of images that makes up your completed test. It consists of two main blocks ImagesOnUrls and ImagesOffUrls. Each main block contains two sub blocks for WindowUrls and FullPageUrls. Further, each capture block contains an ImageUrl and ThumbUrl. For clients that do not support content blocking the outerblocks (ImagesOnUrls and ImagesOffUrls) will be identical.  For clients who do support content blocking (SupportsContentBlocking == true) the ImagesOffUrl will show the blocked versions and ImagesOnUrl will show the non-blocked versions. 
+     * The ResultImageSet, as the name would suggest is the collection of images that makes up your completed test. It consists of two main blocks ImagesOnUrls and ImagesOffUrls. Each main block contains two sub blocks for WindowUrls and FullPageUrls. Further, each capture block contains an ImageUrl and ThumbUrl. For clients that do not support content blocking the outerblocks (ImagesOnUrls and ImagesOffUrls) will be identical.  For clients who do support content blocking (SupportsContentBlocking == true) the ImagesOffUrl will show the blocked versions and ImagesOnUrl will show the non-blocked versions.
      *
      * @param array $v The array of the result image set.
      */
@@ -219,7 +219,7 @@ class BaseCallback
     }
 
     /**
-     * 
+     *
      *
      * @param string $v The state of the test.
      */

@@ -1,12 +1,12 @@
 <?php
 
-namespace Litmus\Spam;
+namespace Yzalis\Components\Litmus\Spam;
 
 /**
  * SpamResult class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
+ * @package   LitmusResellerAPI
  * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
@@ -18,7 +18,7 @@ class SpamResult
     private $SpamHeaders;
 
     /**
-     * @param array $params 
+     * @param array $params
      */
     public function __construct($params = array())
     {
@@ -32,7 +32,7 @@ class SpamResult
     }
 
     /**
-     * 
+     *
      *
      * @return string
      */
@@ -42,7 +42,7 @@ class SpamResult
     }
 
     /**
-     * 
+     *
      *
      * @return string
      */
@@ -52,7 +52,7 @@ class SpamResult
     }
 
     /**
-     * 
+     *
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class SpamResult
     }
 
     /**
-     * 
+     *
      *
      * @param string $v The spam score.
      */
@@ -72,7 +72,7 @@ class SpamResult
     }
 
     /**
-     * 
+     *
      *
      * @param string $v The spam state.
      */
@@ -82,7 +82,7 @@ class SpamResult
     }
 
     /**
-     * 
+     *
      *
      * @param string $values The spam headers.
      */

@@ -1,12 +1,12 @@
 <?php
 
-namespace Litmus\Base;
+namespace Yzalis\Components\Litmus\Base;
 
 /**
  * BaseClient class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
+ * @package   LitmusResellerAPI
  * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
@@ -44,7 +44,7 @@ class BaseClient
     public $WindowImageThumbNoContentBlocking;
 
     /**
-     * @param array $params 
+     * @param array $params
      */
     function __construct($params = array())
     {
@@ -95,6 +95,9 @@ class BaseClient
         return $this->AverageTimeToProcess;
     }
 
+    /**
+     *
+     */
     public function getBusinessOrPopular()
     {
         return $this->BusinessOrPopular;
@@ -242,8 +245,6 @@ class BaseClient
 
     /**
      *
-     *
-     * @return
      */
     public function getSpamHeaders()
     {
@@ -348,7 +349,7 @@ class BaseClient
     /**
      * Return the url of the window image thumbnail without content blocking.
      *
-     * @return string 
+     * @return string
      */
     public function getWindowImageThumbNoContentBlocking()
     {
@@ -536,7 +537,7 @@ class BaseClient
     }
 
     /**
-     * 
+     *
      *
      * @param string $values The spam headers.
      */

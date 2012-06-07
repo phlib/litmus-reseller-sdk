@@ -1,14 +1,14 @@
 <?php
 
-namespace Litmus\Spam;
+namespace Yzalis\Components\Litmus\Spam;
 
-use Litmus\Base\BaseCallback;
+use Yzalis\Components\Litmus\Base\BaseCallback;
 
 /**
  * SpamCallback class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
+ * @package   LitmusResellerAPI
  * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis

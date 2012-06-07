@@ -1,14 +1,14 @@
 <?php
 
-namespace Litmus\Page;
+namespace Yzalis\Components\Litmus\Page;
 
-use Litmus\Base\BaseClient;
+use Yzalis\Components\Litmus\Base\BaseClient;
 
 /**
  * PageClient class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
+ * @package   LitmusResellerAPI
  * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis

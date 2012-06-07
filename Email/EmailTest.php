@@ -1,15 +1,15 @@
 <?php
 
-namespace Litmus\Email;
+namespace Yzalis\Components\Litmus\Email;
 
-use Litmus\Base\BaseTest;
-use Litmus\Email\EmailClient;
+use Yzalis\Components\Litmus\Base\BaseTest;
+use Yzalis\Components\Litmus\Email\EmailClient;
 
 /**
  * EmailTest class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
+ * @package   LitmusResellerAPI
  * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
