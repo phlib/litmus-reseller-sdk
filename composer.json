@@ -16,6 +16,6 @@
     },
     "autoload": {
         "psr-0": { "Yzalis\\Components\\Litmus": "" }
-    }
+    },
     "target-dir": "Yzalis/Components/Litmus"
 }
