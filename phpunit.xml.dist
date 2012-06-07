@@ -11,6 +11,10 @@
     syntaxCheck="false"
     bootstrap="Tests/bootstrap.php"
 >
+    <php>
+        <server name="apiKey" value="" />
+        <server name="apiPass" value="" />
+    </php>
     <testsuites>
         <testsuite name="LitumusAPI Test Suite">
             <directory>./Tests/</directory>
