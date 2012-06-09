@@ -46,7 +46,7 @@ class BaseClient
     /**
      * @param array $params
      */
-    function __construct($params = array())
+    public function __construct($params = array())
     {
         $this->SpamHeaders = array();
 
@@ -555,7 +555,7 @@ class BaseClient
      */
     public function setSpamScore($value)
     {
-        $this->SpamScore = (double)$value;
+        $this->SpamScore = (double) $value;
     }
 
     /**

@@ -348,8 +348,7 @@ class EmailTest extends BaseTest
      */
     public function initializeFreeTest()
     {
-          foreach (array('gmailnew', 'ol2003') as $client_name)
-          {
+          foreach (array('gmailnew', 'ol2003') as $client_name) {
               $LitmusClient = new EmailClient();
               $LitmusClient->setApplicationName($client_name);
               $this->addResult($LitmusClient);

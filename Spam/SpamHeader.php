@@ -13,9 +13,9 @@ namespace Yzalis\Components\Litmus\Spam;
  */
 class SpamHeader
 {
-	private $Key;
-	private $Description;
-	private $Rating;
+    private $Key;
+    private $Description;
+    private $Rating;
 
     /**
      * @param array $params
@@ -36,7 +36,7 @@ class SpamHeader
      */
     public function getKey()
     {
-      	return $this->Key;
+          return $this->Key;
     }
 
     /**
@@ -46,7 +46,7 @@ class SpamHeader
      */
     public function getDescription()
     {
-      	return $this->Description;
+          return $this->Description;
     }
 
     /**
@@ -56,7 +56,7 @@ class SpamHeader
      */
     public function getRating()
     {
-      	return $this->Rating;
+          return $this->Rating;
     }
 
     /**
@@ -66,7 +66,7 @@ class SpamHeader
      */
     public function setKey($v)
     {
-      $this->Key = (string)$v;
+      $this->Key = (string) $v;
     }
 
     /**
@@ -76,7 +76,7 @@ class SpamHeader
      */
     public function setDescription($v)
     {
-      $this->Description = (string)$v;
+      $this->Description = (string) $v;
     }
 
     /**
@@ -86,6 +86,6 @@ class SpamHeader
      */
     public function setRating($v)
     {
-      $this->Rating = (string)$v;
+      $this->Rating = (string) $v;
     }
 }

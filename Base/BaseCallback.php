@@ -44,7 +44,7 @@ class BaseCallback
         $xmlCallback = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $xmlCallback);
         $xml = simplexml_load_string($xmlCallback);
 
-        $callbackType = (string)$xml->attributes()->type;
+        $callbackType = (string) $xml->attributes()->type;
         switch ($callbackType) {
             case 'mail':
                 $object = new EmailCallback();
@@ -155,7 +155,7 @@ class BaseCallback
      */
     public function setApiId($v)
     {
-        $this->ApiId = (string)$v;
+        $this->ApiId = (string) $v;
     }
 
     /**
@@ -165,7 +165,7 @@ class BaseCallback
      */
     public function setCallbackUrl($v)
     {
-        $this->CallbackUrl = (string)$v;
+        $this->CallbackUrl = (string) $v;
     }
 
     /**
@@ -175,7 +175,7 @@ class BaseCallback
      */
     public function setId($v)
     {
-        $this->Id = (string)$v;
+        $this->Id = (string) $v;
     }
 
     /**
@@ -185,7 +185,7 @@ class BaseCallback
      */
     public function setResultImageSet($v)
     {
-        $this->ResultImageSet = (array)$v;
+        $this->ResultImageSet = (array) $v;
     }
 
     /**
@@ -205,7 +205,7 @@ class BaseCallback
      */
     public function setState($v)
     {
-        $this->State = (string)$v;
+        $this->State = (string) $v;
     }
 
     /**
@@ -215,7 +215,7 @@ class BaseCallback
      */
     public function setSupportsContentBlocking($v)
     {
-        $this->SupportsContentBlocking = (boolean)$v;
+        $this->SupportsContentBlocking = (boolean) $v;
     }
 
     /**
@@ -225,6 +225,6 @@ class BaseCallback
      */
     public function setType($v)
     {
-        $this->Type = (string)$v;
+        $this->Type = (string) $v;
     }
 }

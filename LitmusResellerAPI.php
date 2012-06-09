@@ -37,7 +37,6 @@ class LitmusResellerAPI
      */
     private $apiPass;
 
-
     /**
      * API endpoint
      *
@@ -57,11 +56,11 @@ class LitmusResellerAPI
     /**
      * Create and configure a new LitmusAPI object with your credentials
      *
-     * @param string $apiKey Your own API Key.
+     * @param string $apiKey  Your own API Key.
      * @param string $apiPass Your own API Password.
      * @access public
      */
-    function __construct($apiKey = null, $apiPass = null)
+    public function __construct($apiKey = null, $apiPass = null)
     {
         if (!class_exists('SoapClient')) {
             throw new \RuntimeException('PHP SoapClient library is required.');
@@ -83,8 +82,7 @@ class LitmusResellerAPI
         $result = $this->soapClient->__soapCall("GetEmailTestClients", array($this->getApiKey(), $this->getApiPass()));
         $clients = array();
 
-        foreach ($result as $params)
-        {
+        foreach ($result as $params) {
             $clients[] = new EmailClient($params);
         }
 
@@ -112,7 +110,7 @@ class LitmusResellerAPI
     /**
      * Create an Email Test
      *
-     * @param string $EmailTest EmailTest object with values filled in
+     * @param  string    $EmailTest EmailTest object with values filled in
      * @return EmailTest The EmailTest object response from the API.
      * @access public
      */
@@ -126,7 +124,7 @@ class LitmusResellerAPI
     /**
      * Create a PageTest
      *
-     * @param string $PageTest PageTest object with values filled in
+     * @param  string   $PageTest PageTest object with values filled in
      * @return PageTest The PageTest object response from the API
      */
     public function createPageTest($PageTest)
@@ -139,7 +137,7 @@ class LitmusResellerAPI
     /**
      * Fetch an email test.
      *
-     * @param string $id The unique identifier of the email test (as returned by createEmailTest()).
+     * @param  string    $id The unique identifier of the email test (as returned by createEmailTest()).
      * @return EmailTest The EmailTest object with data filled in.
      * @access public
      */
@@ -153,7 +151,7 @@ class LitmusResellerAPI
     /**
      * Fetch a page test
      *
-     * @param string $id The unique identifier of the page test (as returned by createPageTest())
+     * @param  string   $id The unique identifier of the page test (as returned by createPageTest())
      * @return PageTest The PageTest object with data filled in
      * @access public
      */
@@ -180,7 +178,7 @@ class LitmusResellerAPI
     /**
      * Gets the result of one email or page client
      *
-     * @param string $id ID of the individual result
+     * @param  string                   $id ID of the individual result
      * @return PageTestClient/EmailTest Client with the data
      * @access public
      */
@@ -215,11 +213,11 @@ class LitmusResellerAPI
     private function setApiCredentials($key, $pass)
     {
         if (is_null($key) || strlen($key) == 0 || !is_string($key)) {
-          throw new \InvalidArgumentException('You must specify an API Key (string).');
+          throw new \InvalidArgumentException('You must specify an API Key (string) .');
         }
 
         if (is_null($pass) || strlen($pass) == 0 || !is_string($pass)) {
-          throw new \InvalidArgumentException('You must specify an API Password (string).');
+          throw new \InvalidArgumentException('You must specify an API Password (string) .');
         }
 
         $this->apiKey  = $key;

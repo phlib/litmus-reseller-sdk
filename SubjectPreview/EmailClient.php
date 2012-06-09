@@ -6,35 +6,35 @@ use Yzalis\Components\Litmus\SubjectPreview\SubjectPreview;
 
 class EmailClient
 {
-	/**
-	 * @var $name The email client name
-	 */
-	private $name;
+    /**
+     * @var $name The email client name
+     */
+    private $name;
 
-	/**
-	 * @var $slug The email client identifier
-	 */
-	private $slug;
+    /**
+     * @var $slug The email client identifier
+     */
+    private $slug;
 
-	/**
-	 * @var $hasSlug Define if the email client has a toast view
-	 */
-	private $hasToast;
+    /**
+     * @var $hasSlug Define if the email client has a toast view
+     */
+    private $hasToast;
 
-	/**
-	 * @var $globalSize The width and height of global subject preview
-	 */
-	private $globalSize;
+    /**
+     * @var $globalSize The width and height of global subject preview
+     */
+    private $globalSize;
 
-	/**
-	 * @var $toastSize The width and height of toast subject preview
-	 */
-	private $toastSize;
+    /**
+     * @var $toastSize The width and height of toast subject preview
+     */
+    private $toastSize;
 
-	/**
-	 * @var SubjectPreview
-	 */
-	private $subjectPreview;
+    /**
+     * @var SubjectPreview
+     */
+    private $subjectPreview;
 
     /**
      * @var array $clientsDatas List of mail client datas
@@ -48,7 +48,6 @@ class EmailClient
         'yahoo'   => array('name' => 'Yahoo',        'slug' => 'yahoo',      'hasToast' => false, 'globalSize' => array('width' => 601, 'height' => 104)),
         // array('name' => 'BlackBerry',   'client' => 'blackberry', 'hasToast' => false),
     );
-
 
     /**
      * Get available email client slug list
@@ -86,139 +85,139 @@ class EmailClient
         return $emailClient;
     }
 
-	/**
-	 * Set name
-	 *
-	 * @param string $name
-	 *
-	 * @return this
-	 */
-	public function setName($name)
-	{
-		$this->name = $name;
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Set hasToast
-	 *
-	 * @param string $hasToast
-	 *
-	 * @return this
-	 */
-	public function setHasToast($hasToast)
-	{
-		$this->hasToast = (bool)$hasToast;
+    /**
+     * Set hasToast
+     *
+     * @param string $hasToast
+     *
+     * @return this
+     */
+    public function setHasToast($hasToast)
+    {
+        $this->hasToast = (bool) $hasToast;
 
-		return $hasToast;
-	}
+        return $hasToast;
+    }
 
-	/**
-	 * Set slug
-	 *
-	 * @param string $slug
-	 *
-	 * @return this
-	 */
-	public function setSlug($slug)
-	{
-		$this->slug = $slug;
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return this
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Set globalSize
-	 *
-	 * @param string $globalSize
-	 *
-	 * @return this
-	 */
-	public function setGlobalSize($globalSize)
-	{
-		$this->globalSize = $globalSize;
+    /**
+     * Set globalSize
+     *
+     * @param string $globalSize
+     *
+     * @return this
+     */
+    public function setGlobalSize($globalSize)
+    {
+        $this->globalSize = $globalSize;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Set toastSize
-	 *
-	 * @param string $toastSize
-	 *
-	 * @return this
-	 */
-	public function setToastSize($toastSize)
-	{
-		$this->toastSize = $toastSize;
+    /**
+     * Set toastSize
+     *
+     * @param string $toastSize
+     *
+     * @return this
+     */
+    public function setToastSize($toastSize)
+    {
+        $this->toastSize = $toastSize;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Set subjectPreview
-	 *
-	 * @param SubjectPreview $subjectPreview
-	 *
-	 * @return this
-	 */
-	public function setSubjectPreview(SubjectPreview $subjectPreview)
-	{
-		$this->subjectPreview = $subjectPreview;
+    /**
+     * Set subjectPreview
+     *
+     * @param SubjectPreview $subjectPreview
+     *
+     * @return this
+     */
+    public function setSubjectPreview(SubjectPreview $subjectPreview)
+    {
+        $this->subjectPreview = $subjectPreview;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Get name
-	 *
-	 * @return string
-	 */
-	public function getName()
-	{
-		return $this->name;
-	}
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	/**
-	 * Get name
-	 *
-	 * @return string
-	 */
-	public function getSlug()
-	{
-		return $this->slug;
-	}
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 
-	/**
-	 * Get globalSize
-	 *
-	 * @return array
-	 */
-	public function getGlobalSize()
-	{
-		return $this->globalSize;
-	}
+    /**
+     * Get globalSize
+     *
+     * @return array
+     */
+    public function getGlobalSize()
+    {
+        return $this->globalSize;
+    }
 
-	/**
-	 * Get toastSize
-	 *
-	 * @return array
-	 */
-	public function getToastSize()
-	{
-		return $this->toastSize;
-	}
+    /**
+     * Get toastSize
+     *
+     * @return array
+     */
+    public function getToastSize()
+    {
+        return $this->toastSize;
+    }
 
-	/**
-	 * Get hasToast
-	 *
-	 * @return boolean
-	 */
-	public function getHasToast()
-	{
-		return $this->hasToast;
-	}
+    /**
+     * Get hasToast
+     *
+     * @return boolean
+     */
+    public function getHasToast()
+    {
+        return $this->hasToast;
+    }
 
     /**
      * Get the image url
@@ -229,12 +228,12 @@ class EmailClient
      */
     public function getUrl($toast = false)
     {
-    	// check if there is a toast to show
-    	if ($toast && !$this->getHasToast()) {
-    		return null;
-    	}
+        // check if there is a toast to show
+        if ($toast && !$this->getHasToast()) {
+            return null;
+        }
 
-    	// construct url parameters
+        // construct url parameters
         $datas = array(
             'c' => $this->getSlug(),
             's' => $this->subjectPreview->getSubject(),

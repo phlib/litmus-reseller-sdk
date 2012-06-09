@@ -38,7 +38,7 @@ class SpamResult
      */
     public function getSpamScore()
     {
-      	return $this->SpamScore;
+          return $this->SpamScore;
     }
 
     /**
@@ -48,7 +48,7 @@ class SpamResult
      */
     public function getIsSpam()
     {
-      	return $this->IsSpam;
+          return $this->IsSpam;
     }
 
     /**
@@ -58,7 +58,7 @@ class SpamResult
      */
     public function getSpamHeaders()
     {
-      	return $this->SpamHeaders;
+          return $this->SpamHeaders;
     }
 
     /**
@@ -68,7 +68,7 @@ class SpamResult
      */
     public function setSpamScore($v)
     {
-      $this->SpamScore = (double)$v;
+      $this->SpamScore = (double) $v;
     }
 
     /**
@@ -78,7 +78,7 @@ class SpamResult
      */
     public function setIsSpam($v)
     {
-      $this->IsSpam = (boolean)$v;
+      $this->IsSpam = (boolean) $v;
     }
 
     /**
