@@ -1,5 +1,5 @@
 {
-    "name": "yzalis/Litmus",
+    "name": "yzalis/litmus",
     "type": "library",
     "description": "Litmus API Wrapper allows you to run email, spam test and email subject preview.",
     "keywords": ["email testing", "email preview", "email subject preview", "spam testing"],
