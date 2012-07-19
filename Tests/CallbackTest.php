@@ -30,8 +30,8 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 
     public function testSingleton()
     {
-    	$this->assertInstanceOf('Yzalis\Components\Litmus\Email\EmailCallback', $this->emailCallback);
-    	$this->assertInstanceOf('Yzalis\Components\Litmus\Spam\SpamCallback', $this->spamCallback);
+        $this->assertInstanceOf('Yzalis\Components\Litmus\Email\EmailCallback', $this->emailCallback);
+        $this->assertInstanceOf('Yzalis\Components\Litmus\Spam\SpamCallback', $this->spamCallback);
     }
 
     public function testGetters()

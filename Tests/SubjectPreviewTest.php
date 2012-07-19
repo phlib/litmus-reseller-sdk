@@ -24,7 +24,7 @@ class SubjectPreviewTest extends \PHPUnit_Framework_TestCase
         $this->subjectPreview = null;
     }
 
-	public function testSubjectPreview()
+    public function testSubjectPreview()
     {
         $this->assertEquals(100, strlen($this->subjectPreview->getSubject()));
         $this->assertEquals(100, strlen($this->subjectPreview->getBody()));

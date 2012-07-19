@@ -26,7 +26,7 @@ class LitmusTest extends \PHPUnit_Framework_TestCase
         $this->apiPass = null;
     }
 
-	/**
+    /**
      * @expectedException InvalidArgumentException
      */
     public function testApiKeyException()
@@ -34,7 +34,7 @@ class LitmusTest extends \PHPUnit_Framework_TestCase
         $litmusAPI = new LitmusResellerAPI();
     }
 
-	/**
+    /**
      * @expectedException InvalidArgumentException
      */
     public function testApiPassException()
@@ -44,17 +44,17 @@ class LitmusTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateEmailTest()
     {
-		$EmailTest = new EmailTest();
+        $EmailTest = new EmailTest();
 
-		$this->assertFalse($EmailTest->getSandbox());
-		$EmailTest->setSandbox(true);
-		$this->assertTrue($EmailTest->getSandbox());
+        $this->assertFalse($EmailTest->getSandbox());
+        $EmailTest->setSandbox(true);
+        $this->assertTrue($EmailTest->getSandbox());
 
-		$this->assertInternalType('array', $EmailTest->getResults());
-		$this->assertCount(0, $EmailTest->getResults());
+        $this->assertInternalType('array', $EmailTest->getResults());
+        $this->assertCount(0, $EmailTest->getResults());
 
-		$EmailTest->initializeFreeTest();
-		$this->assertCount(2, $EmailTest->getResults());
+        $EmailTest->initializeFreeTest();
+        $this->assertCount(2, $EmailTest->getResults());
 
         $litmusAPI = new LitmusResellerAPI('keykey', 'pwdpwd');
     }
