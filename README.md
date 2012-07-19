@@ -1,6 +1,8 @@
 LitmusResellerAPI
 -----------------
 
+[![Build Status](https://secure.travis-ci.org/yzalis/crontab.png?branch=master)](http://travis-ci.org/yzalis/litmus)
+
 **LitmusResellerAPI** is a kit allows you to dialog with the Litmus API service. You can
 retreive all available clients, create test and get the results.
 
@@ -23,15 +25,11 @@ Before testing you need to set your Litmus Reseller API Key and Password into `p
 
 To run the test suite, run Composer first to setup the autoloader:
 
-```
-php composer.phar install
-```
+	php composer.phar install
 
 Then run the following command:
 
-```
-phpunit
-```
+	phpunit -v
 
 License
 -------
