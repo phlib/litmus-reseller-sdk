@@ -1,15 +1,11 @@
 <?php
 
-namespace Yzalis\Components\Litmus\Base;
+namespace Litmus\Base;
 
 /**
  * BaseClient class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusResellerAPI
- * @version   1.1
- * @access    public
- * @copyright Copyright (c) 2011, Yzalis
  */
 class BaseClient
 {
@@ -63,6 +59,8 @@ class BaseClient
     public function addSpamHeader(SpamHeader $SpamHeader)
     {
         $this->SpamHeaders[] = $SpamHeader;
+
+        return $this;
     }
 
     /**
@@ -364,6 +362,8 @@ class BaseClient
     public function setApplicationLongName($value)
     {
         $this->ApplicationLongName = $value;
+
+        return $this;
     }
 
     /**
@@ -374,6 +374,8 @@ class BaseClient
     public function setApplicationName($value)
     {
         $this->ApplicationName = $value;
+
+        return $this;
     }
 
     /**
@@ -384,6 +386,8 @@ class BaseClient
     public function setAverageTimeToProcess($value)
     {
         $this->AverageTimeToProcess = $value;
+
+        return $this;
     }
 
     /**
@@ -394,6 +398,8 @@ class BaseClient
     public function setBusinessOrPopular($value)
     {
         $this->BusinessOrPopular = $value;
+
+        return $this;
     }
 
     /**
@@ -404,6 +410,8 @@ class BaseClient
     public function setCompleted($value)
     {
         $this->Completed = $value;
+
+        return $this;
     }
 
     /**
@@ -414,6 +422,8 @@ class BaseClient
     public function setDesktopClient($value)
     {
         $this->DesktopClient = $value;
+
+        return $this;
     }
 
     /**
@@ -424,6 +434,8 @@ class BaseClient
     public function setFoundInSpam($value)
     {
         $this->FoundInSpam = $value;
+
+        return $this;
     }
 
     /**
@@ -434,6 +446,8 @@ class BaseClient
     public function setFullpageImage($value)
     {
         $this->FullpageImage = $value;
+
+        return $this;
     }
 
     /**
@@ -444,6 +458,8 @@ class BaseClient
     public function setFullpageImageContentBlocking($value)
     {
         $this->FullpageImageContentBlocking = $value;
+
+        return $this;
     }
 
     /**
@@ -454,6 +470,8 @@ class BaseClient
     public function setFullpageImageNoContentBlocking($value)
     {
         $this->FullpageImageNoContentBlocking = $value;
+
+        return $this;
     }
 
     /**
@@ -464,6 +482,8 @@ class BaseClient
     public function setFullpageImageThumb($value)
     {
         $this->FullpageImageThumb = $value;
+
+        return $this;
     }
 
     /**
@@ -474,6 +494,8 @@ class BaseClient
     public function setFullpageImageThumbContentBlocking($value)
     {
         $this->FullpageImageThumbContentBlocking = $value;
+
+        return $this;
     }
 
     /**
@@ -484,6 +506,8 @@ class BaseClient
     public function setFullpageImageThumbNoContentBlocking($value)
     {
         $this->FullpageImageThumbNoContentBlocking = $value;
+
+        return $this;
     }
 
     /**
@@ -494,6 +518,8 @@ class BaseClient
     public function setId($value)
     {
         $this->Id = $value;
+
+        return $this;
     }
 
     /**
@@ -504,6 +530,8 @@ class BaseClient
     public function setPlatformLongName($value)
     {
         $this->PlatformLongName = $value;
+
+        return $this;
     }
 
     /**
@@ -514,6 +542,8 @@ class BaseClient
     public function setPlatformName($value)
     {
         $this->PlatformName = $value;
+
+        return $this;
     }
 
     /**
@@ -524,6 +554,8 @@ class BaseClient
     public function setRenderedHtmlUrl($value)
     {
         $this->RenderedHtmlUrl = $value;
+
+        return $this;
     }
 
     /**
@@ -534,6 +566,8 @@ class BaseClient
     public function setResultType($value)
     {
         $this->ResultType = $value;
+
+        return $this;
     }
 
     /**
@@ -546,6 +580,8 @@ class BaseClient
         foreach ($values as $spam_header_params) {
             $this->addSpamHeader(new SpamHeader($spam_header_params));
         }
+
+        return $this;
     }
 
     /**
@@ -556,6 +592,8 @@ class BaseClient
     public function setSpamScore($value)
     {
         $this->SpamScore = (double) $value;
+
+        return $this;
     }
 
     /**
@@ -566,6 +604,8 @@ class BaseClient
     public function setState($value)
     {
         $this->State = $value;
+
+        return $this;
     }
 
     /**
@@ -576,6 +616,8 @@ class BaseClient
     public function setStatus($value)
     {
         $this->Status = $value;
+
+        return $this;
     }
 
     /**
@@ -586,6 +628,8 @@ class BaseClient
     public function setSupportsContentBlocking($value)
     {
         $this->SupportsContentBlocking = $value;
+
+        return $this;
     }
 
     /**
@@ -596,6 +640,8 @@ class BaseClient
     public function setWindowImage($value)
     {
         $this->WindowImage = $value;
+
+        return $this;
     }
 
     /**
@@ -606,6 +652,8 @@ class BaseClient
     public function setWindowImageContentBlocking($value)
     {
         $this->WindowImageContentBlocking = $value;
+
+        return $this;
     }
 
     /**
@@ -616,6 +664,8 @@ class BaseClient
     public function setWindowImageNoContentBlocking($value)
     {
         $this->WindowImageNoContentBlocking = $value;
+
+        return $this;
     }
 
     /**
@@ -626,6 +676,8 @@ class BaseClient
     public function setWindowImagethumb($value)
     {
         $this->WindowImageThumb = $value;
+
+        return $this;
     }
 
     /**
@@ -636,6 +688,8 @@ class BaseClient
     public function setWindowImageThumbContentBlocking($value)
     {
         $this->WindowImageThumbContentBlocking = $value;
+
+        return $this;
     }
 
     /**
@@ -646,5 +700,7 @@ class BaseClient
     public function setWindowImageThumbNoContentBlocking($value)
     {
         $this->WindowImageThumbNoContentBlocking = $value;
+
+        return $this;
     }
 }

@@ -1,37 +1,18 @@
 <?php
 
-namespace Yzalis\Components\Litmus\Tests;
+namespace Litmus\Tests;
 
-use Yzalis\Components\Litmus\LitmusResellerAPI;
-use Yzalis\Components\Litmus\Email\EmailTest;
+use Litmus\Litmus;
+use Litmus\Email\EmailTest;
 
 class LitmusTest extends \PHPUnit_Framework_TestCase
 {
-    protected $apiKey;
-    protected $apiPass;
-
-    protected function setUp()
-    {
-        if (isset($_SERVER['apiKey'])) {
-            $this->apiKey = $_SERVER['apiKey'];
-        }
-        if (isset($_SERVER['apiPass'])) {
-            $this->apiPass = $_SERVER['apiPass'];
-        }
-    }
-
-    protected function tearDown()
-    {
-        $this->apiKey = null;
-        $this->apiPass = null;
-    }
-
     /**
      * @expectedException InvalidArgumentException
      */
     public function testApiKeyException()
     {
-        $litmusAPI = new LitmusResellerAPI();
+        $litmusAPI = new Litmus();
     }
 
     /**
@@ -39,7 +20,7 @@ class LitmusTest extends \PHPUnit_Framework_TestCase
      */
     public function testApiPassException()
     {
-        $litmusAPI = new LitmusResellerAPI('keykey');
+        $litmusAPI = new Litmus('keykey');
     }
 
     public function testCreateEmailTest()
@@ -55,17 +36,15 @@ class LitmusTest extends \PHPUnit_Framework_TestCase
 
         $EmailTest->initializeFreeTest();
         $this->assertCount(2, $EmailTest->getResults());
-
-        $litmusAPI = new LitmusResellerAPI('keykey', 'pwdpwd');
     }
 
-    public function testgetSpamSeedAddresses()
+    public function testGetSpamSeedAddresses()
     {
-        if (!$this->apiKey || !$this->apiPass) {
+        if (!$_SERVER['apiKey'] || !$_SERVER['apiPass']) {
             $this->markTestSkipped('You must provide your own Litmus API credentials to test connection.');
         }
 
-        $litmusAPI = new LitmusResellerAPI($this->apiKey, $this->apiPass);
+        $litmusAPI = new Litmus($_SERVER['apiKey'], $_SERVER['apiPass']);
         $spamSeedAddresses = $litmusAPI->getSpamSeedAddresses();
         $this->assertInternalType('array', $spamSeedAddresses);
         $this->assertNotCount(0, $spamSeedAddresses);
@@ -73,11 +52,11 @@ class LitmusTest extends \PHPUnit_Framework_TestCase
 
     public function testGetEmailClients()
     {
-        if (!$this->apiKey || !$this->apiPass) {
+        if (!$_SERVER['apiKey'] || !$_SERVER['apiPass']) {
             $this->markTestSkipped('You must provide your own Litmus API credentials to test connection.');
         }
 
-        $litmusAPI = new LitmusResellerAPI($this->apiKey, $this->apiPass);
+        $litmusAPI = new Litmus($_SERVER['apiKey'], $_SERVER['apiPass']);
         $clients = $litmusAPI->getEmailClients();
         $this->assertInternalType('array', $clients);
     }

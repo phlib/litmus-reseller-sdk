@@ -1,10 +1,10 @@
 <?php
 
-namespace Yzalis\Components\Litmus\Page;
+namespace Litmus\Page;
 
-use Yzalis\Components\Litmus\Base\BaseTest;
-use Yzalis\Components\Litmus\Page\PageTest;
-use Yzalis\Components\Litmus\Page\PageClient;
+use Litmus\Base\BaseTest;
+use Litmus\Page\PageTest;
+use Litmus\Page\PageClient;
 
 /**
  * PageTest class
@@ -21,7 +21,6 @@ class PageTest extends BaseTest
      * The title of the web page that will be test.
      *
      * @var array
-     * @access private
      */
     private $Title;
 
@@ -30,7 +29,6 @@ class PageTest extends BaseTest
      * test. You'll use it later to poll for updates for your test.
      *
      * @var
-     * @access private
      */
     private $ID;
 
@@ -39,7 +37,6 @@ class PageTest extends BaseTest
      * screenshots will be the same.
      *
      * @var boolean
-     * @access private
      */
     private $Sandbox;
 
@@ -48,7 +45,6 @@ class PageTest extends BaseTest
      * page tests.
      *
      * @var string
-     * @access private
      */
     private $TestType;
 
@@ -56,7 +52,6 @@ class PageTest extends BaseTest
      * The URL of the web page that will be test.
      *
      * @var array
-     * @access private
      */
     private $URL;
 
@@ -67,7 +62,6 @@ class PageTest extends BaseTest
      * completed, it'll change to "complete".
      *
      * @var string
-     * @access private
      */
     private $State;
 
@@ -75,7 +69,6 @@ class PageTest extends BaseTest
      * This is an array of PageTestClient. This contains all the tested client.
      *
      * @var string
-     * @access private
      */
     private $Results;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Yzalis\Components\Litmus;
+namespace Litmus;
 
 use Litmus\Base\BaseClient;
 use Litmus\Email\EmailClient;
@@ -9,23 +9,16 @@ use Litmus\Page\PageClient;
 use Litmus\Page\PageTest;
 
 /**
- * LitmusResellerAPI class
- *
- * Core class for the Litmus Reseller API
+ * Litmus class. This is the core class for the Litmus Reseller API
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusAPI
- * @version   1.1
- * @access    public
- * @copyright Copyright (c) 2011, Yzalis
  */
-class LitmusResellerAPI
+class Litmus
 {
     /**
      * API Key for authentication
      *
      * @var string
-     * @access private
      */
     private $apiKey;
 
@@ -33,7 +26,6 @@ class LitmusResellerAPI
      * Identification for HTTP headers
      *
      * @var string
-     * @access private
      */
     private $apiPass;
 
@@ -41,7 +33,6 @@ class LitmusResellerAPI
      * API endpoint
      *
      * @var string
-     * @access private
      */
     private $apiUrl = 'https://soapapi.litmusapp.com/2010-06-21/api.asmx?wsdl';
 
@@ -49,7 +40,6 @@ class LitmusResellerAPI
      * Identification for HTTP headers
      *
      * @var string
-     * @access private
      */
     private $soapClient;
 
@@ -58,7 +48,6 @@ class LitmusResellerAPI
      *
      * @param string $apiKey  Your own API Key.
      * @param string $apiPass Your own API Password.
-     * @access public
      */
     public function __construct($apiKey = null, $apiPass = null)
     {
@@ -66,16 +55,13 @@ class LitmusResellerAPI
             throw new \RuntimeException('PHP SoapClient library is required.');
         }
 
-        $this->setApiCredentials($apiKey, $apiPass);
-
-        $this->setupSoapClient();
+        $this->setApiCredentials($apiKey, $apiPass)->setupSoapClient();
     }
 
     /**
      * Retrieve all the email clients
      *
      * @return array All the available email test clients
-     * @access public
      */
     public function getEmailClients()
     {
@@ -93,7 +79,6 @@ class LitmusResellerAPI
      * Returns all the page test clients
      *
      * @return array Page test clients
-     * @access public
      */
     public function getPageClients()
     {
@@ -111,8 +96,8 @@ class LitmusResellerAPI
      * Create an Email Test
      *
      * @param  string    $EmailTest EmailTest object with values filled in
+     *
      * @return EmailTest The EmailTest object response from the API.
-     * @access public
      */
     public function createEmailTest($EmailTest)
     {
@@ -125,6 +110,7 @@ class LitmusResellerAPI
      * Create a PageTest
      *
      * @param  string   $PageTest PageTest object with values filled in
+     *
      * @return PageTest The PageTest object response from the API
      */
     public function createPageTest($PageTest)
@@ -138,8 +124,8 @@ class LitmusResellerAPI
      * Fetch an email test.
      *
      * @param  string    $id The unique identifier of the email test (as returned by createEmailTest()).
+     *
      * @return EmailTest The EmailTest object with data filled in.
-     * @access public
      */
     public function getEmailTest($id)
     {
@@ -152,8 +138,8 @@ class LitmusResellerAPI
      * Fetch a page test
      *
      * @param  string   $id The unique identifier of the page test (as returned by createPageTest())
+     *
      * @return PageTest The PageTest object with data filled in
-     * @access public
      */
     public function getPageTest($id)
     {
@@ -166,7 +152,6 @@ class LitmusResellerAPI
      * Retreive the spam addresses to send your email
      *
      * @return array The array with data filled in
-     * @access public
      */
     public function getSpamSeedAddresses()
     {
@@ -179,8 +164,8 @@ class LitmusResellerAPI
      * Gets the result of one email or page client
      *
      * @param  string                   $id ID of the individual result
+     *
      * @return PageTestClient/EmailTest Client with the data
-     * @access public
      */
     public function getResult($id)
     {
@@ -196,11 +181,13 @@ class LitmusResellerAPI
     /**
      * Initialize and store the connection
      *
-     * @access private
+     * @return Litmus\Litmus
      */
     private function setupSoapClient()
     {
         $this->soapClient = new \SoapClient($this->getApiUrl());
+
+        return $this;
     }
 
     /**
@@ -208,7 +195,8 @@ class LitmusResellerAPI
      *
      * @param string $key
      * @param string $pass
-     * @access private
+     *
+     * @return Litmus\Litmus
      */
     private function setApiCredentials($key, $pass)
     {
@@ -222,24 +210,28 @@ class LitmusResellerAPI
 
         $this->apiKey  = $key;
         $this->apiPass = $pass;
+
+        return $this;
     }
 
     /**
      * Configure API endpoint url
      *
      * @param string $v
-     * @access private
+     *
+     * @return Litmus\Litmus
      */
     private function setApiUrl($v)
     {
         $this->apiUrl = $v;
+
+        return $this;
     }
 
     /**
      * This is your own API Key provided by Litmus
      *
      * @return string The API Key
-     * @access private
      */
     private function getApiKey()
     {
@@ -250,7 +242,6 @@ class LitmusResellerAPI
      * This is your own API Pass provided by Litmus
      *
      * @return string The API Pass
-     * @access private
      */
     private function getApiPass()
     {
@@ -261,7 +252,6 @@ class LitmusResellerAPI
      * This is the Litmus endpoint
      *
      * @return string The Url
-     * @access private
      */
     private function getApiUrl()
     {

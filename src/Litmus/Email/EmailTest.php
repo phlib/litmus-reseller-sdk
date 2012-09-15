@@ -1,18 +1,14 @@
 <?php
 
-namespace Yzalis\Components\Litmus\Email;
+namespace Litmus\Email;
 
-use Yzalis\Components\Litmus\Base\BaseTest;
-use Yzalis\Components\Litmus\Email\EmailClient;
+use Litmus\Base\BaseTest;
+use Litmus\Email\EmailClient;
 
 /**
  * EmailTest class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusResellerAPI
- * @version   1.1
- * @access    public
- * @copyright Copyright (c) 2011, Yzalis
  */
 class EmailTest extends BaseTest
 {
@@ -20,7 +16,6 @@ class EmailTest extends BaseTest
      * Reserved. Please ignore.
      *
      * @var string
-     * @access private
      */
     private $Html;
 
@@ -29,7 +24,6 @@ class EmailTest extends BaseTest
      * test. You'll use it later to poll for updates for your test.
      *
      * @var
-     * @access private
      */
     private $ID;
 
@@ -39,7 +33,6 @@ class EmailTest extends BaseTest
      * "@emailtests.com" to the InboxGUID value.
      *
      * @var string
-     * @access private
      */
     private $InboxGUID;
 
@@ -47,7 +40,6 @@ class EmailTest extends BaseTest
      * This is an array of EmailTestClient. This contains all the tested client.
      *
      * @var array
-     * @access private
      */
     private $Results = array();
 
@@ -56,7 +48,6 @@ class EmailTest extends BaseTest
      * screenshots will be the same.
      *
      * @var boolean
-     * @access private
      */
     private $Sandbox = false;
 
@@ -65,7 +56,6 @@ class EmailTest extends BaseTest
      * code. At this stage, it's empty.
      *
      * @var string
-     * @access private
      */
     private $Source;
 
@@ -76,7 +66,6 @@ class EmailTest extends BaseTest
      * completed, it'll change to "complete".
      *
      * @var string
-     * @access private
      */
     private $State;
 
@@ -84,7 +73,6 @@ class EmailTest extends BaseTest
      * Once you've sent an email, this will contain your email's subject.
      *
      * @var string
-     * @access private
      */
     private $Subject;
 
@@ -93,7 +81,6 @@ class EmailTest extends BaseTest
      * page tests.
      *
      * @var string
-     * @access private
      */
     private $TestType;
 
@@ -101,7 +88,6 @@ class EmailTest extends BaseTest
      *
      *
      * @var string
-     * @access private
      */
     private $UserGuid;
 
@@ -109,7 +95,6 @@ class EmailTest extends BaseTest
      * This is the url you can use to download all the screenshots of this test.
      *
      * @var string
-     * @access private
      */
     private $ZipFile;
 
@@ -231,6 +216,8 @@ class EmailTest extends BaseTest
     public function setHtml($value)
     {
         $this->Html = $value;
+
+        return $this;
     }
 
     /**
@@ -241,6 +228,8 @@ class EmailTest extends BaseTest
     public function setID($value)
     {
         $this->ID = $value;
+
+        return $this;
     }
 
     /**
@@ -251,6 +240,8 @@ class EmailTest extends BaseTest
     public function setInboxGUID($value)
     {
         $this->InboxGUID = $value;
+
+        return $this;
     }
 
     /**
@@ -263,6 +254,8 @@ class EmailTest extends BaseTest
         foreach ($values as $client_params) {
             $this->addResult(new EmailClient($client_params));
         }
+
+        return $this;
     }
 
     /**
@@ -273,6 +266,8 @@ class EmailTest extends BaseTest
     public function setSandbox($value)
     {
         $this->Sandbox = $value;
+
+        return $this;
     }
 
     /**
@@ -283,6 +278,8 @@ class EmailTest extends BaseTest
     public function setSource($value)
     {
         $this->Source = $value;
+
+        return $this;
     }
 
     /**
@@ -293,6 +290,8 @@ class EmailTest extends BaseTest
     public function setState($value)
     {
         $this->State = $value;
+
+        return $this;
     }
 
     /**
@@ -303,6 +302,8 @@ class EmailTest extends BaseTest
     public function setSubject($value)
     {
         $this->Subject = $value;
+
+        return $this;
     }
 
     /**
@@ -313,6 +314,8 @@ class EmailTest extends BaseTest
     public function setTestType($value)
     {
         $this->TestType = $value;
+
+        return $this;
     }
 
     /**
@@ -323,6 +326,8 @@ class EmailTest extends BaseTest
     public function setUserGuid($value)
     {
         $this->UserGuid = $value;
+
+        return $this;
     }
 
     /**
@@ -333,6 +338,8 @@ class EmailTest extends BaseTest
     public function setZipFile($value)
     {
         $this->ZipFile = $value;
+
+        return $this;
     }
 
     /**
@@ -341,6 +348,8 @@ class EmailTest extends BaseTest
     public function addResult(EmailClient $EmailClient)
     {
         $this->Results[] = $EmailClient;
+
+        return $this;
     }
 
     /**
@@ -353,5 +362,7 @@ class EmailTest extends BaseTest
               $LitmusClient->setApplicationName($client_name);
               $this->addResult($LitmusClient);
           }
+
+        return $this;
     }
 }

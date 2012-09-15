@@ -1,9 +1,5 @@
-# project files and directory
 vendor/
 composer.lock
-
-# OSX files
-.DS_Store
-._*
-.Spotlight-V100
-.Trashes
+composer.phar
+phpunit.xml
+php-cs-fixer.phar

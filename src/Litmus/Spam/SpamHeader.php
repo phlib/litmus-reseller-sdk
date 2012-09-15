@@ -1,15 +1,11 @@
 <?php
 
-namespace Yzalis\Components\Litmus\Spam;
+namespace Litmus\Spam;
 
 /**
  * SpamHeader class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusResellerAPI
- * @version   1.1
- * @access    public
- * @copyright Copyright (c) 2011, Yzalis
  */
 class SpamHeader
 {
@@ -67,6 +63,8 @@ class SpamHeader
     public function setKey($v)
     {
       $this->Key = (string) $v;
+
+        return $this;
     }
 
     /**
@@ -77,6 +75,8 @@ class SpamHeader
     public function setDescription($v)
     {
       $this->Description = (string) $v;
+
+        return $this;
     }
 
     /**
@@ -87,5 +87,7 @@ class SpamHeader
     public function setRating($v)
     {
       $this->Rating = (string) $v;
+
+        return $this;
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Yzalis\Components\Litmus\Tests;
+namespace Litmus\Tests;
 
-use Yzalis\Components\Litmus\Base\BaseCallback;
+use Litmus\Base\BaseCallback;
 
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
@@ -30,8 +30,8 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 
     public function testSingleton()
     {
-        $this->assertInstanceOf('Yzalis\Components\Litmus\Email\EmailCallback', $this->emailCallback);
-        $this->assertInstanceOf('Yzalis\Components\Litmus\Spam\SpamCallback', $this->spamCallback);
+        $this->assertInstanceOf('Litmus\Email\EmailCallback', $this->emailCallback);
+        $this->assertInstanceOf('Litmus\Spam\SpamCallback', $this->spamCallback);
     }
 
     public function testGetters()
@@ -57,7 +57,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     public function testSpamResult()
     {
         // spam callback
-        $this->assertInstanceOf('Yzalis\Components\Litmus\Spam\SpamResult', $this->spamCallback->getSpamResult());
+        $this->assertInstanceOf('Litmus\Spam\SpamResult', $this->spamCallback->getSpamResult());
         $this->assertInternalType('array', $this->spamCallback->getSpamResult()->getSpamHeaders());
         $this->assertInternalType('boolean', $this->spamCallback->getSpamResult()->getIsSpam());
         $this->assertInternalType('float', $this->spamCallback->getSpamResult()->getSpamScore());
@@ -70,7 +70,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     public function testSpamHeaders()
     {
         foreach ($this->spamCallback->getSpamResult()->getSpamHeaders() as $spamHeader) {
-            $this->assertInstanceOf('Yzalis\Components\Litmus\Spam\SpamHeader', $spamHeader);
+            $this->assertInstanceOf('Litmus\Spam\SpamHeader', $spamHeader);
             $this->assertInternalType('string', $spamHeader->getKey());
             $this->assertInternalType('string', $spamHeader->getDescription());
             $this->assertInternalType('string', $spamHeader->getRating());

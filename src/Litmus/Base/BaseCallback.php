@@ -1,19 +1,15 @@
 <?php
 
-namespace Yzalis\Components\Litmus\Base;
+namespace Litmus\Base;
 
-use Yzalis\Components\Litmus\Spam\SpamResult;
-use Yzalis\Components\Litmus\Spam\SpamCallback;
-use Yzalis\Components\Litmus\Email\EmailCallback;
+use Litmus\Spam\SpamResult;
+use Litmus\Spam\SpamCallback;
+use Litmus\Email\EmailCallback;
 
 /**
  * BaseCallback class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusResellerAPI
- * @version   1.1
- * @access    public
- * @copyright Copyright (c) 2011, Yzalis
  */
 class BaseCallback
 {
@@ -32,7 +28,6 @@ class BaseCallback
      * Hydrate a CallBack object with a callback xml
      *
      * @param $object SpamCallback or EmailCallback
-     * @access public
      */
     public static function hydrateXmlCallback($xmlCallback)
     {
@@ -71,7 +66,6 @@ class BaseCallback
      * This code references the platform for the specific test result.  It will match the ApplicationName property of the results collection.
      *
      * @return string
-     * @access public
      */
     public function getApiId()
     {
@@ -156,6 +150,8 @@ class BaseCallback
     public function setApiId($v)
     {
         $this->ApiId = (string) $v;
+
+        return $this;
     }
 
     /**
@@ -166,6 +162,8 @@ class BaseCallback
     public function setCallbackUrl($v)
     {
         $this->CallbackUrl = (string) $v;
+
+        return $this;
     }
 
     /**
@@ -176,6 +174,8 @@ class BaseCallback
     public function setId($v)
     {
         $this->Id = (string) $v;
+
+        return $this;
     }
 
     /**
@@ -186,6 +186,8 @@ class BaseCallback
     public function setResultImageSet($v)
     {
         $this->ResultImageSet = (array) $v;
+
+        return $this;
     }
 
     /**
@@ -196,6 +198,8 @@ class BaseCallback
     public function setSpamResult($v)
     {
         $this->SpamResult = new SpamResult($v);
+
+        return $this;
     }
 
     /**
@@ -206,6 +210,8 @@ class BaseCallback
     public function setState($v)
     {
         $this->State = (string) $v;
+
+        return $this;
     }
 
     /**
@@ -216,6 +222,8 @@ class BaseCallback
     public function setSupportsContentBlocking($v)
     {
         $this->SupportsContentBlocking = (boolean) $v;
+
+        return $this;
     }
 
     /**
@@ -226,5 +234,7 @@ class BaseCallback
     public function setType($v)
     {
         $this->Type = (string) $v;
+
+        return $this;
     }
 }

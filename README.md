@@ -17,7 +17,6 @@ Requirements
 The SoapClient php extension is required.
 See [http://us.php.net/manual/en/book.soap.php] for more informations.
 
-
 Unit Tests
 ---------
 

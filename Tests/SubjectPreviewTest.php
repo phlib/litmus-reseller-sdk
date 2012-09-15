@@ -1,9 +1,9 @@
 <?php
 
-namespace Yzalis\Components\Litmus\Tests;
+namespace Litmus\Tests;
 
-use Yzalis\Components\Litmus\SubjectPreview\SubjectPreview;
-use Yzalis\Components\Litmus\SubjectPreview\EmailClient;
+use Litmus\SubjectPreview\SubjectPreview;
+use Litmus\SubjectPreview\EmailClient;
 
 class SubjectPreviewTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,7 +36,7 @@ class SubjectPreviewTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(6, EmailClient::getAvailableEmailClients());
 
         foreach (EmailClient::getAvailableEmailClients() as $emailClientSlug) {
-            $this->assertInstanceOf('Yzalis\Components\Litmus\SubjectPreview\EmailClient', $this->subjectPreview->getEmailClient($emailClientSlug));
+            $this->assertInstanceOf('Litmus\SubjectPreview\EmailClient', $this->subjectPreview->getEmailClient($emailClientSlug));
         }
 
         $emailClients = EmailClient::getAvailableEmailClients();

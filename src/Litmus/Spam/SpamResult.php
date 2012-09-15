@@ -1,15 +1,11 @@
 <?php
 
-namespace Yzalis\Components\Litmus\Spam;
+namespace Litmus\Spam;
 
 /**
  * SpamResult class
  *
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusResellerAPI
- * @version   1.1
- * @access    public
- * @copyright Copyright (c) 2011, Yzalis
  */
 class SpamResult
 {
@@ -38,7 +34,7 @@ class SpamResult
      */
     public function getSpamScore()
     {
-          return $this->SpamScore;
+        return $this->SpamScore;
     }
 
     /**
@@ -48,7 +44,7 @@ class SpamResult
      */
     public function getIsSpam()
     {
-          return $this->IsSpam;
+        return $this->IsSpam;
     }
 
     /**
@@ -58,7 +54,7 @@ class SpamResult
      */
     public function getSpamHeaders()
     {
-          return $this->SpamHeaders;
+        return $this->SpamHeaders;
     }
 
     /**
@@ -68,7 +64,9 @@ class SpamResult
      */
     public function setSpamScore($v)
     {
-      $this->SpamScore = (double) $v;
+        $this->SpamScore = (double) $v;
+
+        return $this;
     }
 
     /**
@@ -78,7 +76,9 @@ class SpamResult
      */
     public function setIsSpam($v)
     {
-      $this->IsSpam = (boolean) $v;
+        $this->IsSpam = (boolean) $v;
+
+        return $this;
     }
 
     /**
@@ -91,6 +91,8 @@ class SpamResult
         foreach ($values as $spam_header_params) {
             $this->addSpamHeader(new SpamHeader($spam_header_params));
         }
+
+        return $this;
     }
 
     /**
@@ -99,5 +101,7 @@ class SpamResult
     public function addSpamHeader(SpamHeader $SpamHeader)
     {
         $this->SpamHeaders[] = $SpamHeader;
+
+        return $this;
     }
 }

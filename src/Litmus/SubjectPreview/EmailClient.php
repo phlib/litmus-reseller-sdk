@@ -1,9 +1,14 @@
 <?php
 
-namespace Yzalis\Components\Litmus\SubjectPreview;
+namespace Litmus\SubjectPreview;
 
-use Yzalis\Components\Litmus\SubjectPreview\SubjectPreview;
+use Litmus\SubjectPreview\SubjectPreview;
 
+/**
+ * EmailClient class
+ *
+ * @author    Benjamin Laugueux <benjamin@yzalis.com>
+ */
 class EmailClient
 {
     /**

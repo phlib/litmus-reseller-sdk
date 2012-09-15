@@ -1,11 +1,13 @@
 <?php
 
-namespace Yzalis\Components\Litmus\SubjectPreview;
+namespace Litmus\SubjectPreview;
 
-use Yzalis\Components\Litmus\SubjectPreview\EmailClient;
+use Litmus\SubjectPreview\EmailClient;
 
 /**
  * GenerateSubjectPreview : generate email's subject pictures
+ *
+ * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
 class SubjectPreview
 {
