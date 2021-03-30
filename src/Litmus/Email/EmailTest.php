@@ -42,7 +42,7 @@ class EmailTest extends BaseTest
      *
      * @var array
      */
-    private $Results = array();
+    private $Results = [];
 
     /**
      * This property is used to test the API. If "true", all the result
@@ -358,7 +358,7 @@ class EmailTest extends BaseTest
      */
     public function initializeFreeTest()
     {
-          foreach (array('gmailnew', 'ol2003') as $client_name) {
+          foreach (['gmailnew', 'ol2003'] as $client_name) {
               $LitmusClient = new EmailClient();
               $LitmusClient->setApplicationName($client_name);
               $this->addResult($LitmusClient);

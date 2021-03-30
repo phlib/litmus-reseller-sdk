@@ -15,7 +15,7 @@ class BaseTest
      *
      * @param $values array
      */
-    public function __construct($values = array())
+    public function __construct($values = [])
     {
         if (!empty($values)) {
             foreach ($values as $key => $value) {

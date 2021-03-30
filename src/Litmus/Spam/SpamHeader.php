@@ -17,9 +17,9 @@ class SpamHeader
     /**
      * @param array $params
      */
-    public function __construct($params = array())
+    public function __construct($params = [])
     {
-        if ($params != array()) {
+        if ($params != []) {
             foreach ($params as $k => $v) {
                 $this->{'set' . $k}($v);
             }

@@ -156,7 +156,7 @@ class PageTest extends BaseTest
      *
      * @param array $values
      */
-    public function setResults($values = array())
+    public function setResults($values = [])
     {
         foreach ($values as $client_params) {
             $this->addResult(new PageClient($client_params));
@@ -228,7 +228,7 @@ class PageTest extends BaseTest
      */
     public function initializeFreeTest()
     {
-        foreach (array('ie7') as $application_name) {
+        foreach (['ie7'] as $application_name) {
             $PageClient = new PageClient();
             $PageClient->setApplicationName($application_name);
             $this->addResult($PageClient);

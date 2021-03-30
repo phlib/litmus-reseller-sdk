@@ -66,8 +66,8 @@ class Litmus
      */
     public function getEmailClients()
     {
-        $result = $this->soapClient->__soapCall("GetEmailTestClients", array($this->getApiKey(), $this->getApiPass()));
-        $clients = array();
+        $result = $this->soapClient->__soapCall("GetEmailTestClients", [$this->getApiKey(), $this->getApiPass()]);
+        $clients = [];
 
         foreach ($result as $params) {
             $clients[] = new EmailClient($params);
@@ -83,8 +83,8 @@ class Litmus
      */
     public function getPageClients()
     {
-        $result = $this->soapClient->__soapCall('GetPageTestClients', array($this->getApiKey(), $this->getApiPass()));
-        $clients = array();
+        $result = $this->soapClient->__soapCall('GetPageTestClients', [$this->getApiKey(), $this->getApiPass()]);
+        $clients = [];
 
         foreach ($result as $params) {
             $clients[] = new PageClient($params);
@@ -102,7 +102,7 @@ class Litmus
      */
     public function createEmailTest($EmailTest)
     {
-        $result = $this->soapClient->__soapCall('CreateEmailTest', array($this->getApiKey(), $this->getApiPass(), $EmailTest));
+        $result = $this->soapClient->__soapCall('CreateEmailTest', [$this->getApiKey(), $this->getApiPass(), $EmailTest]);
 
         return new EmailTest($result);
     }
@@ -116,7 +116,7 @@ class Litmus
      */
     public function createPageTest($PageTest)
     {
-        $result = $this->soapClient->__soapCall('CreatePageTest', array($this->getApiKey(), $this->getApiPass(), $PageTest));
+        $result = $this->soapClient->__soapCall('CreatePageTest', [$this->getApiKey(), $this->getApiPass(), $PageTest]);
 
         return new PageTest($result);
     }
@@ -130,7 +130,7 @@ class Litmus
      */
     public function getEmailTest($id)
     {
-        $result = $this->soapClient->__soapCall('GetEmailTest', array($this->getApiKey(), $this->getApiPass(), $id));
+        $result = $this->soapClient->__soapCall('GetEmailTest', [$this->getApiKey(), $this->getApiPass(), $id]);
 
         return new EmailTest($result);
     }
@@ -144,7 +144,7 @@ class Litmus
      */
     public function getPageTest($id)
     {
-        $result = $this->soapClient->__soapCall('GetPageTest', array($this->getApiKey(), $this->getApiPass()));
+        $result = $this->soapClient->__soapCall('GetPageTest', [$this->getApiKey(), $this->getApiPass()]);
 
         return new PageTest($result);
     }
@@ -156,7 +156,7 @@ class Litmus
      */
     public function getSpamSeedAddresses()
     {
-        $result = $this->soapClient->__soapCall('GetSpamSeedAddresses', array($this->getApiKey(), $this->getApiPass()));
+        $result = $this->soapClient->__soapCall('GetSpamSeedAddresses', [$this->getApiKey(), $this->getApiPass()]);
 
         return $result;
     }
@@ -170,7 +170,7 @@ class Litmus
      */
     public function getResult($id)
     {
-        $LitmusClient = new BaseClient($this->soapClient->__soapCall('GetResult', array($this->getApiKey(), $this->getApiPass(), $id)));
+        $LitmusClient = new BaseClient($this->soapClient->__soapCall('GetResult', [$this->getApiKey(), $this->getApiPass(), $id]));
 
         if ($LitmusClient->getResultType() == "page") {
             return new PageClient($LitmusClient);
