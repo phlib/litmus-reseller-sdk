@@ -1,8 +1,8 @@
 <?php
 
-namespace Litmus\Spam;
+namespace Phlib\LitmusResellerSDK\Spam;
 
-use Litmus\Base\BaseCallback;
+use Phlib\LitmusResellerSDK\Base\BaseCallback;
 
 /**
  * SpamCallback class

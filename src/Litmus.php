@@ -1,12 +1,12 @@
 <?php
 
-namespace Litmus;
+namespace Phlib\LitmusResellerSDK;
 
-use Litmus\Base\BaseClient;
-use Litmus\Email\EmailClient;
-use Litmus\Email\EmailTest;
-use Litmus\Page\PageClient;
-use Litmus\Page\PageTest;
+use Phlib\LitmusResellerSDK\Base\BaseClient;
+use Phlib\LitmusResellerSDK\Email\EmailClient;
+use Phlib\LitmusResellerSDK\Email\EmailTest;
+use Phlib\LitmusResellerSDK\Page\PageClient;
+use Phlib\LitmusResellerSDK\Page\PageTest;
 
 /**
  * Litmus class. This is the core class for the Litmus Reseller API
@@ -204,7 +204,7 @@ class Litmus
     /**
      * Initialize and store the connection
      *
-     * @return Litmus\Litmus
+     * @return $this
      */
     private function setupSoapClient()
     {
@@ -219,7 +219,7 @@ class Litmus
      * @param string $key
      * @param string $pass
      *
-     * @return Litmus\Litmus
+     * @return $this
      */
     private function setApiCredentials($key, $pass)
     {
@@ -242,7 +242,7 @@ class Litmus
      *
      * @param string $v
      *
-     * @return Litmus\Litmus
+     * @return $this
      */
     private function setApiUrl($v)
     {

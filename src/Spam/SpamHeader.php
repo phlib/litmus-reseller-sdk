@@ -1,6 +1,6 @@
 <?php
 
-namespace Litmus\Spam;
+namespace Phlib\LitmusResellerSDK\Spam;
 
 /**
  * SpamHeader class

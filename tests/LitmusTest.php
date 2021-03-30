@@ -1,9 +1,9 @@
 <?php
 
-namespace Litmus\Tests;
+namespace Phlib\LitmusResellerSDK\Test;
 
-use Litmus\Litmus;
-use Litmus\Email\EmailTest;
+use Phlib\LitmusResellerSDK\Litmus;
+use Phlib\LitmusResellerSDK\Email\EmailTest;
 
 /**
  * @package Phlib\Litmus-Reseller-SDK

@@ -1,10 +1,10 @@
 <?php
 
-namespace Litmus\Base;
+namespace Phlib\LitmusResellerSDK\Base;
 
-use Litmus\Spam\SpamResult;
-use Litmus\Spam\SpamCallback;
-use Litmus\Email\EmailCallback;
+use Phlib\LitmusResellerSDK\Spam\SpamResult;
+use Phlib\LitmusResellerSDK\Spam\SpamCallback;
+use Phlib\LitmusResellerSDK\Email\EmailCallback;
 
 /**
  * BaseCallback class

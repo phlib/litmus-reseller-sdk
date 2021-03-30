@@ -1,8 +1,8 @@
 <?php
 
-namespace Litmus\Email;
+namespace Phlib\LitmusResellerSDK\Email;
 
-use Litmus\Base\BaseClient;
+use Phlib\LitmusResellerSDK\Base\BaseClient;
 
 /**
  * EmailClient class

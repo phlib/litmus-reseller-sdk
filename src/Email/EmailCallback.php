@@ -1,8 +1,8 @@
 <?php
 
-namespace Litmus\Email;
+namespace Phlib\LitmusResellerSDK\Email;
 
-use Litmus\Base\BaseCallback;
+use Phlib\LitmusResellerSDK\Base\BaseCallback;
 
 /**
  * EmailCallback class

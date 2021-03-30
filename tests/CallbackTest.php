@@ -1,8 +1,12 @@
 <?php
 
-namespace Litmus\Tests;
+namespace Phlib\LitmusResellerSDK\Test;
 
-use Litmus\Base\BaseCallback;
+use Phlib\LitmusResellerSDK\Base\BaseCallback;
+use Phlib\LitmusResellerSDK\Email\EmailCallback;
+use Phlib\LitmusResellerSDK\Spam\SpamCallback;
+use Phlib\LitmusResellerSDK\Spam\SpamHeader;
+use Phlib\LitmusResellerSDK\Spam\SpamResult;
 
 /**
  * @package Phlib\Litmus-Reseller-SDK
@@ -33,8 +37,8 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 
     public function testSingleton()
     {
-        $this->assertInstanceOf('Litmus\Email\EmailCallback', $this->emailCallback);
-        $this->assertInstanceOf('Litmus\Spam\SpamCallback', $this->spamCallback);
+        $this->assertInstanceOf(EmailCallback::class, $this->emailCallback);
+        $this->assertInstanceOf(SpamCallback::class, $this->spamCallback);
     }
 
     public function testGetters()
@@ -60,7 +64,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     public function testSpamResult()
     {
         // spam callback
-        $this->assertInstanceOf('Litmus\Spam\SpamResult', $this->spamCallback->getSpamResult());
+        $this->assertInstanceOf(SpamResult::class, $this->spamCallback->getSpamResult());
         $this->assertInternalType('array', $this->spamCallback->getSpamResult()->getSpamHeaders());
         $this->assertInternalType('boolean', $this->spamCallback->getSpamResult()->getIsSpam());
         $this->assertInternalType('float', $this->spamCallback->getSpamResult()->getSpamScore());
@@ -73,7 +77,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     public function testSpamHeaders()
     {
         foreach ($this->spamCallback->getSpamResult()->getSpamHeaders() as $spamHeader) {
-            $this->assertInstanceOf('Litmus\Spam\SpamHeader', $spamHeader);
+            $this->assertInstanceOf(SpamHeader::class, $spamHeader);
             $this->assertInternalType('string', $spamHeader->getKey());
             $this->assertInternalType('string', $spamHeader->getDescription());
             $this->assertInternalType('string', $spamHeader->getRating());

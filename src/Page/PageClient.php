@@ -1,8 +1,8 @@
 <?php
 
-namespace Litmus\Page;
+namespace Phlib\LitmusResellerSDK\Page;
 
-use Litmus\Base\BaseClient;
+use Phlib\LitmusResellerSDK\Base\BaseClient;
 
 /**
  * PageClient class

@@ -1,6 +1,6 @@
 <?php
 
-namespace Litmus\Base;
+namespace Phlib\LitmusResellerSDK\Base;
 
 /**
  * BaseTest class

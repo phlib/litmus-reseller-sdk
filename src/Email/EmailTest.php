@@ -1,9 +1,8 @@
 <?php
 
-namespace Litmus\Email;
+namespace Phlib\LitmusResellerSDK\Email;
 
-use Litmus\Base\BaseTest;
-use Litmus\Email\EmailClient;
+use Phlib\LitmusResellerSDK\Base\BaseTest;
 
 /**
  * EmailTest class

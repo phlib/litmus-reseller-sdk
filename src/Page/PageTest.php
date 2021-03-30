@@ -1,10 +1,8 @@
 <?php
 
-namespace Litmus\Page;
+namespace Phlib\LitmusResellerSDK\Page;
 
-use Litmus\Base\BaseTest;
-use Litmus\Page\PageTest;
-use Litmus\Page\PageClient;
+use Phlib\LitmusResellerSDK\Base\BaseTest;
 
 /**
  * PageTest class

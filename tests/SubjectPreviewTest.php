@@ -1,9 +1,9 @@
 <?php
 
-namespace Litmus\Tests;
+namespace Phlib\LitmusResellerSDK\Test;
 
-use Litmus\SubjectPreview\SubjectPreview;
-use Litmus\SubjectPreview\EmailClient;
+use Phlib\LitmusResellerSDK\SubjectPreview\SubjectPreview;
+use Phlib\LitmusResellerSDK\SubjectPreview\EmailClient;
 
 /**
  * @package Phlib\Litmus-Reseller-SDK
@@ -46,7 +46,7 @@ class SubjectPreviewTest extends \PHPUnit_Framework_TestCase
 
         foreach (EmailClient::getAvailableEmailClients() as $emailClientSlug) {
             $this->assertInstanceOf(
-                'Litmus\SubjectPreview\EmailClient',
+                EmailClient::class,
                 $this->subjectPreview->getEmailClient($emailClientSlug)
             );
         }
