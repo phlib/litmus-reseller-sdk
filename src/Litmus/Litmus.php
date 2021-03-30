@@ -102,7 +102,11 @@ class Litmus
      */
     public function createEmailTest($EmailTest)
     {
-        $result = $this->soapClient->__soapCall('CreateEmailTest', [$this->getApiKey(), $this->getApiPass(), $EmailTest]);
+        $result = $this->soapClient->__soapCall('CreateEmailTest', [
+            $this->getApiKey(),
+            $this->getApiPass(),
+            $EmailTest
+        ]);
 
         return new EmailTest($result);
     }
@@ -116,7 +120,11 @@ class Litmus
      */
     public function createPageTest($PageTest)
     {
-        $result = $this->soapClient->__soapCall('CreatePageTest', [$this->getApiKey(), $this->getApiPass(), $PageTest]);
+        $result = $this->soapClient->__soapCall('CreatePageTest', [
+            $this->getApiKey(),
+            $this->getApiPass(),
+            $PageTest
+        ]);
 
         return new PageTest($result);
     }
@@ -130,7 +138,11 @@ class Litmus
      */
     public function getEmailTest($id)
     {
-        $result = $this->soapClient->__soapCall('GetEmailTest', [$this->getApiKey(), $this->getApiPass(), $id]);
+        $result = $this->soapClient->__soapCall('GetEmailTest', [
+            $this->getApiKey(),
+            $this->getApiPass(),
+            $id
+        ]);
 
         return new EmailTest($result);
     }
@@ -144,7 +156,10 @@ class Litmus
      */
     public function getPageTest($id)
     {
-        $result = $this->soapClient->__soapCall('GetPageTest', [$this->getApiKey(), $this->getApiPass()]);
+        $result = $this->soapClient->__soapCall('GetPageTest', [
+            $this->getApiKey(),
+            $this->getApiPass()
+        ]);
 
         return new PageTest($result);
     }
@@ -156,7 +171,10 @@ class Litmus
      */
     public function getSpamSeedAddresses()
     {
-        $result = $this->soapClient->__soapCall('GetSpamSeedAddresses', [$this->getApiKey(), $this->getApiPass()]);
+        $result = $this->soapClient->__soapCall('GetSpamSeedAddresses', [
+            $this->getApiKey(),
+            $this->getApiPass()
+        ]);
 
         return $result;
     }
@@ -170,7 +188,11 @@ class Litmus
      */
     public function getResult($id)
     {
-        $LitmusClient = new BaseClient($this->soapClient->__soapCall('GetResult', [$this->getApiKey(), $this->getApiPass(), $id]));
+        $LitmusClient = new BaseClient($this->soapClient->__soapCall('GetResult', [
+            $this->getApiKey(),
+            $this->getApiPass(),
+            $id
+        ]));
 
         if ($LitmusClient->getResultType() == "page") {
             return new PageClient($LitmusClient);
@@ -202,11 +224,11 @@ class Litmus
     private function setApiCredentials($key, $pass)
     {
         if (is_null($key) || strlen($key) == 0 || !is_string($key)) {
-          throw new \InvalidArgumentException('You must specify an API Key (string) .');
+            throw new \InvalidArgumentException('You must specify an API Key (string) .');
         }
 
         if (is_null($pass) || strlen($pass) == 0 || !is_string($pass)) {
-          throw new \InvalidArgumentException('You must specify an API Password (string) .');
+            throw new \InvalidArgumentException('You must specify an API Password (string) .');
         }
 
         $this->apiKey  = $key;

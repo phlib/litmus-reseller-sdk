@@ -63,7 +63,7 @@ class SpamHeader
      */
     public function setKey($v)
     {
-      $this->Key = (string) $v;
+        $this->Key = (string)$v;
 
         return $this;
     }
@@ -75,7 +75,7 @@ class SpamHeader
      */
     public function setDescription($v)
     {
-      $this->Description = (string) $v;
+        $this->Description = (string)$v;
 
         return $this;
     }
@@ -87,7 +87,7 @@ class SpamHeader
      */
     public function setRating($v)
     {
-      $this->Rating = (string) $v;
+        $this->Rating = (string)$v;
 
         return $this;
     }

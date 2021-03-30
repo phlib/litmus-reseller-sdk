@@ -40,14 +40,14 @@ class BaseCallback
         $xmlCallback = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $xmlCallback);
         $xml = simplexml_load_string($xmlCallback);
 
-        $callbackType = (string) $xml->attributes()->type;
+        $callbackType = (string)$xml->attributes()->type;
         switch ($callbackType) {
             case 'mail':
                 $object = new EmailCallback();
-            break;
+                break;
             case 'spam':
                 $object = new SpamCallback();
-            break;
+                break;
             default:
                 throw new \InvalidArgumentException(sprintf('Unknow callback type "%s"', $callbackType));
             break;
@@ -64,7 +64,8 @@ class BaseCallback
     }
 
     /**
-     * This code references the platform for the specific test result.  It will match the ApplicationName property of the results collection.
+     * This code references the platform for the specific test result.
+     * It will match the ApplicationName property of the results collection.
      *
      * @return string
      */
@@ -114,7 +115,8 @@ class BaseCallback
     }
 
     /**
-     * Indicates the current status of your test.  By the time you receive a callback the most likely value is Completed.
+     * Indicates the current status of your test.
+     * By the time you receive a callback the most likely value is Completed.
      *
      * @return string
      */
@@ -124,7 +126,10 @@ class BaseCallback
     }
 
     /**
-     * This value indicates true if the requested client supports content blocking and false if it does not.  Content blocking clients, sometimes referred to as image blocking, will return different result images for ImagesOn and ImagesOff. This value will always be false for a spam test.
+     * This value indicates true if the requested client supports content blocking and false if it does not.
+     * Content blocking clients, sometimes referred to as image blocking,
+     * will return different result images for ImagesOn and ImagesOff.
+     * This value will always be false for a spam test.
      *
      * @return boolean
      */
@@ -144,13 +149,14 @@ class BaseCallback
     }
 
     /**
-     * This code references the platform for the specific test result.  It will match the ApplicationName property of the results collection.
+     * This code references the platform for the specific test result.
+     * It will match the ApplicationName property of the results collection.
      *
      * @param string $v The client application code.
      */
     public function setApiId($v)
     {
-        $this->ApiId = (string) $v;
+        $this->ApiId = (string)$v;
 
         return $this;
     }
@@ -162,7 +168,7 @@ class BaseCallback
      */
     public function setCallbackUrl($v)
     {
-        $this->CallbackUrl = (string) $v;
+        $this->CallbackUrl = (string)$v;
 
         return $this;
     }
@@ -174,19 +180,26 @@ class BaseCallback
      */
     public function setId($v)
     {
-        $this->Id = (string) $v;
+        $this->Id = (string)$v;
 
         return $this;
     }
 
     /**
-     * The ResultImageSet, as the name would suggest is the collection of images that makes up your completed test. It consists of two main blocks ImagesOnUrls and ImagesOffUrls. Each main block contains two sub blocks for WindowUrls and FullPageUrls. Further, each capture block contains an ImageUrl and ThumbUrl. For clients that do not support content blocking the outerblocks (ImagesOnUrls and ImagesOffUrls) will be identical.  For clients who do support content blocking (SupportsContentBlocking == true) the ImagesOffUrl will show the blocked versions and ImagesOnUrl will show the non-blocked versions.
+     * The ResultImageSet, as the name would suggest is the collection of images that makes up your completed test.
+     * It consists of two main blocks ImagesOnUrls and ImagesOffUrls.
+     * Each main block contains two sub blocks for WindowUrls and FullPageUrls.
+     * Further, each capture block contains an ImageUrl and ThumbUrl.
+     * For clients that do not support content blocking the outerblocks
+     * (ImagesOnUrls and ImagesOffUrls) will be identical.
+     * For clients who do support content blocking (SupportsContentBlocking == true)
+     * the ImagesOffUrl will show the blocked versions and ImagesOnUrl will show the non-blocked versions.
      *
      * @param array $v The array of the result image set.
      */
     public function setResultImageSet($v)
     {
-        $this->ResultImageSet = (array) $v;
+        $this->ResultImageSet = (array)$v;
 
         return $this;
     }
@@ -204,25 +217,29 @@ class BaseCallback
     }
 
     /**
-     * Indicates the current status of your test. By the time you receive a callback the most likely value is Completed.
+     * Indicates the current status of your test.
+     * By the time you receive a callback the most likely value is Completed.
      *
      * @param string $v The state of the test.
      */
     public function setState($v)
     {
-        $this->State = (string) $v;
+        $this->State = (string)$v;
 
         return $this;
     }
 
     /**
-     * This value indicates true if the requested client supports content blocking and false if it does not.  Content blocking clients, sometimes referred to as image blocking, will return different result images for ImagesOn and ImagesOff. This value will always be false for a spam test.
+     * This value indicates true if the requested client supports content blocking and false if it does not.
+     * Content blocking clients, sometimes referred to as image blocking,
+     * will return different result images for ImagesOn and ImagesOff.
+     * This value will always be false for a spam test.
      *
      * @param boolean $v If the test support content blocking.
      */
     public function setSupportsContentBlocking($v)
     {
-        $this->SupportsContentBlocking = (boolean) $v;
+        $this->SupportsContentBlocking = (bool)$v;
 
         return $this;
     }
@@ -234,7 +251,7 @@ class BaseCallback
      */
     public function setType($v)
     {
-        $this->Type = (string) $v;
+        $this->Type = (string)$v;
 
         return $this;
     }

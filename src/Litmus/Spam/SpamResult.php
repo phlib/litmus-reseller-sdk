@@ -65,7 +65,7 @@ class SpamResult
      */
     public function setSpamScore($v)
     {
-        $this->SpamScore = (double) $v;
+        $this->SpamScore = (float)$v;
 
         return $this;
     }
@@ -77,7 +77,7 @@ class SpamResult
      */
     public function setIsSpam($v)
     {
-        $this->IsSpam = (boolean) $v;
+        $this->IsSpam = (bool)$v;
 
         return $this;
     }

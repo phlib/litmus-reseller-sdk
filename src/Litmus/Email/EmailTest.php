@@ -358,11 +358,11 @@ class EmailTest extends BaseTest
      */
     public function initializeFreeTest()
     {
-          foreach (['gmailnew', 'ol2003'] as $client_name) {
-              $LitmusClient = new EmailClient();
-              $LitmusClient->setApplicationName($client_name);
-              $this->addResult($LitmusClient);
-          }
+        foreach (['gmailnew', 'ol2003'] as $client_name) {
+            $LitmusClient = new EmailClient();
+            $LitmusClient->setApplicationName($client_name);
+            $this->addResult($LitmusClient);
+        }
 
         return $this;
     }

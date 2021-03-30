@@ -113,7 +113,9 @@ class BaseClient
     }
 
     /**
-     * Desktop clients are those that run locally, on the desktop. Examples include Outlook, Lotus Notes, Apple Mail and Thunderbird. Email clients such as Gmail, AOL and Hotmail would have a DesktopClient value of false.
+     * Desktop clients are those that run locally, on the desktop.
+     * Examples include Outlook, Lotus Notes, Apple Mail and Thunderbird.
+     * Email clients such as Gmail, AOL and Hotmail would have a DesktopClient value of false.
      *
      * @return boolean
      */
@@ -123,7 +125,8 @@ class BaseClient
     }
 
     /**
-     * Indicates if the email was found in this client's spam folder. Since not all clients support this property, it may always be false for some cilents.
+     * Indicates if the email was found in this client's spam folder.
+     * Since not all clients support this property, it may always be false for some cilents.
      *
      * @return boolean
      */
@@ -133,7 +136,8 @@ class BaseClient
     }
 
     /**
-     * The uri of a capture of the email opened in the client. You should only use this property if SupportsContentBlocking is false.
+     * The uri of a capture of the email opened in the client.
+     * You should only use this property if SupportsContentBlocking is false.
      *
      * @return string
      */
@@ -143,7 +147,8 @@ class BaseClient
     }
 
     /**
-     * The url of a capture of the email opened by the client with external content blocking enabled, this is the "images off" capture. You should only use this property if SupportsContentBlocking is true.
+     * The url of a capture of the email opened by the client with external content blocking enabled,
+     * this is the "images off" capture. You should only use this property if SupportsContentBlocking is true.
      *
      * @return string
      */
@@ -153,7 +158,8 @@ class BaseClient
     }
 
     /**
-     * The url of a capture of the email opened by the client with external content blocking disabled, this is the "images on" capture. You should only use this property if SupportsContentBlocking is true.
+     * The url of a capture of the email opened by the client with external content blocking disabled,
+     * this is the "images on" capture. You should only use this property if SupportsContentBlocking is true.
      *
      * @return string
      */
@@ -251,7 +257,8 @@ class BaseClient
     }
 
     /**
-     * If the ResultType was equal to "spam", this property may contain a score left by the spam filter this Client object represents.
+     * If the ResultType was equal to "spam", this property may contain a score
+     * left by the spam filter this Client object represents.
      *
      * @return double
      */
@@ -306,7 +313,8 @@ class BaseClient
     }
 
     /**
-     * The url of a capture of the client's inbox with external content blocking disabled, this is the "images on" capture. You should only use this property if SupportsContentBlocking is true.
+     * The url of a capture of the client's inbox with external content blocking disabled,
+     * this is the "images on" capture. You should only use this property if SupportsContentBlocking is true.
      *
      * @return string
      */
@@ -316,7 +324,8 @@ class BaseClient
     }
 
     /**
-     * The url of a capture of the client's inbox with external content blocking enabled, this is the "images off" capture. You should only use this property if SupportsContentBlocking is true.
+     * The url of a capture of the client's inbox with external content blocking enabled,
+     * this is the "images off" capture. You should only use this property if SupportsContentBlocking is true.
      *
      * @return string
      */
@@ -592,7 +601,7 @@ class BaseClient
      */
     public function setSpamScore($value)
     {
-        $this->SpamScore = (double) $value;
+        $this->SpamScore = (float)$value;
 
         return $this;
     }
