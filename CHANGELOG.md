@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [2.0.1] - 2021-03-30
+
 - Update maintainer info to Phlib.
   Thanks to [blaugueux](https://github.com/blaugueux)!
 
