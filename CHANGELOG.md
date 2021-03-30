@@ -6,8 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-- Add specific support for PHP v7.
+### Changed
 - Change licence to LGPLv3 to match other Phlib projects.
+### Removed
+- **BC break**: Removed support for PHP versions <= 7.2 as they are no longer
+  [actively supported](https://php.net/supported-versions.php)
+  by the PHP project.
 
 ## [2.0.1] - 2021-03-30
 
