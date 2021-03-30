@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+- Add specific support for PHP v7.
 - Change licence to LGPLv3 to match other Phlib projects.
 
 ## [2.0.1] - 2021-03-30
