@@ -5,6 +5,7 @@ namespace Litmus\Base;
 /**
  * BaseTest class
  *
+ * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
 class BaseTest

@@ -7,6 +7,7 @@ use Litmus\SubjectPreview\EmailClient;
 /**
  * GenerateSubjectPreview : generate email's subject pictures
  *
+ * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
 class SubjectPreview

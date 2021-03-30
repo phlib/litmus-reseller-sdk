@@ -5,6 +5,9 @@ namespace Litmus\Tests;
 use Litmus\SubjectPreview\SubjectPreview;
 use Litmus\SubjectPreview\EmailClient;
 
+/**
+ * @package Phlib\Litmus-Reseller-SDK
+ */
 class SubjectPreviewTest extends \PHPUnit_Framework_TestCase
 {
     protected $subjectPreview;

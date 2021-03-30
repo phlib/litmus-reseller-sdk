@@ -1,25 +1,26 @@
 {
-    "name": "yzalis/litmus",
-    "type": "library",
-    "description": "Litmus API Wrapper allows you to run email, spam test and email subject preview.",
+    "name": "phlib/litmus-reseller-sdk",
+    "description": "SDK to allow you to use the legacy Litmus Reseller SOAP API",
     "keywords": ["email testing", "email preview", "email subject preview", "spam testing"],
-    "homepage": "http://litmus.com",
     "license": "MIT",
     "authors": [
         {
             "name": "Benjamin Laugueux",
-            "email": "benjamin@yzalis.com"
+            "homepage": "https://github.com/blaugueux"
+        },
+        {
+            "name": "Phlib Team & Contributors",
+            "homepage": "https://github.com/phlib/litmus-reseller-sdk/contributors"
         }
     ],
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.3",
+
+        "ext-soap": "*"
     },
     "autoload": {
-        "psr-0": { "Litmus": "src/" }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
+        "psr-0": {
+            "Litmus": "src/"
         }
     }
 }

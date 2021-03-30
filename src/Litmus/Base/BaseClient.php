@@ -5,6 +5,7 @@ namespace Litmus\Base;
 /**
  * BaseClient class
  *
+ * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
 class BaseClient

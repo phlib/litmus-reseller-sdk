@@ -9,9 +9,8 @@ use Litmus\Page\PageClient;
 /**
  * PageTest class
  *
+ * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
- * @package   LitmusResellerAPI
- * @version   1.1
  * @access    public
  * @copyright Copyright (c) 2011, Yzalis
  */

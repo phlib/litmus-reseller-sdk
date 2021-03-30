@@ -5,6 +5,9 @@ namespace Litmus\Tests;
 use Litmus\Litmus;
 use Litmus\Email\EmailTest;
 
+/**
+ * @package Phlib\Litmus-Reseller-SDK
+ */
 class LitmusTest extends \PHPUnit_Framework_TestCase
 {
     /**

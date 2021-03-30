@@ -4,6 +4,9 @@ namespace Litmus\Tests;
 
 use Litmus\Base\BaseCallback;
 
+/**
+ * @package Phlib\Litmus-Reseller-SDK
+ */
 class CallbackTest extends \PHPUnit_Framework_TestCase
 {
     protected $path;
