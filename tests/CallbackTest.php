@@ -18,7 +18,7 @@ class CallbackTest extends TestCase
     protected $spamCallback;
     protected $emailCallback;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->path = __DIR__ . '/Fixtures';
 
@@ -29,20 +29,20 @@ class CallbackTest extends TestCase
         $this->spamCallback = BaseCallback::hydrateXmlCallback($xmlCallback);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->path = null;
         $this->emailCallback = null;
         $this->spamCallback = null;
     }
 
-    public function testSingleton()
+    public function testSingleton(): void
     {
         static::assertInstanceOf(EmailCallback::class, $this->emailCallback);
         static::assertInstanceOf(SpamCallback::class, $this->spamCallback);
     }
 
-    public function testGetters()
+    public function testGetters(): void
     {
         static::assertIsString($this->emailCallback->getApiId());
         static::assertIsString($this->emailCallback->getCallbackUrl());
@@ -52,7 +52,7 @@ class CallbackTest extends TestCase
         static::assertEquals('spam', $this->spamCallback->getType());
     }
 
-    public function testResultImageSet()
+    public function testResultImageSet(): void
     {
         // spam callback
         static::assertIsArray($this->spamCallback->getResultImageSet());
@@ -62,7 +62,7 @@ class CallbackTest extends TestCase
         static::assertIsArray($this->spamCallback->getResultImageSet());
     }
 
-    public function testSpamResult()
+    public function testSpamResult(): void
     {
         // spam callback
         static::assertInstanceOf(SpamResult::class, $this->spamCallback->getSpamResult());
@@ -75,7 +75,7 @@ class CallbackTest extends TestCase
         static::assertCount(0, $this->emailCallback->getSpamResult()->getSpamHeaders());
     }
 
-    public function testSpamHeaders()
+    public function testSpamHeaders(): void
     {
         foreach ($this->spamCallback->getSpamResult()->getSpamHeaders() as $spamHeader) {
             static::assertInstanceOf(SpamHeader::class, $spamHeader);

@@ -11,19 +11,19 @@ use PHPUnit\Framework\TestCase;
  */
 class LitmusTest extends TestCase
 {
-    public function testApiKeyException()
+    public function testApiKeyException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         new Litmus();
     }
 
-    public function testApiPassException()
+    public function testApiPassException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         new Litmus('keykey');
     }
 
-    public function testCreateEmailTest()
+    public function testCreateEmailTest(): void
     {
         $EmailTest = new EmailTest();
 
@@ -38,7 +38,7 @@ class LitmusTest extends TestCase
         static::assertCount(2, $EmailTest->getResults());
     }
 
-    public function testGetSpamSeedAddresses()
+    public function testGetSpamSeedAddresses(): void
     {
         if (!$_SERVER['apiKey'] || !$_SERVER['apiPass']) {
             static::markTestSkipped('You must provide your own Litmus API credentials to test connection.');
@@ -50,7 +50,7 @@ class LitmusTest extends TestCase
         static::assertNotCount(0, $spamSeedAddresses);
     }
 
-    public function testGetEmailClients()
+    public function testGetEmailClients(): void
     {
         if (!$_SERVER['apiKey'] || !$_SERVER['apiPass']) {
             static::markTestSkipped('You must provide your own Litmus API credentials to test connection.');
