@@ -7,17 +7,18 @@ use Phlib\LitmusResellerSDK\Email\EmailCallback;
 use Phlib\LitmusResellerSDK\Spam\SpamCallback;
 use Phlib\LitmusResellerSDK\Spam\SpamHeader;
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @package Phlib\Litmus-Reseller-SDK
  */
-class CallbackTest extends \PHPUnit_Framework_TestCase
+class CallbackTest extends TestCase
 {
     protected $path;
     protected $spamCallback;
     protected $emailCallback;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->path = __DIR__ . '/Fixtures';
 
@@ -28,59 +29,59 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         $this->spamCallback = BaseCallback::hydrateXmlCallback($xmlCallback);
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->path = null;
         $this->emailCallback = null;
         $this->spamCallback = null;
     }
 
-    public function testSingleton()
+    public function testSingleton(): void
     {
-        $this->assertInstanceOf(EmailCallback::class, $this->emailCallback);
-        $this->assertInstanceOf(SpamCallback::class, $this->spamCallback);
+        static::assertInstanceOf(EmailCallback::class, $this->emailCallback);
+        static::assertInstanceOf(SpamCallback::class, $this->spamCallback);
     }
 
-    public function testGetters()
+    public function testGetters(): void
     {
-        $this->assertInternalType('string', $this->emailCallback->getApiId());
-        $this->assertInternalType('string', $this->emailCallback->getCallbackUrl());
-        $this->assertInternalType('boolean', $this->emailCallback->getSupportsContentBlocking());
-        $this->assertInternalType('string', $this->emailCallback->getState());
-        $this->assertEquals('mail', $this->emailCallback->getType());
-        $this->assertEquals('spam', $this->spamCallback->getType());
+        static::assertIsString($this->emailCallback->getApiId());
+        static::assertIsString($this->emailCallback->getCallbackUrl());
+        static::assertIsBool($this->emailCallback->getSupportsContentBlocking());
+        static::assertIsString($this->emailCallback->getState());
+        static::assertEquals('mail', $this->emailCallback->getType());
+        static::assertEquals('spam', $this->spamCallback->getType());
     }
 
-    public function testResultImageSet()
-    {
-        // spam callback
-        $this->assertInternalType('array', $this->spamCallback->getResultImageSet());
-        $this->assertCount(0, $this->spamCallback->getResultImageSet());
-
-        // email callback
-        $this->assertInternalType('array', $this->spamCallback->getResultImageSet());
-    }
-
-    public function testSpamResult()
+    public function testResultImageSet(): void
     {
         // spam callback
-        $this->assertInstanceOf(SpamResult::class, $this->spamCallback->getSpamResult());
-        $this->assertInternalType('array', $this->spamCallback->getSpamResult()->getSpamHeaders());
-        $this->assertInternalType('boolean', $this->spamCallback->getSpamResult()->getIsSpam());
-        $this->assertInternalType('float', $this->spamCallback->getSpamResult()->getSpamScore());
+        static::assertIsArray($this->spamCallback->getResultImageSet());
+        static::assertCount(0, $this->spamCallback->getResultImageSet());
 
         // email callback
-        $this->assertNull($this->emailCallback->getSpamResult()->getSpamScore());
-        $this->assertCount(0, $this->emailCallback->getSpamResult()->getSpamHeaders());
+        static::assertIsArray($this->spamCallback->getResultImageSet());
     }
 
-    public function testSpamHeaders()
+    public function testSpamResult(): void
+    {
+        // spam callback
+        static::assertInstanceOf(SpamResult::class, $this->spamCallback->getSpamResult());
+        static::assertIsArray($this->spamCallback->getSpamResult()->getSpamHeaders());
+        static::assertIsBool($this->spamCallback->getSpamResult()->getIsSpam());
+        static::assertIsFloat($this->spamCallback->getSpamResult()->getSpamScore());
+
+        // email callback
+        static::assertNull($this->emailCallback->getSpamResult()->getSpamScore());
+        static::assertCount(0, $this->emailCallback->getSpamResult()->getSpamHeaders());
+    }
+
+    public function testSpamHeaders(): void
     {
         foreach ($this->spamCallback->getSpamResult()->getSpamHeaders() as $spamHeader) {
-            $this->assertInstanceOf(SpamHeader::class, $spamHeader);
-            $this->assertInternalType('string', $spamHeader->getKey());
-            $this->assertInternalType('string', $spamHeader->getDescription());
-            $this->assertInternalType('string', $spamHeader->getRating());
+            static::assertInstanceOf(SpamHeader::class, $spamHeader);
+            static::assertIsString($spamHeader->getKey());
+            static::assertIsString($spamHeader->getDescription());
+            static::assertIsString($spamHeader->getRating());
         }
     }
 }

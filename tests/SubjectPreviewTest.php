@@ -4,15 +4,16 @@ namespace Phlib\LitmusResellerSDK\Test;
 
 use Phlib\LitmusResellerSDK\SubjectPreview\SubjectPreview;
 use Phlib\LitmusResellerSDK\SubjectPreview\EmailClient;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @package Phlib\Litmus-Reseller-SDK
  */
-class SubjectPreviewTest extends \PHPUnit_Framework_TestCase
+class SubjectPreviewTest extends TestCase
 {
     protected $subjectPreview;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->subjectPreview = new SubjectPreview();
         $this->subjectPreview
@@ -28,24 +29,24 @@ class SubjectPreviewTest extends \PHPUnit_Framework_TestCase
         ;
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->subjectPreview = null;
     }
 
-    public function testSubjectPreview()
+    public function testSubjectPreview(): void
     {
-        $this->assertEquals(100, strlen($this->subjectPreview->getSubject()));
-        $this->assertEquals(100, strlen($this->subjectPreview->getBody()));
-        $this->assertEquals(50, strlen($this->subjectPreview->getSender()));
+        static::assertEquals(100, strlen($this->subjectPreview->getSubject()));
+        static::assertEquals(100, strlen($this->subjectPreview->getBody()));
+        static::assertEquals(50, strlen($this->subjectPreview->getSender()));
     }
 
-    public function testEmailClient()
+    public function testEmailClient(): void
     {
-        $this->assertCount(6, EmailClient::getAvailableEmailClients());
+        static::assertCount(6, EmailClient::getAvailableEmailClients());
 
         foreach (EmailClient::getAvailableEmailClients() as $emailClientSlug) {
-            $this->assertInstanceOf(
+            static::assertInstanceOf(
                 EmailClient::class,
                 $this->subjectPreview->getEmailClient($emailClientSlug)
             );
@@ -54,20 +55,20 @@ class SubjectPreviewTest extends \PHPUnit_Framework_TestCase
         $emailClients = EmailClient::getAvailableEmailClients();
         $emailClient = $this->subjectPreview->getEmailClient($emailClients[0]);
 
-        $this->assertEquals('ol2003', $emailClient->getSlug());
-        $this->assertEquals('Outlook 2003', $emailClient->getName());
-        $this->assertTrue($emailClient->getHasToast());
+        static::assertEquals('ol2003', $emailClient->getSlug());
+        static::assertEquals('Outlook 2003', $emailClient->getName());
+        static::assertTrue($emailClient->getHasToast());
         $size = $emailClient->getGlobalSize();
-        $this->assertEquals(128, $size['height']);
-        $this->assertEquals(841, $size['width']);
+        static::assertEquals(128, $size['height']);
+        static::assertEquals(841, $size['width']);
         $size = $emailClient->getToastSize();
-        $this->assertEquals(74, $size['height']);
-        $this->assertEquals(329, $size['width']);
+        static::assertEquals(74, $size['height']);
+        static::assertEquals(329, $size['width']);
     }
 
-    public function testUrl()
+    public function testUrl(): void
     {
-        $this->assertContains(
+        static::assertStringContainsString(
             'https://allclients.litmus.com/s/?c=ol2003' .
             '&s=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuv' .
             '&p=zyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfedcbazyxwvutsrqponmlkjihgfe' .

@@ -4,63 +4,60 @@ namespace Phlib\LitmusResellerSDK\Test;
 
 use Phlib\LitmusResellerSDK\Litmus;
 use Phlib\LitmusResellerSDK\Email\EmailTest;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @package Phlib\Litmus-Reseller-SDK
  */
-class LitmusTest extends \PHPUnit_Framework_TestCase
+class LitmusTest extends TestCase
 {
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testApiKeyException()
+    public function testApiKeyException(): void
     {
-        $litmusAPI = new Litmus();
+        $this->expectException(\InvalidArgumentException::class);
+        new Litmus();
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testApiPassException()
+    public function testApiPassException(): void
     {
-        $litmusAPI = new Litmus('keykey');
+        $this->expectException(\InvalidArgumentException::class);
+        new Litmus('keykey');
     }
 
-    public function testCreateEmailTest()
+    public function testCreateEmailTest(): void
     {
         $EmailTest = new EmailTest();
 
-        $this->assertFalse($EmailTest->getSandbox());
+        static::assertFalse($EmailTest->getSandbox());
         $EmailTest->setSandbox(true);
-        $this->assertTrue($EmailTest->getSandbox());
+        static::assertTrue($EmailTest->getSandbox());
 
-        $this->assertInternalType('array', $EmailTest->getResults());
-        $this->assertCount(0, $EmailTest->getResults());
+        static::assertIsArray($EmailTest->getResults());
+        static::assertCount(0, $EmailTest->getResults());
 
         $EmailTest->initializeFreeTest();
-        $this->assertCount(2, $EmailTest->getResults());
+        static::assertCount(2, $EmailTest->getResults());
     }
 
-    public function testGetSpamSeedAddresses()
+    public function testGetSpamSeedAddresses(): void
     {
         if (!$_SERVER['apiKey'] || !$_SERVER['apiPass']) {
-            $this->markTestSkipped('You must provide your own Litmus API credentials to test connection.');
+            static::markTestSkipped('You must provide your own Litmus API credentials to test connection.');
         }
 
         $litmusAPI = new Litmus($_SERVER['apiKey'], $_SERVER['apiPass']);
         $spamSeedAddresses = $litmusAPI->getSpamSeedAddresses();
-        $this->assertInternalType('array', $spamSeedAddresses);
-        $this->assertNotCount(0, $spamSeedAddresses);
+        static::assertIsArray($spamSeedAddresses);
+        static::assertNotCount(0, $spamSeedAddresses);
     }
 
-    public function testGetEmailClients()
+    public function testGetEmailClients(): void
     {
         if (!$_SERVER['apiKey'] || !$_SERVER['apiPass']) {
-            $this->markTestSkipped('You must provide your own Litmus API credentials to test connection.');
+            static::markTestSkipped('You must provide your own Litmus API credentials to test connection.');
         }
 
         $litmusAPI = new Litmus($_SERVER['apiKey'], $_SERVER['apiPass']);
         $clients = $litmusAPI->getEmailClients();
-        $this->assertInternalType('array', $clients);
+        static::assertIsArray($clients);
     }
 }
