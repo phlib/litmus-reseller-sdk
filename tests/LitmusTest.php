@@ -31,7 +31,7 @@ class LitmusTest extends TestCase
         $EmailTest->setSandbox(true);
         static::assertTrue($EmailTest->getSandbox());
 
-        static::assertInternalType('array', $EmailTest->getResults());
+        static::assertIsArray($EmailTest->getResults());
         static::assertCount(0, $EmailTest->getResults());
 
         $EmailTest->initializeFreeTest();
@@ -46,7 +46,7 @@ class LitmusTest extends TestCase
 
         $litmusAPI = new Litmus($_SERVER['apiKey'], $_SERVER['apiPass']);
         $spamSeedAddresses = $litmusAPI->getSpamSeedAddresses();
-        static::assertInternalType('array', $spamSeedAddresses);
+        static::assertIsArray($spamSeedAddresses);
         static::assertNotCount(0, $spamSeedAddresses);
     }
 
@@ -58,6 +58,6 @@ class LitmusTest extends TestCase
 
         $litmusAPI = new Litmus($_SERVER['apiKey'], $_SERVER['apiPass']);
         $clients = $litmusAPI->getEmailClients();
-        static::assertInternalType('array', $clients);
+        static::assertIsArray($clients);
     }
 }

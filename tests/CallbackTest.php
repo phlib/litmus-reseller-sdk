@@ -44,10 +44,10 @@ class CallbackTest extends TestCase
 
     public function testGetters()
     {
-        static::assertInternalType('string', $this->emailCallback->getApiId());
-        static::assertInternalType('string', $this->emailCallback->getCallbackUrl());
-        static::assertInternalType('boolean', $this->emailCallback->getSupportsContentBlocking());
-        static::assertInternalType('string', $this->emailCallback->getState());
+        static::assertIsString($this->emailCallback->getApiId());
+        static::assertIsString($this->emailCallback->getCallbackUrl());
+        static::assertIsBool($this->emailCallback->getSupportsContentBlocking());
+        static::assertIsString($this->emailCallback->getState());
         static::assertEquals('mail', $this->emailCallback->getType());
         static::assertEquals('spam', $this->spamCallback->getType());
     }
@@ -55,20 +55,20 @@ class CallbackTest extends TestCase
     public function testResultImageSet()
     {
         // spam callback
-        static::assertInternalType('array', $this->spamCallback->getResultImageSet());
+        static::assertIsArray($this->spamCallback->getResultImageSet());
         static::assertCount(0, $this->spamCallback->getResultImageSet());
 
         // email callback
-        static::assertInternalType('array', $this->spamCallback->getResultImageSet());
+        static::assertIsArray($this->spamCallback->getResultImageSet());
     }
 
     public function testSpamResult()
     {
         // spam callback
         static::assertInstanceOf(SpamResult::class, $this->spamCallback->getSpamResult());
-        static::assertInternalType('array', $this->spamCallback->getSpamResult()->getSpamHeaders());
-        static::assertInternalType('boolean', $this->spamCallback->getSpamResult()->getIsSpam());
-        static::assertInternalType('float', $this->spamCallback->getSpamResult()->getSpamScore());
+        static::assertIsArray($this->spamCallback->getSpamResult()->getSpamHeaders());
+        static::assertIsBool($this->spamCallback->getSpamResult()->getIsSpam());
+        static::assertIsFloat($this->spamCallback->getSpamResult()->getSpamScore());
 
         // email callback
         static::assertNull($this->emailCallback->getSpamResult()->getSpamScore());
@@ -79,9 +79,9 @@ class CallbackTest extends TestCase
     {
         foreach ($this->spamCallback->getSpamResult()->getSpamHeaders() as $spamHeader) {
             static::assertInstanceOf(SpamHeader::class, $spamHeader);
-            static::assertInternalType('string', $spamHeader->getKey());
-            static::assertInternalType('string', $spamHeader->getDescription());
-            static::assertInternalType('string', $spamHeader->getRating());
+            static::assertIsString($spamHeader->getKey());
+            static::assertIsString($spamHeader->getDescription());
+            static::assertIsString($spamHeader->getRating());
         }
     }
 }
