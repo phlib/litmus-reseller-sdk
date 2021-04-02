@@ -6,8 +6,9 @@
     colors="true"
 >
     <php>
-        <server name="apiKey" value="" />
-        <server name="apiPass" value="" />
+        <env name="INTEGRATION_ENABLED" value="0" />
+        <env name="LITMUS_API_KEY" value="" />
+        <env name="LITMUS_API_PASS" value="" />
     </php>
     <testsuites>
         <testsuite name="Phlib Test Suite">
