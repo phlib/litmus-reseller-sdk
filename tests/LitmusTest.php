@@ -40,11 +40,11 @@ class LitmusTest extends TestCase
 
     public function testGetSpamSeedAddresses(): void
     {
-        if (!$_SERVER['apiKey'] || !$_SERVER['apiPass']) {
+        if (!$_ENV['TEST_API_KEY'] || !$_ENV['TEST_API_PASS']) {
             static::markTestSkipped('You must provide your own Litmus API credentials to test connection.');
         }
 
-        $litmusAPI = new Litmus($_SERVER['apiKey'], $_SERVER['apiPass']);
+        $litmusAPI = new Litmus($_ENV['TEST_API_KEY'], $_ENV['TEST_API_PASS']);
         $spamSeedAddresses = $litmusAPI->getSpamSeedAddresses();
         static::assertIsArray($spamSeedAddresses);
         static::assertNotCount(0, $spamSeedAddresses);
@@ -52,11 +52,11 @@ class LitmusTest extends TestCase
 
     public function testGetEmailClients(): void
     {
-        if (!$_SERVER['apiKey'] || !$_SERVER['apiPass']) {
+        if (!$_ENV['TEST_API_KEY'] || !$_ENV['TEST_API_PASS']) {
             static::markTestSkipped('You must provide your own Litmus API credentials to test connection.');
         }
 
-        $litmusAPI = new Litmus($_SERVER['apiKey'], $_SERVER['apiPass']);
+        $litmusAPI = new Litmus($_ENV['TEST_API_KEY'], $_ENV['TEST_API_PASS']);
         $clients = $litmusAPI->getEmailClients();
         static::assertIsArray($clients);
     }

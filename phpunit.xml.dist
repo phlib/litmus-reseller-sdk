@@ -6,8 +6,8 @@
     colors="true"
 >
     <php>
-        <server name="apiKey" value="" />
-        <server name="apiPass" value="" />
+        <env name="TEST_API_KEY" value="" />
+        <env name="TEST_API_PASS" value="" />
     </php>
     <testsuites>
         <testsuite name="Phlib Test Suite">
