@@ -2,7 +2,6 @@
 
 namespace Phlib\LitmusResellerSDK\Test;
 
-use Phlib\LitmusResellerSDK\Email\EmailTest;
 use Phlib\LitmusResellerSDK\Litmus;
 use PHPUnit\Framework\TestCase;
 
@@ -21,21 +20,6 @@ class LitmusTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         new Litmus('keykey');
-    }
-
-    public function testCreateEmailTest(): void
-    {
-        $EmailTest = new EmailTest();
-
-        static::assertFalse($EmailTest->getSandbox());
-        $EmailTest->setSandbox(true);
-        static::assertTrue($EmailTest->getSandbox());
-
-        static::assertIsArray($EmailTest->getResults());
-        static::assertCount(0, $EmailTest->getResults());
-
-        $EmailTest->initializeFreeTest();
-        static::assertCount(2, $EmailTest->getResults());
     }
 
     public function testGetSpamSeedAddresses(): void
