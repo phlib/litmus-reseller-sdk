@@ -11,7 +11,9 @@ namespace Phlib\LitmusResellerSDK\Spam;
 class SpamResult
 {
     private $SpamScore;
+
     private $IsSpam;
+
     private $SpamHeaders;
 
     /**
@@ -29,8 +31,6 @@ class SpamResult
     }
 
     /**
-     *
-     *
      * @return string
      */
     public function getSpamScore()
@@ -39,8 +39,6 @@ class SpamResult
     }
 
     /**
-     *
-     *
      * @return string
      */
     public function getIsSpam()
@@ -49,8 +47,6 @@ class SpamResult
     }
 
     /**
-     *
-     *
      * @return string
      */
     public function getSpamHeaders()
@@ -59,8 +55,6 @@ class SpamResult
     }
 
     /**
-     *
-     *
      * @param string $v The spam score.
      */
     public function setSpamScore($v)
@@ -71,8 +65,6 @@ class SpamResult
     }
 
     /**
-     *
-     *
      * @param string $v The spam state.
      */
     public function setIsSpam($v)
@@ -83,8 +75,6 @@ class SpamResult
     }
 
     /**
-     *
-     *
      * @param string $values The spam headers.
      */
     public function setSpamHeaders($values)

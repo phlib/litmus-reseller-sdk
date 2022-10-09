@@ -18,6 +18,7 @@
         "ext-soap": "*"
     },
     "require-dev": {
+        "symplify/easy-coding-standard": "^11",
         "phpunit/phpunit": "^9"
     },
     "autoload": {
@@ -31,7 +32,7 @@
         }
     },
     "scripts": {
-        "cs-check": "phpcs --standard=PSR12 src/ tests/",
-        "cs-fix": "phpcbf --standard=PSR12 src/ tests/"
+        "cs-check": "vendor/bin/ecs",
+        "cs-fix": "vendor/bin/ecs --fix"
     }
 }

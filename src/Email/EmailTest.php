@@ -85,8 +85,6 @@ class EmailTest extends BaseTest
     private $TestType;
 
     /**
-     *
-     *
      * @var string
      */
     private $UserGuid;

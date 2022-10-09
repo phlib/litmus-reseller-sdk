@@ -2,9 +2,9 @@
 
 namespace Phlib\LitmusResellerSDK\Base;
 
-use Phlib\LitmusResellerSDK\Spam\SpamResult;
-use Phlib\LitmusResellerSDK\Spam\SpamCallback;
 use Phlib\LitmusResellerSDK\Email\EmailCallback;
+use Phlib\LitmusResellerSDK\Spam\SpamCallback;
+use Phlib\LitmusResellerSDK\Spam\SpamResult;
 
 /**
  * BaseCallback class
@@ -17,23 +17,30 @@ class BaseCallback
     private static $instance;
 
     private $Id;
+
     private $ApiId;
+
     private $SupportsContentBlocking;
+
     private $ResultImageSet;
+
     private $SpamResult;
+
     private $State;
+
     private $Type;
+
     private $CallbackUrl;
 
     /**
      * Hydrate a CallBack object with a callback xml
      *
-     * @param $object SpamCallback or EmailCallback
+     * @param $xmlCallback SpamCallback or EmailCallback
      */
     public static function hydrateXmlCallback($xmlCallback)
     {
-        if (is_null($xmlCallback) || empty($xmlCallback)) {
-            throw new \InvalidArgumentException("You must provid a callback string.");
+        if ($xmlCallback === null || empty($xmlCallback)) {
+            throw new \InvalidArgumentException('You must provid a callback string.');
         }
 
         // convert the utf-16 to utf-8
@@ -50,7 +57,7 @@ class BaseCallback
                 break;
             default:
                 throw new \InvalidArgumentException(sprintf('Unknow callback type "%s"', $callbackType));
-            break;
+                break;
         }
 
         foreach ($xml as $key => $value) {
@@ -95,8 +102,6 @@ class BaseCallback
     }
 
     /**
-     *
-     *
      * @return array
      */
     public function getResultImageSet()
@@ -105,8 +110,6 @@ class BaseCallback
     }
 
     /**
-     *
-     *
      * @return array
      */
     public function getSpamResult()
@@ -139,8 +142,6 @@ class BaseCallback
     }
 
     /**
-     *
-     *
      * @return array
      */
     public function getType()
@@ -245,8 +246,6 @@ class BaseCallback
     }
 
     /**
-     *
-     *
      * @param string $v The state of the test.
      */
     public function setType($v)

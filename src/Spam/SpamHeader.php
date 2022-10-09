@@ -11,7 +11,9 @@ namespace Phlib\LitmusResellerSDK\Spam;
 class SpamHeader
 {
     private $Key;
+
     private $Description;
+
     private $Rating;
 
     /**
@@ -27,38 +29,30 @@ class SpamHeader
     }
 
     /**
-     *
-     *
      * @return string
      */
     public function getKey()
     {
-          return $this->Key;
+        return $this->Key;
     }
 
     /**
-     *
-     *
      * @return string
      */
     public function getDescription()
     {
-          return $this->Description;
+        return $this->Description;
     }
 
     /**
-     *
-     *
      * @return string
      */
     public function getRating()
     {
-          return $this->Rating;
+        return $this->Rating;
     }
 
     /**
-     *
-     *
      * @param string $v The key.
      */
     public function setKey($v)
@@ -69,8 +63,6 @@ class SpamHeader
     }
 
     /**
-     *
-     *
      * @param string $v The description.
      */
     public function setDescription($v)
@@ -81,8 +73,6 @@ class SpamHeader
     }
 
     /**
-     *
-     *
      * @param string $v The rating.
      */
     public function setRating($v)

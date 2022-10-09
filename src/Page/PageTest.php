@@ -235,8 +235,6 @@ class PageTest extends BaseTest
 
     /**
      * Add a PageClient object to the results array
-     *
-     * @param PageClient $PageClient
      */
     public function addResult(PageClient $PageClient)
     {

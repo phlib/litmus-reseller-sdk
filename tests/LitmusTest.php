@@ -2,8 +2,8 @@
 
 namespace Phlib\LitmusResellerSDK\Test;
 
-use Phlib\LitmusResellerSDK\Litmus;
 use Phlib\LitmusResellerSDK\Email\EmailTest;
+use Phlib\LitmusResellerSDK\Litmus;
 use PHPUnit\Framework\TestCase;
 
 /**

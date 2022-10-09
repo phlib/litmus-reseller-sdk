@@ -11,33 +11,61 @@ namespace Phlib\LitmusResellerSDK\Base;
 class BaseClient
 {
     public $ApplicationLongName;
+
     public $ApplicationName;
+
     public $AverageTimeToProcess;
+
     public $BusinessOrPopular;
+
     public $Completed;
+
     public $DesktopClient;
+
     public $FoundInSpam;
+
     public $FullpageImage;
+
     public $FullpageImageContentBlocking;
+
     public $FullpageImageNoContentBlocking;
+
     public $FullpageImageThumb;
+
     public $FullpageImageThumbContentBlocking;
+
     public $FullpageImageThumbNoContentBlocking;
+
     public $Id;
+
     public $PlatformLongName;
+
     public $PlatformName;
+
     public $RenderedHtmlUrl;
+
     public $ResultType;
+
     public $SpamHeaders;
+
     public $SpamScore;
+
     public $State;
+
     public $Status;
+
     public $SupportsContentBlocking;
+
     public $WindowImage;
+
     public $WindowImageContentBlocking;
+
     public $WindowImageNoContentBlocking;
+
     public $WindowImageThumb;
+
     public $WindowImageThumbContentBlocking;
+
     public $WindowImageThumbNoContentBlocking;
 
     /**
@@ -94,9 +122,6 @@ class BaseClient
         return $this->AverageTimeToProcess;
     }
 
-    /**
-     *
-     */
     public function getBusinessOrPopular()
     {
         return $this->BusinessOrPopular;
@@ -248,9 +273,6 @@ class BaseClient
         return $this->ResultType;
     }
 
-    /**
-     *
-     */
     public function getSpamHeaders()
     {
         return $this->SpamHeaders;
@@ -365,8 +387,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setApplicationLongName($value)
@@ -377,8 +397,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setApplicationName($value)
@@ -389,8 +407,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setAverageTimeToProcess($value)
@@ -401,8 +417,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setBusinessOrPopular($value)
@@ -413,8 +427,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setCompleted($value)
@@ -425,8 +437,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setDesktopClient($value)
@@ -437,8 +447,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setFoundInSpam($value)
@@ -449,8 +457,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setFullpageImage($value)
@@ -461,8 +467,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setFullpageImageContentBlocking($value)
@@ -473,8 +477,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setFullpageImageNoContentBlocking($value)
@@ -485,8 +487,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setFullpageImageThumb($value)
@@ -497,8 +497,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setFullpageImageThumbContentBlocking($value)
@@ -509,8 +507,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setFullpageImageThumbNoContentBlocking($value)
@@ -521,8 +517,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setId($value)
@@ -533,8 +527,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setPlatformLongName($value)
@@ -545,8 +537,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setPlatformName($value)
@@ -557,8 +547,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setRenderedHtmlUrl($value)
@@ -569,8 +557,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setResultType($value)
@@ -581,8 +567,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @param string $values The spam headers.
      */
     public function setSpamHeaders($values)
@@ -595,8 +579,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setSpamScore($value)
@@ -607,8 +589,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setState($value)
@@ -619,8 +599,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setStatus($value)
@@ -631,8 +609,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setSupportsContentBlocking($value)
@@ -643,8 +619,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setWindowImage($value)
@@ -655,8 +629,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setWindowImageContentBlocking($value)
@@ -667,8 +639,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setWindowImageNoContentBlocking($value)
@@ -679,8 +649,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setWindowImagethumb($value)
@@ -691,8 +659,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setWindowImageThumbContentBlocking($value)
@@ -703,8 +669,6 @@ class BaseClient
     }
 
     /**
-     *
-     *
      * @return
      */
     public function setWindowImageThumbNoContentBlocking($value)

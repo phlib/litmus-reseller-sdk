@@ -15,7 +15,9 @@ use PHPUnit\Framework\TestCase;
 class CallbackTest extends TestCase
 {
     protected $path;
+
     protected $spamCallback;
+
     protected $emailCallback;
 
     protected function setUp(): void
