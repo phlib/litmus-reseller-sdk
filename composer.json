@@ -2,7 +2,7 @@
     "name": "phlib/litmus-reseller-sdk",
     "description": "SDK to allow you to use the legacy Litmus Reseller SOAP API",
     "license": "LGPL-3.0",
-    "keywords": ["email testing", "email preview", "email subject preview", "spam testing"],
+    "keywords": ["email testing", "email preview", "spam testing"],
     "authors": [
         {
             "name": "Benjamin Laugueux",

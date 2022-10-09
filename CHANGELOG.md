@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - **BC break**: Removed support for PHP versions <= 7.2 as they are no longer
   [actively supported](https://php.net/supported-versions.php)
   by the PHP project.
+- **BC break**: Split subject-line preview SDK out to
+  [`phlib/litmus-subjectline-preview`](https://github.com/phlib/litmus-subjectline-preview)
+  as it doesn't use the reseller API.
 
 ## [2.0.1] - 2021-03-30
 
