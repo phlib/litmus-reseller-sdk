@@ -22,6 +22,9 @@ class LitmusTest extends TestCase
         new Litmus('keykey');
     }
 
+    /**
+     * @group integration
+     */
     public function testGetSpamSeedAddresses(): void
     {
         if (!getenv('INTEGRATION_ENABLED')) {
@@ -34,6 +37,9 @@ class LitmusTest extends TestCase
         static::assertNotCount(0, $spamSeedAddresses);
     }
 
+    /**
+     * @group integration
+     */
     public function testGetEmailClients(): void
     {
         if (!getenv('INTEGRATION_ENABLED')) {
