@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - **BC break**: Namespace changed to `Phlib\LitmusResellerSDK`.
 - Change licence to LGPLv3 to match other Phlib projects.
 ### Removed
-- **BC break**: Removed support for PHP versions <= 7.2 as they are no longer
+- **BC break**: Removed support for PHP versions <= 7.3 as they are no longer
   [actively supported](https://php.net/supported-versions.php)
   by the PHP project.
 - **BC break**: Split subject-line preview SDK out to
