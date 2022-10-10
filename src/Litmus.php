@@ -5,8 +5,6 @@ namespace Phlib\LitmusResellerSDK;
 use Phlib\LitmusResellerSDK\Base\BaseClient;
 use Phlib\LitmusResellerSDK\Email\EmailClient;
 use Phlib\LitmusResellerSDK\Email\EmailTest;
-use Phlib\LitmusResellerSDK\Page\PageClient;
-use Phlib\LitmusResellerSDK\Page\PageTest;
 
 /**
  * Litmus class. This is the core class for the Litmus Reseller API
@@ -73,23 +71,6 @@ class Litmus
     }
 
     /**
-     * Returns all the page test clients
-     *
-     * @return array Page test clients
-     */
-    public function getPageClients()
-    {
-        $result = $this->soapClient->__soapCall('GetPageTestClients', [$this->getApiKey(), $this->getApiPass()]);
-        $clients = [];
-
-        foreach ($result as $params) {
-            $clients[] = new PageClient($params);
-        }
-
-        return $clients;
-    }
-
-    /**
      * Create an Email Test
      *
      * @param  string    $EmailTest EmailTest object with values filled in
@@ -108,24 +89,6 @@ class Litmus
     }
 
     /**
-     * Create a PageTest
-     *
-     * @param  string   $PageTest PageTest object with values filled in
-     *
-     * @return PageTest The PageTest object response from the API
-     */
-    public function createPageTest($PageTest)
-    {
-        $result = $this->soapClient->__soapCall('CreatePageTest', [
-            $this->getApiKey(),
-            $this->getApiPass(),
-            $PageTest,
-        ]);
-
-        return new PageTest($result);
-    }
-
-    /**
      * Fetch an email test.
      *
      * @param  string    $id The unique identifier of the email test (as returned by createEmailTest()).
@@ -141,23 +104,6 @@ class Litmus
         ]);
 
         return new EmailTest($result);
-    }
-
-    /**
-     * Fetch a page test
-     *
-     * @param  string   $id The unique identifier of the page test (as returned by createPageTest())
-     *
-     * @return PageTest The PageTest object with data filled in
-     */
-    public function getPageTest($id)
-    {
-        $result = $this->soapClient->__soapCall('GetPageTest', [
-            $this->getApiKey(),
-            $this->getApiPass(),
-        ]);
-
-        return new PageTest($result);
     }
 
     /**
@@ -180,7 +126,7 @@ class Litmus
      *
      * @param  string                   $id ID of the individual result
      *
-     * @return PageTestClient/EmailTest Client with the data
+     * @return EmailClient Client with the data
      */
     public function getResult($id)
     {
@@ -190,9 +136,6 @@ class Litmus
             $id,
         ]));
 
-        if ($LitmusClient->getResultType() == 'page') {
-            return new PageClient($LitmusClient);
-        }
         return new EmailClient($LitmusClient);
     }
 
