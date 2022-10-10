@@ -52,10 +52,6 @@ class Litmus
      */
     public function __construct($apiKey = null, $apiPass = null)
     {
-        if (!class_exists('SoapClient')) {
-            throw new \RuntimeException('PHP SoapClient library is required.');
-        }
-
         $this->setApiCredentials($apiKey, $apiPass)->setupSoapClient();
     }
 
