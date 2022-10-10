@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Support PHP v8.
+- Type declarations to all methods and properties.
 ### Fixed
 - Creating callback object from XML did not correctly read boolean values.
 ### Changed

@@ -7,7 +7,7 @@ namespace Phlib\LitmusResellerSDK\Callback;
  */
 class Factory
 {
-    public function createFromXml(string $xmlCallback)
+    public function createFromXml(string $xmlCallback): CallbackAbstract
     {
         if (empty($xmlCallback)) {
             throw new \InvalidArgumentException('You must provide a callback string.');

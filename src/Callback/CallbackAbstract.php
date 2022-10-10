@@ -4,71 +4,57 @@ namespace Phlib\LitmusResellerSDK\Callback;
 
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
 
-use function Phlib\String\toBoolean;
-
 /**
  * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
 abstract class CallbackAbstract
 {
-    private $Id;
+    private int $Id;
 
-    private $ApiId;
+    private string $ApiId;
 
-    private $SupportsContentBlocking;
+    private bool $SupportsContentBlocking;
 
-    private $ResultImageSet;
+    private array $ResultImageSet;
 
-    private $SpamResult;
+    private SpamResult $SpamResult;
 
-    private $State;
+    private string $State;
 
-    private $CallbackUrl;
+    private string $CallbackUrl;
 
     /**
      * This code references the platform for the specific test result.
      * It will match the ApplicationName property of the results collection.
-     *
-     * @return string
      */
-    public function getApiId()
+    public function getApiId(): string
     {
         return $this->ApiId;
     }
 
     /**
      * Your custom callback URL.
-     *
-     * @return string
      */
-    public function getCallbackUrl()
+    public function getCallbackUrl(): string
     {
         return $this->CallbackUrl;
     }
 
     /**
-     * This is the most important property, it's the unique identifer for your test.
-     *
-     * @return string
+     * This is the most important property, it's the unique identifier for your test.
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->Id;
     }
 
-    /**
-     * @return array
-     */
-    public function getResultImageSet()
+    public function getResultImageSet(): array
     {
         return $this->ResultImageSet;
     }
 
-    /**
-     * @return array
-     */
-    public function getSpamResult()
+    public function getSpamResult(): SpamResult
     {
         return $this->SpamResult;
     }
@@ -76,10 +62,8 @@ abstract class CallbackAbstract
     /**
      * Indicates the current status of your test.
      * By the time you receive a callback the most likely value is Completed.
-     *
-     * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->State;
     }
@@ -89,10 +73,8 @@ abstract class CallbackAbstract
      * Content blocking clients, sometimes referred to as image blocking,
      * will return different result images for ImagesOn and ImagesOff.
      * This value will always be false for a spam test.
-     *
-     * @return boolean
      */
-    public function getSupportsContentBlocking()
+    public function getSupportsContentBlocking(): bool
     {
         return $this->SupportsContentBlocking;
     }
@@ -103,19 +85,14 @@ abstract class CallbackAbstract
      *
      * @param string $v The client application code.
      */
-    public function setApiId($v)
+    public function setApiId(string $v): self
     {
-        $this->ApiId = (string)$v;
+        $this->ApiId = $v;
 
         return $this;
     }
 
-    /**
-     * Your custom callback URL.
-     *
-     * @return string
-     */
-    public function setCallbackUrl($v)
+    public function setCallbackUrl(string $v): self
     {
         $this->CallbackUrl = (string)$v;
 
@@ -123,13 +100,11 @@ abstract class CallbackAbstract
     }
 
     /**
-     * This is the most important property, it's the unique identifer for your test.
-     *
-     * @param string $v The unique identifier of the test.
+     * This is the most important property, it's the unique identifier for your test.
      */
-    public function setId($v)
+    public function setId(int $v): self
     {
-        $this->Id = (string)$v;
+        $this->Id = $v;
 
         return $this;
     }
@@ -146,9 +121,9 @@ abstract class CallbackAbstract
      *
      * @param array $v The array of the result image set.
      */
-    public function setResultImageSet($v)
+    public function setResultImageSet(array $v): self
     {
-        $this->ResultImageSet = (array)$v;
+        $this->ResultImageSet = $v;
 
         return $this;
     }
@@ -158,7 +133,7 @@ abstract class CallbackAbstract
      *
      * @param array $v The array of the result spam set.
      */
-    public function setSpamResult($v)
+    public function setSpamResult(array $v): self
     {
         $this->SpamResult = new SpamResult($v);
 
@@ -171,9 +146,9 @@ abstract class CallbackAbstract
      *
      * @param string $v The state of the test.
      */
-    public function setState($v)
+    public function setState(string $v): self
     {
-        $this->State = (string)$v;
+        $this->State = $v;
 
         return $this;
     }
@@ -183,12 +158,10 @@ abstract class CallbackAbstract
      * Content blocking clients, sometimes referred to as image blocking,
      * will return different result images for ImagesOn and ImagesOff.
      * This value will always be false for a spam test.
-     *
-     * @param boolean $v If the test support content blocking.
      */
-    public function setSupportsContentBlocking($v)
+    public function setSupportsContentBlocking(bool $v): self
     {
-        $this->SupportsContentBlocking = toBoolean($v);
+        $this->SupportsContentBlocking = $v;
 
         return $this;
     }

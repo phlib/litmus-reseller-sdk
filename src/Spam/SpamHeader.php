@@ -10,16 +10,13 @@ namespace Phlib\LitmusResellerSDK\Spam;
  */
 class SpamHeader
 {
-    private $Key;
+    private string $Key;
 
-    private $Description;
+    private string $Description;
 
-    private $Rating;
+    private int $Rating;
 
-    /**
-     * @param array $params
-     */
-    public function __construct($params = [])
+    public function __construct(array $params = [])
     {
         if ($params != []) {
             foreach ($params as $k => $v) {
@@ -28,56 +25,38 @@ class SpamHeader
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getKey()
+    public function getKey(): string
     {
         return $this->Key;
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->Description;
     }
 
-    /**
-     * @return string
-     */
-    public function getRating()
+    public function getRating(): int
     {
         return $this->Rating;
     }
 
-    /**
-     * @param string $v The key.
-     */
-    public function setKey($v)
+    public function setKey(string $v): self
     {
-        $this->Key = (string)$v;
+        $this->Key = $v;
 
         return $this;
     }
 
-    /**
-     * @param string $v The description.
-     */
-    public function setDescription($v)
+    public function setDescription(string $v): self
     {
-        $this->Description = (string)$v;
+        $this->Description = $v;
 
         return $this;
     }
 
-    /**
-     * @param string $v The rating.
-     */
-    public function setRating($v)
+    public function setRating(int $v): self
     {
-        $this->Rating = (string)$v;
+        $this->Rating = $v;
 
         return $this;
     }

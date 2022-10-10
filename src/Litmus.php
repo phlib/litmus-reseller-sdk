@@ -13,70 +13,33 @@ use Phlib\LitmusResellerSDK\Email\EmailTest;
  */
 class Litmus
 {
-    /**
-     * API Key for authentication
-     *
-     * @var string
-     */
-    private $apiKey;
+    private string $apiKey;
 
-    /**
-     * Identification for HTTP headers
-     *
-     * @var string
-     */
-    private $apiPass;
+    private string $apiPass;
 
-    /**
-     * API endpoint
-     *
-     * @var string
-     */
-    private $apiUrl = 'https://soapapi.litmusapp.com/2010-06-21/api.asmx?wsdl';
+    private string $apiUrl = 'https://soapapi.litmusapp.com/2010-06-21/api.asmx?wsdl';
 
-    /**
-     * Identification for HTTP headers
-     *
-     * @var string
-     */
-    private $soapClient;
+    private \SoapClient $soapClient;
 
-    /**
-     * Create and configure a new LitmusAPI object with your credentials
-     *
-     * @param string $apiKey  Your own API Key.
-     * @param string $apiPass Your own API Password.
-     */
-    public function __construct($apiKey = null, $apiPass = null)
+    public function __construct(?string $apiKey = null, ?string $apiPass = null)
     {
         $this->setApiCredentials($apiKey, $apiPass)->setupSoapClient();
     }
 
-    /**
-     * Retrieve all the email clients
-     *
-     * @return array All the available email test clients
-     */
-    public function getEmailClients()
+    public function getEmailClients(): array
     {
         $result = $this->soapClient->__soapCall('GetEmailTestClients', [$this->getApiKey(), $this->getApiPass()]);
         $clients = [];
 
+        /** @var \stdClass $params */
         foreach ($result as $params) {
-            $clients[] = new EmailClient($params);
+            $clients[] = new EmailClient((array)$params);
         }
 
         return $clients;
     }
 
-    /**
-     * Create an Email Test
-     *
-     * @param  string    $EmailTest EmailTest object with values filled in
-     *
-     * @return EmailTest The EmailTest object response from the API.
-     */
-    public function createEmailTest($EmailTest)
+    public function createEmailTest(EmailTest $EmailTest): EmailTest
     {
         $result = $this->soapClient->__soapCall('CreateEmailTest', [
             $this->getApiKey(),
@@ -88,13 +51,9 @@ class Litmus
     }
 
     /**
-     * Fetch an email test.
-     *
-     * @param  string $emailTestId The unique identifier of the email test (as returned by createEmailTest()).
-     *
-     * @return EmailTest The EmailTest object with data filled in.
+     * @param int $emailTestId The unique identifier of the email test (as returned by createEmailTest()).
      */
-    public function getEmailTest($emailTestId)
+    public function getEmailTest(int $emailTestId): EmailTest
     {
         $result = $this->soapClient->__soapCall('GetEmailTest', [
             $this->getApiKey(),
@@ -105,12 +64,7 @@ class Litmus
         return new EmailTest($result);
     }
 
-    /**
-     * Retreive the spam addresses to send your email
-     *
-     * @return array The array with data filled in
-     */
-    public function getSpamSeedAddresses()
+    public function getSpamSeedAddresses(): array
     {
         $result = $this->soapClient->__soapCall('GetSpamSeedAddresses', [
             $this->getApiKey(),
@@ -121,13 +75,9 @@ class Litmus
     }
 
     /**
-     * Gets the result of one email or page client
-     *
-     * @param  string $emailClientResultId ID of the individual email client result
-     *
-     * @return EmailClient Client with the data
+     * @param int $emailClientResultId ID of the individual email client result
      */
-    public function getResult($emailClientResultId)
+    public function getResult(int $emailClientResultId): EmailClient
     {
         return new EmailClient($this->soapClient->__soapCall('GetResult', [
             $this->getApiKey(),
@@ -136,27 +86,14 @@ class Litmus
         ]));
     }
 
-    /**
-     * Initialize and store the connection
-     *
-     * @return $this
-     */
-    private function setupSoapClient()
+    private function setupSoapClient(): self
     {
         $this->soapClient = new \SoapClient($this->getApiUrl());
 
         return $this;
     }
 
-    /**
-     * Configure the credentials to authorize the connection
-     *
-     * @param string $key
-     * @param string $pass
-     *
-     * @return $this
-     */
-    private function setApiCredentials($key, $pass)
+    private function setApiCredentials(?string $key, ?string $pass): self
     {
         if ($key === null || strlen($key) == 0 || !is_string($key)) {
             throw new \InvalidArgumentException('You must specify an API Key (string) .');
@@ -172,46 +109,24 @@ class Litmus
         return $this;
     }
 
-    /**
-     * Configure API endpoint url
-     *
-     * @param string $v
-     *
-     * @return $this
-     */
-    private function setApiUrl($v)
+    private function setApiUrl(string $v): self
     {
         $this->apiUrl = $v;
 
         return $this;
     }
 
-    /**
-     * This is your own API Key provided by Litmus
-     *
-     * @return string The API Key
-     */
-    private function getApiKey()
+    private function getApiKey(): string
     {
         return $this->apiKey;
     }
 
-    /**
-     * This is your own API Pass provided by Litmus
-     *
-     * @return string The API Pass
-     */
-    private function getApiPass()
+    private function getApiPass(): string
     {
         return $this->apiPass;
     }
 
-    /**
-     * This is the Litmus endpoint
-     *
-     * @return string The Url
-     */
-    private function getApiUrl()
+    private function getApiUrl(): string
     {
         return $this->apiUrl;
     }

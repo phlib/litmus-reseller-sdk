@@ -10,94 +10,65 @@ namespace Phlib\LitmusResellerSDK\Email;
  */
 class EmailTest
 {
-    /**
-     * Reserved. Please ignore.
-     *
-     * @var string
-     */
-    private $Html;
+    private string $Html;
 
     /**
      * This is the most important property. It's the unique identifer for your
      * test. You'll use it later to poll for updates for your test.
      */
-    private $ID;
+    private int $ID;
 
     /**
      * The InboxGuid will be used to construct the email address to send your
      * test email to. To form your email address, simply append
      * "@emailtests.com" to the InboxGUID value.
-     *
-     * @var string
      */
-    private $InboxGUID;
+    private string $InboxGUID;
 
     /**
      * This is an array of EmailTestClient. This contains all the tested client.
-     *
-     * @var array
      */
-    private $Results = [];
+    private array $Results = [];
 
     /**
      * This property is used to test the API. If "true", all the result
      * screenshots will be the same.
-     *
-     * @var boolean
      */
-    private $Sandbox = false;
+    private bool $Sandbox = false;
 
     /**
      * Once you've sent an email, this will contain your email's raw source
      * code. At this stage, it's empty.
-     *
-     * @var string
      */
-    private $Source;
+    private string $Source;
 
     /**
      * This will have a value of "waiting" when the test is created. This means
      * Litmus is waiting for your email to arrive. Once Litmus receives it,
      * it'll change the State to "processing" and when all results have
      * completed, it'll change to "complete".
-     *
-     * @var string
      */
-    private $State;
+    private string $State;
 
     /**
      * Once you've sent an email, this will contain your email's subject.
-     *
-     * @var string
      */
-    private $Subject;
+    private string $Subject;
 
     /**
      * This will be "Email" if you've created an email test or "Page" for web
      * page tests.
-     *
-     * @var string
      */
-    private $TestType;
+    private string $TestType;
 
-    /**
-     * @var string
-     */
-    private $UserGuid;
+    private string $UserGuid;
 
     /**
      * This is the url you can use to download all the screenshots of this test.
-     *
-     * @var string
      */
-    private $ZipFile;
+    private string $ZipFile;
 
-    /**
-     * Construct a LitmusTest object with an array of values if it's provided.
-     *
-     * @param $values array
-     */
-    public function __construct($values = [])
+    public function __construct(array $values = [])
     {
         if (!empty($values)) {
             foreach ($values as $key => $value) {
@@ -108,120 +79,93 @@ class EmailTest
 
     /**
      * Reserved. Please ignore.
-     *
-     * @return string
      */
-    public function getHtml()
+    public function getHtml(): string
     {
         return $this->Html;
     }
 
     /**
      * Get the unique identifier of the test.
-     *
-     * @return int
      */
-    public function getID()
+    public function getID(): int
     {
         return $this->ID;
     }
 
     /**
      * Get the inbox global unique identifier
-     *
-     * @return string
      */
-    public function getInboxGUID()
+    public function getInboxGUID(): string
     {
         return $this->InboxGUID;
     }
 
     /**
      * Get an array of result EmailTestClient.
-     *
-     * @return array
      */
-    public function getResults()
+    public function getResults(): array
     {
         return $this->Results;
     }
 
     /**
      * Get if the test is in sandbox environment.
-     *
-     * @return boolean
      */
-    public function getSandbox()
+    public function getSandbox(): bool
     {
         return $this->Sandbox;
     }
 
     /**
      * Get the source of the tested email.
-     *
-     * @return string
      */
-    public function getSource()
+    public function getSource(): string
     {
         return $this->Source;
     }
 
     /**
      * Get the state of the test.
-     *
-     * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->State;
     }
 
     /**
      * Get the subject of your tested email
-     *
-     * @return string
      */
-    public function getSubject()
+    public function getSubject(): string
     {
         return $this->Subject;
     }
 
     /**
      * Get the test type.
-     *
-     * @return string
      */
-    public function getTestType()
+    public function getTestType(): string
     {
         return $this->TestType;
     }
 
-    /**
-     * ?
-     *
-     * @return string
-     */
-    public function getUserGuid()
+    public function getUserGuid(): string
     {
         return $this->UserGuid;
     }
 
     /**
      * Get the url of the screenshot zip file.
-     *
-     * @return string
      */
-    public function getZipFile()
+    public function getZipFile(): string
     {
         return $this->ZipFile;
     }
 
     /**
      * Reserved. Please ignore.
-     *
-     * @param string $value
      */
-    public function setHtml($value)
+    public function setHtml(string $value): self
     {
         $this->Html = $value;
 
@@ -230,10 +174,8 @@ class EmailTest
 
     /**
      * Set the unique identifier of the test.
-     *
-     * @param string $value
      */
-    public function setID($value)
+    public function setID(int $value): self
     {
         $this->ID = $value;
 
@@ -242,10 +184,8 @@ class EmailTest
 
     /**
      * Set the unique inbox global unique identifier.
-     *
-     * @param string $value
      */
-    public function setInboxGUID($value)
+    public function setInboxGUID(string $value): self
     {
         $this->InboxGUID = $value;
 
@@ -254,10 +194,8 @@ class EmailTest
 
     /**
      * Set all the test client results
-     *
-     * @param array $values
      */
-    public function setResults($values)
+    public function setResults(array $values): self
     {
         foreach ($values as $client_params) {
             $this->addResult(new EmailClient($client_params));
@@ -271,7 +209,7 @@ class EmailTest
      *
      * @param boolean $value
      */
-    public function setSandbox($value)
+    public function setSandbox(bool $value): self
     {
         $this->Sandbox = $value;
 
@@ -280,10 +218,8 @@ class EmailTest
 
     /**
      * Set the source code of the tested email
-     *
-     * @param string $value
      */
-    public function setSource($value)
+    public function setSource(string $value): self
     {
         $this->Source = $value;
 
@@ -292,10 +228,8 @@ class EmailTest
 
     /**
      * Set the state of the test.
-     *
-     * @param string $value
      */
-    public function setState($value)
+    public function setState(string $value): self
     {
         $this->State = $value;
 
@@ -304,10 +238,8 @@ class EmailTest
 
     /**
      * Set the subject of the tested email.
-     *
-     * @param string $value
      */
-    public function setSubject($value)
+    public function setSubject(string $value): self
     {
         $this->Subject = $value;
 
@@ -316,10 +248,8 @@ class EmailTest
 
     /**
      * Set the test type result
-     *
-     * @param string $value
      */
-    public function setTestType($value)
+    public function setTestType(string $value): self
     {
         $this->TestType = $value;
 
@@ -328,10 +258,8 @@ class EmailTest
 
     /**
      * ?
-     *
-     * @param string $value
      */
-    public function setUserGuid($value)
+    public function setUserGuid(string $value): self
     {
         $this->UserGuid = $value;
 
@@ -340,10 +268,8 @@ class EmailTest
 
     /**
      * Set the url of the screesnhots zip file.
-     *
-     * @param string $value
      */
-    public function setZipFile($value)
+    public function setZipFile(string $value): self
     {
         $this->ZipFile = $value;
 
@@ -353,7 +279,7 @@ class EmailTest
     /**
      * Add an EmailClient to the Results array
      */
-    public function addResult(EmailClient $EmailClient)
+    public function addResult(EmailClient $EmailClient): self
     {
         $this->Results[] = $EmailClient;
 
