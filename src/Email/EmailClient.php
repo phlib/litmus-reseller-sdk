@@ -1,14 +1,14 @@
 <?php
 
-namespace Phlib\LitmusResellerSDK\Base;
+namespace Phlib\LitmusResellerSDK\Email;
 
 /**
- * BaseClient class
+ * EmailClient class
  *
  * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
-class BaseClient
+class EmailClient
 {
     public $ApplicationLongName;
 
