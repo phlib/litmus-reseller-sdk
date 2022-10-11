@@ -14,76 +14,129 @@ use PHPUnit\Framework\TestCase;
  */
 class CallbackTest extends TestCase
 {
-    protected $path;
+    private const FILE_PATH = __DIR__ . '/_files/';
 
-    protected $spamCallback;
-
-    protected $emailCallback;
-
-    protected function setUp(): void
+    /**
+     * @dataProvider dataAll
+     */
+    public function testInstance(string $path, string $className): void
     {
-        $this->path = __DIR__ . '/_files';
-
-        $xmlCallback = file_get_contents($this->path . '/EmailCallbackOutlook2010.xml');
-        $this->emailCallback = CallbackAbstract::hydrateXmlCallback($xmlCallback);
-
-        $xmlCallback = file_get_contents($this->path . '/SpamCallbackSpamAssassin.xml');
-        $this->spamCallback = CallbackAbstract::hydrateXmlCallback($xmlCallback);
+        $result = $this->getCallbackResult($path);
+        static::assertInstanceOf($className, $result);
     }
 
-    protected function tearDown(): void
+    /**
+     * @dataProvider dataAll
+     */
+    public function testGetters(string $path, string $className, string $type): void
     {
-        $this->path = null;
-        $this->emailCallback = null;
-        $this->spamCallback = null;
+        $result = $this->getCallbackResult($path);
+
+        static::assertIsString($result->getApiId());
+        static::assertIsString($result->getCallbackUrl());
+        static::assertIsBool($result->getSupportsContentBlocking());
+        static::assertIsString($result->getState());
+        static::assertEquals($type, $result->getType());
     }
 
-    public function testSingleton(): void
+    /**
+     * @dataProvider dataAll
+     */
+    public function testResultImageSet(string $path, string $className, string $type): void
     {
-        static::assertInstanceOf(Email::class, $this->emailCallback);
-        static::assertInstanceOf(Spam::class, $this->spamCallback);
+        $result = $this->getCallbackResult($path);
+
+        static::assertIsArray($result->getResultImageSet());
+
+        if ($type === 'spam') {
+            static::assertCount(0, $result->getResultImageSet());
+        }
     }
 
-    public function testGetters(): void
+    /**
+     * @dataProvider dataSpam
+     */
+    public function testSpamResult(string $path, bool $isSpam, float $score): void
     {
-        static::assertIsString($this->emailCallback->getApiId());
-        static::assertIsString($this->emailCallback->getCallbackUrl());
-        static::assertIsBool($this->emailCallback->getSupportsContentBlocking());
-        static::assertIsString($this->emailCallback->getState());
-        static::assertEquals('mail', $this->emailCallback->getType());
-        static::assertEquals('spam', $this->spamCallback->getType());
+        $result = $this->getCallbackResult($path);
+
+        static::assertInstanceOf(SpamResult::class, $result->getSpamResult());
+
+        static::assertSame($isSpam, $result->getSpamResult()->getIsSpam());
+        static::assertSame($score, $result->getSpamResult()->getSpamScore());
+        static::assertIsArray($result->getSpamResult()->getSpamHeaders());
     }
 
-    public function testResultImageSet(): void
+    /**
+     * @dataProvider dataSpam
+     */
+    public function testSpamHeaders(string $path, bool $isSpam, float $score, int $headerCount): void
     {
-        // spam callback
-        static::assertIsArray($this->spamCallback->getResultImageSet());
-        static::assertCount(0, $this->spamCallback->getResultImageSet());
+        $result = $this->getCallbackResult($path);
 
-        // email callback
-        static::assertIsArray($this->spamCallback->getResultImageSet());
-    }
+        $headers = $result->getSpamResult()->getSpamHeaders();
+        static::assertCount($headerCount, $headers);
 
-    public function testSpamResult(): void
-    {
-        // spam callback
-        static::assertInstanceOf(SpamResult::class, $this->spamCallback->getSpamResult());
-        static::assertIsArray($this->spamCallback->getSpamResult()->getSpamHeaders());
-        static::assertIsBool($this->spamCallback->getSpamResult()->getIsSpam());
-        static::assertIsFloat($this->spamCallback->getSpamResult()->getSpamScore());
-
-        // email callback
-        static::assertNull($this->emailCallback->getSpamResult()->getSpamScore());
-        static::assertCount(0, $this->emailCallback->getSpamResult()->getSpamHeaders());
-    }
-
-    public function testSpamHeaders(): void
-    {
-        foreach ($this->spamCallback->getSpamResult()->getSpamHeaders() as $spamHeader) {
+        foreach ($headers as $spamHeader) {
             static::assertInstanceOf(SpamHeader::class, $spamHeader);
             static::assertIsString($spamHeader->getKey());
             static::assertIsString($spamHeader->getDescription());
             static::assertIsString($spamHeader->getRating());
         }
+    }
+
+    public function dataEmail(): array
+    {
+        return [
+            'emailGmail' => [
+                'path' => self::FILE_PATH . 'EmailCallbackGmail.xml',
+            ],
+            'emailOutlook' => [
+                'path' => self::FILE_PATH . 'EmailCallbackOutlook2010.xml',
+            ],
+        ];
+    }
+
+    public function dataSpam(): array
+    {
+        return [
+            'spamFastmail' => [
+                'path' => self::FILE_PATH . 'SpamCallbackFastMail.xml',
+                'isSpam' => false,
+                'score' => 0,
+                'headerCount' => 0,
+            ],
+            'spamAssassin' => [
+                'path' => self::FILE_PATH . 'SpamCallbackSpamAssassin.xml',
+                'isSpam' => false,
+                'score' => 0.8,
+                'headerCount' => 2,
+            ],
+        ];
+    }
+
+    public function dataAll(): iterable
+    {
+        foreach ($this->dataEmail() as $name => $data) {
+            yield $name => [
+                $data['path'],
+                Email::class,
+                'mail',
+            ];
+        }
+
+        foreach ($this->dataSpam() as $name => $data) {
+            yield $name => [
+                $data['path'],
+                Spam::class,
+                'spam',
+            ];
+        }
+    }
+
+    private function getCallbackResult(string $path): CallbackAbstract
+    {
+        $xml = file_get_contents($path);
+        return CallbackAbstract::hydrateXmlCallback($xml);
     }
 }
