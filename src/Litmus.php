@@ -2,7 +2,6 @@
 
 namespace Phlib\LitmusResellerSDK;
 
-use Phlib\LitmusResellerSDK\Base\BaseClient;
 use Phlib\LitmusResellerSDK\Email\EmailClient;
 use Phlib\LitmusResellerSDK\Email\EmailTest;
 
@@ -130,13 +129,11 @@ class Litmus
      */
     public function getResult($id)
     {
-        $LitmusClient = new BaseClient($this->soapClient->__soapCall('GetResult', [
+        return new EmailClient($this->soapClient->__soapCall('GetResult', [
             $this->getApiKey(),
             $this->getApiPass(),
             $id,
         ]));
-
-        return new EmailClient($LitmusClient);
     }
 
     /**
