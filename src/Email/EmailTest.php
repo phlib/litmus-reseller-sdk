@@ -2,15 +2,13 @@
 
 namespace Phlib\LitmusResellerSDK\Email;
 
-use Phlib\LitmusResellerSDK\Base\BaseTest;
-
 /**
  * EmailTest class
  *
  * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
-class EmailTest extends BaseTest
+class EmailTest
 {
     /**
      * Reserved. Please ignore.
@@ -95,6 +93,20 @@ class EmailTest extends BaseTest
      * @var string
      */
     private $ZipFile;
+
+    /**
+     * Construct a LitmusTest object with an array of values if it's provided.
+     *
+     * @param $values array
+     */
+    public function __construct($values = [])
+    {
+        if (!empty($values)) {
+            foreach ($values as $key => $value) {
+                $this->{'set' . $key}($value);
+            }
+        }
+    }
 
     /**
      * Reserved. Please ignore.

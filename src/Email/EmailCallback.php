@@ -2,7 +2,7 @@
 
 namespace Phlib\LitmusResellerSDK\Email;
 
-use Phlib\LitmusResellerSDK\Base\BaseCallback;
+use Phlib\LitmusResellerSDK\CallbackAbstract;
 
 /**
  * EmailCallback class
@@ -10,6 +10,6 @@ use Phlib\LitmusResellerSDK\Base\BaseCallback;
  * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
-class EmailCallback extends BaseCallback
+class EmailCallback extends CallbackAbstract
 {
 }
