@@ -1,10 +1,10 @@
 <?php
 
-namespace Phlib\LitmusResellerSDK\Test;
+namespace Phlib\LitmusResellerSDK\Test\Callback;
 
-use Phlib\LitmusResellerSDK\CallbackAbstract;
-use Phlib\LitmusResellerSDK\Email\EmailCallback;
-use Phlib\LitmusResellerSDK\Spam\SpamCallback;
+use Phlib\LitmusResellerSDK\Callback\CallbackAbstract;
+use Phlib\LitmusResellerSDK\Callback\Email;
+use Phlib\LitmusResellerSDK\Callback\Spam;
 use Phlib\LitmusResellerSDK\Spam\SpamHeader;
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
 use PHPUnit\Framework\TestCase;
@@ -22,7 +22,7 @@ class CallbackTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->path = __DIR__ . '/Fixtures';
+        $this->path = __DIR__ . '/_files';
 
         $xmlCallback = file_get_contents($this->path . '/EmailCallbackOutlook2010.xml');
         $this->emailCallback = CallbackAbstract::hydrateXmlCallback($xmlCallback);
@@ -40,8 +40,8 @@ class CallbackTest extends TestCase
 
     public function testSingleton(): void
     {
-        static::assertInstanceOf(EmailCallback::class, $this->emailCallback);
-        static::assertInstanceOf(SpamCallback::class, $this->spamCallback);
+        static::assertInstanceOf(Email::class, $this->emailCallback);
+        static::assertInstanceOf(Spam::class, $this->spamCallback);
     }
 
     public function testGetters(): void

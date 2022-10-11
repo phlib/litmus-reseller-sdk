@@ -1,14 +1,10 @@
 <?php
 
-namespace Phlib\LitmusResellerSDK;
+namespace Phlib\LitmusResellerSDK\Callback;
 
-use Phlib\LitmusResellerSDK\Email\EmailCallback;
-use Phlib\LitmusResellerSDK\Spam\SpamCallback;
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
 
 /**
- * BaseCallback class
- *
  * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
@@ -50,10 +46,10 @@ abstract class CallbackAbstract
         $callbackType = (string)$xml->attributes()->type;
         switch ($callbackType) {
             case 'mail':
-                $object = new EmailCallback();
+                $object = new Email();
                 break;
             case 'spam':
-                $object = new SpamCallback();
+                $object = new Spam();
                 break;
             default:
                 throw new \InvalidArgumentException(sprintf('Unknow callback type "%s"', $callbackType));
