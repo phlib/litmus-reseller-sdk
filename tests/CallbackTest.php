@@ -2,7 +2,7 @@
 
 namespace Phlib\LitmusResellerSDK\Test;
 
-use Phlib\LitmusResellerSDK\Base\BaseCallback;
+use Phlib\LitmusResellerSDK\CallbackAbstract;
 use Phlib\LitmusResellerSDK\Email\EmailCallback;
 use Phlib\LitmusResellerSDK\Spam\SpamCallback;
 use Phlib\LitmusResellerSDK\Spam\SpamHeader;
@@ -25,10 +25,10 @@ class CallbackTest extends TestCase
         $this->path = __DIR__ . '/Fixtures';
 
         $xmlCallback = file_get_contents($this->path . '/EmailCallbackOutlook2010.xml');
-        $this->emailCallback = BaseCallback::hydrateXmlCallback($xmlCallback);
+        $this->emailCallback = CallbackAbstract::hydrateXmlCallback($xmlCallback);
 
         $xmlCallback = file_get_contents($this->path . '/SpamCallbackSpamAssassin.xml');
-        $this->spamCallback = BaseCallback::hydrateXmlCallback($xmlCallback);
+        $this->spamCallback = CallbackAbstract::hydrateXmlCallback($xmlCallback);
     }
 
     protected function tearDown(): void

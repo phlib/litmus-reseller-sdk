@@ -1,6 +1,6 @@
 <?php
 
-namespace Phlib\LitmusResellerSDK\Base;
+namespace Phlib\LitmusResellerSDK;
 
 use Phlib\LitmusResellerSDK\Email\EmailCallback;
 use Phlib\LitmusResellerSDK\Spam\SpamCallback;
@@ -12,7 +12,7 @@ use Phlib\LitmusResellerSDK\Spam\SpamResult;
  * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
-class BaseCallback
+abstract class CallbackAbstract
 {
     private static $instance;
 

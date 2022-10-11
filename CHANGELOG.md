@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   [`phlib/litmus-subjectline-preview`](https://github.com/phlib/litmus-subjectline-preview)
   as it doesn't use the reseller API.
 - **BC break**: Remove PageTest classes as this isn't in the Litmus API.
+- **BC break**: Remove Base* classes. This should not affect implementations,
+  which would be using the child `Email*` or `Spam*` classes instead.
 
 ## [2.0.1] - 2021-03-30
 
