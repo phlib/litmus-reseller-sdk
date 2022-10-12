@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phlib\LitmusResellerSDK;
 
 use Phlib\LitmusResellerSDK\Email\EmailClient;
@@ -95,11 +97,11 @@ class Litmus
 
     private function setApiCredentials(?string $key, ?string $pass): self
     {
-        if ($key === null || strlen($key) == 0 || !is_string($key)) {
+        if (empty($key)) {
             throw new \InvalidArgumentException('You must specify an API Key (string) .');
         }
 
-        if ($pass === null || strlen($pass) == 0 || !is_string($pass)) {
+        if (empty($pass)) {
             throw new \InvalidArgumentException('You must specify an API Password (string) .');
         }
 

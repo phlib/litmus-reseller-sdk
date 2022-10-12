@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phlib\LitmusResellerSDK\Test\Email;
 
 use Phlib\LitmusResellerSDK\Email\EmailClient;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phlib\LitmusResellerSDK\Email;
 
 use Phlib\LitmusResellerSDK\Spam\SpamHeader;
@@ -77,10 +79,8 @@ class EmailClient
     {
         $this->SpamHeaders = [];
 
-        if ($params != []) {
-            foreach ($params as $k => $v) {
-                $this->{'set' . $k}($v);
-            }
+        foreach ($params as $k => $v) {
+            $this->{'set' . $k}($v);
         }
     }
 

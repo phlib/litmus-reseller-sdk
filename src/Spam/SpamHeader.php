@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phlib\LitmusResellerSDK\Spam;
 
 /**
@@ -18,10 +20,8 @@ class SpamHeader
 
     public function __construct(array $params = [])
     {
-        if ($params != []) {
-            foreach ($params as $k => $v) {
-                $this->{'set' . $k}($v);
-            }
+        foreach ($params as $k => $v) {
+            $this->{'set' . $k}($v);
         }
     }
 
