@@ -47,7 +47,7 @@ for an example workflow.
 If you have a callback URL configured with your Litmus reseller account,
 it will be called with an XML string when results are available,
 rather than needing to poll `Litmus::getEmailTest()`.
-The Callback `hydrateXml()` method can be used to create the appropriate result object.
+`Callback\Factory` can be used to create the appropriate result object.
 
 ## License
 

@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Creating callback object from XML did not correctly read boolean values.
 ### Changed
 - **BC break**: Namespace changed to `Phlib\LitmusResellerSDK`.
+- **BC break**: Callback result objects are created using `Callback\Factory`.
 - Change licence to LGPLv3 to match other Phlib projects.
 ### Removed
 - **BC break**: Removed support for PHP versions <= 7.3 as they are no longer

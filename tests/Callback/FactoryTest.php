@@ -4,6 +4,7 @@ namespace Phlib\LitmusResellerSDK\Test\Callback;
 
 use Phlib\LitmusResellerSDK\Callback\CallbackAbstract;
 use Phlib\LitmusResellerSDK\Callback\Email;
+use Phlib\LitmusResellerSDK\Callback\Factory;
 use Phlib\LitmusResellerSDK\Callback\Spam;
 use Phlib\LitmusResellerSDK\Spam\SpamHeader;
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
@@ -12,9 +13,21 @@ use PHPUnit\Framework\TestCase;
 /**
  * @package Phlib\Litmus-Reseller-SDK
  */
-class CallbackTest extends TestCase
+class FactoryTest extends TestCase
 {
     private const FILE_PATH = __DIR__ . '/_files/';
+
+    /**
+     * @var Factory
+     */
+    private $factory;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->factory = new Factory();
+    }
 
     /**
      * @dataProvider dataAll
@@ -137,6 +150,6 @@ class CallbackTest extends TestCase
     private function getCallbackResult(string $path): CallbackAbstract
     {
         $xml = file_get_contents($path);
-        return CallbackAbstract::hydrateXmlCallback($xml);
+        return $this->factory->createFromXml($xml);
     }
 }

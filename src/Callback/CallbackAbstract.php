@@ -12,8 +12,6 @@ use function Phlib\String\toBoolean;
  */
 abstract class CallbackAbstract
 {
-    private static $instance;
-
     private $Id;
 
     private $ApiId;
@@ -29,44 +27,6 @@ abstract class CallbackAbstract
     private $Type;
 
     private $CallbackUrl;
-
-    /**
-     * Hydrate a CallBack object with a callback xml
-     *
-     * @param $xmlCallback SpamCallback or EmailCallback
-     */
-    public static function hydrateXmlCallback($xmlCallback)
-    {
-        if ($xmlCallback === null || empty($xmlCallback)) {
-            throw new \InvalidArgumentException('You must provid a callback string.');
-        }
-
-        // convert the utf-16 to utf-8
-        $xmlCallback = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $xmlCallback);
-        $xml = simplexml_load_string($xmlCallback);
-
-        $callbackType = (string)$xml->attributes()->type;
-        switch ($callbackType) {
-            case 'mail':
-                $object = new Email();
-                break;
-            case 'spam':
-                $object = new Spam();
-                break;
-            default:
-                throw new \InvalidArgumentException(sprintf('Unknow callback type "%s"', $callbackType));
-                break;
-        }
-
-        foreach ($xml as $key => $value) {
-            $object->{'set' . $key}($value);
-        }
-        $object->setType($callbackType);
-
-        self::$instance = $object;
-
-        return self::$instance;
-    }
 
     /**
      * This code references the platform for the specific test result.
