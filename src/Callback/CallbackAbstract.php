@@ -4,6 +4,8 @@ namespace Phlib\LitmusResellerSDK\Callback;
 
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
 
+use function Phlib\String\toBoolean;
+
 /**
  * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
@@ -236,7 +238,7 @@ abstract class CallbackAbstract
      */
     public function setSupportsContentBlocking($v)
     {
-        $this->SupportsContentBlocking = (bool)$v;
+        $this->SupportsContentBlocking = toBoolean($v);
 
         return $this;
     }

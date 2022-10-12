@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Support PHP v8.
+### Fixed
+- Creating callback object from XML did not correctly read boolean values.
 ### Changed
 - **BC break**: Namespace changed to `Phlib\LitmusResellerSDK`.
 - Change licence to LGPLv3 to match other Phlib projects.
