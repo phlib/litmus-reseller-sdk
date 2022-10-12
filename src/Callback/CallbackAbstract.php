@@ -1,21 +1,17 @@
 <?php
 
-namespace Phlib\LitmusResellerSDK;
+namespace Phlib\LitmusResellerSDK\Callback;
 
-use Phlib\LitmusResellerSDK\Email\EmailCallback;
-use Phlib\LitmusResellerSDK\Spam\SpamCallback;
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
 
+use function Phlib\String\toBoolean;
+
 /**
- * BaseCallback class
- *
  * @package Phlib\Litmus-Reseller-SDK
  * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
 abstract class CallbackAbstract
 {
-    private static $instance;
-
     private $Id;
 
     private $ApiId;
@@ -28,47 +24,7 @@ abstract class CallbackAbstract
 
     private $State;
 
-    private $Type;
-
     private $CallbackUrl;
-
-    /**
-     * Hydrate a CallBack object with a callback xml
-     *
-     * @param $xmlCallback SpamCallback or EmailCallback
-     */
-    public static function hydrateXmlCallback($xmlCallback)
-    {
-        if ($xmlCallback === null || empty($xmlCallback)) {
-            throw new \InvalidArgumentException('You must provid a callback string.');
-        }
-
-        // convert the utf-16 to utf-8
-        $xmlCallback = preg_replace('/(<\?xml[^?]+?)utf-16/i', '$1utf-8', $xmlCallback);
-        $xml = simplexml_load_string($xmlCallback);
-
-        $callbackType = (string)$xml->attributes()->type;
-        switch ($callbackType) {
-            case 'mail':
-                $object = new EmailCallback();
-                break;
-            case 'spam':
-                $object = new SpamCallback();
-                break;
-            default:
-                throw new \InvalidArgumentException(sprintf('Unknow callback type "%s"', $callbackType));
-                break;
-        }
-
-        foreach ($xml as $key => $value) {
-            $object->{'set' . $key}($value);
-        }
-        $object->setType($callbackType);
-
-        self::$instance = $object;
-
-        return self::$instance;
-    }
 
     /**
      * This code references the platform for the specific test result.
@@ -139,14 +95,6 @@ abstract class CallbackAbstract
     public function getSupportsContentBlocking()
     {
         return $this->SupportsContentBlocking;
-    }
-
-    /**
-     * @return array
-     */
-    public function getType()
-    {
-        return $this->Type;
     }
 
     /**
@@ -240,17 +188,7 @@ abstract class CallbackAbstract
      */
     public function setSupportsContentBlocking($v)
     {
-        $this->SupportsContentBlocking = (bool)$v;
-
-        return $this;
-    }
-
-    /**
-     * @param string $v The state of the test.
-     */
-    public function setType($v)
-    {
-        $this->Type = (string)$v;
+        $this->SupportsContentBlocking = toBoolean($v);
 
         return $this;
     }

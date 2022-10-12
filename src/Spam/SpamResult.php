@@ -2,6 +2,8 @@
 
 namespace Phlib\LitmusResellerSDK\Spam;
 
+use function Phlib\String\toBoolean;
+
 /**
  * SpamResult class
  *
@@ -69,7 +71,7 @@ class SpamResult
      */
     public function setIsSpam($v)
     {
-        $this->IsSpam = (bool)$v;
+        $this->IsSpam = toBoolean($v);
 
         return $this;
     }

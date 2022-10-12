@@ -8,8 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Support PHP v8.
+### Fixed
+- Creating callback object from XML did not correctly read boolean values.
 ### Changed
 - **BC break**: Namespace changed to `Phlib\LitmusResellerSDK`.
+- **BC break**: Callback result objects are created using `Callback\Factory`.
 - Change licence to LGPLv3 to match other Phlib projects.
 ### Removed
 - **BC break**: Removed support for PHP versions <= 7.3 as they are no longer
@@ -21,6 +24,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - **BC break**: Remove PageTest classes as this isn't in the Litmus API.
 - **BC break**: Remove Base* classes. This should not affect implementations,
   which would be using the child `Email*` or `Spam*` classes instead.
+- **BC break**: Remove callback `Type` getter, as the different classes already
+  give the same behaviour.
 
 ## [2.0.1] - 2021-03-30
 
