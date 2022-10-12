@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Support PHP v8.
 ### Changed
 - **BC break**: Namespace changed to `Phlib\LitmusResellerSDK`.
 - Change licence to LGPLv3 to match other Phlib projects.
