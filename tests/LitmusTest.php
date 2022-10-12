@@ -15,13 +15,15 @@ class LitmusTest extends TestCase
     public function testApiKeyException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        new Litmus();
+        $this->expectExceptionMessage('You must specify an API key');
+        new Litmus('', '');
     }
 
     public function testApiPassException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        new Litmus('keykey');
+        $this->expectExceptionMessage('You must specify an API password');
+        new Litmus('keykey', '');
     }
 
     /**

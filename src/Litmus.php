@@ -15,22 +15,35 @@ use Phlib\LitmusResellerSDK\Email\EmailTest;
  */
 class Litmus
 {
+    private const API_URL = 'https://soapapi.litmusapp.com/2010-06-21/api.asmx?wsdl';
+
     private string $apiKey;
 
     private string $apiPass;
 
-    private string $apiUrl = 'https://soapapi.litmusapp.com/2010-06-21/api.asmx?wsdl';
-
     private \SoapClient $soapClient;
 
-    public function __construct(?string $apiKey = null, ?string $apiPass = null)
+    public function __construct(string $apiKey, string $apiPass)
     {
-        $this->setApiCredentials($apiKey, $apiPass)->setupSoapClient();
+        if (empty($apiKey)) {
+            throw new \InvalidArgumentException('You must specify an API key');
+        }
+        if (empty($apiPass)) {
+            throw new \InvalidArgumentException('You must specify an API password');
+        }
+
+        $this->apiKey = $apiKey;
+        $this->apiPass = $apiPass;
+
+        $this->soapClient = new \SoapClient(self::API_URL);
     }
 
     public function getEmailClients(): array
     {
-        $result = $this->soapClient->__soapCall('GetEmailTestClients', [$this->getApiKey(), $this->getApiPass()]);
+        $result = $this->soapClient->__soapCall('GetEmailTestClients', [
+            $this->apiKey,
+            $this->apiPass,
+        ]);
         $clients = [];
 
         /** @var \stdClass $params */
@@ -44,8 +57,8 @@ class Litmus
     public function createEmailTest(EmailTest $EmailTest): EmailTest
     {
         $result = $this->soapClient->__soapCall('CreateEmailTest', [
-            $this->getApiKey(),
-            $this->getApiPass(),
+            $this->apiKey,
+            $this->apiPass,
             $EmailTest,
         ]);
 
@@ -58,8 +71,8 @@ class Litmus
     public function getEmailTest(int $emailTestId): EmailTest
     {
         $result = $this->soapClient->__soapCall('GetEmailTest', [
-            $this->getApiKey(),
-            $this->getApiPass(),
+            $this->apiKey,
+            $this->apiPass,
             $emailTestId,
         ]);
 
@@ -69,8 +82,8 @@ class Litmus
     public function getSpamSeedAddresses(): array
     {
         $result = $this->soapClient->__soapCall('GetSpamSeedAddresses', [
-            $this->getApiKey(),
-            $this->getApiPass(),
+            $this->apiKey,
+            $this->apiPass,
         ]);
 
         return $result;
@@ -82,56 +95,11 @@ class Litmus
     public function getResult(int $emailClientResultId): EmailClient
     {
         $result = $this->soapClient->__soapCall('GetResult', [
-            $this->getApiKey(),
-            $this->getApiPass(),
+            $this->apiKey,
+            $this->apiPass,
             $emailClientResultId,
         ]);
 
         return new EmailClient((array)$result);
-    }
-
-    private function setupSoapClient(): self
-    {
-        $this->soapClient = new \SoapClient($this->getApiUrl());
-
-        return $this;
-    }
-
-    private function setApiCredentials(?string $key, ?string $pass): self
-    {
-        if (empty($key)) {
-            throw new \InvalidArgumentException('You must specify an API Key (string) .');
-        }
-
-        if (empty($pass)) {
-            throw new \InvalidArgumentException('You must specify an API Password (string) .');
-        }
-
-        $this->apiKey = $key;
-        $this->apiPass = $pass;
-
-        return $this;
-    }
-
-    private function setApiUrl(string $v): self
-    {
-        $this->apiUrl = $v;
-
-        return $this;
-    }
-
-    private function getApiKey(): string
-    {
-        return $this->apiKey;
-    }
-
-    private function getApiPass(): string
-    {
-        return $this->apiPass;
-    }
-
-    private function getApiUrl(): string
-    {
-        return $this->apiUrl;
     }
 }
