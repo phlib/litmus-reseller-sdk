@@ -42,6 +42,13 @@ for an example workflow.
   for each individual client in the test, the ID of which can be used with
   `Litmus::getResult()` to get the full result details.
 
+### Callbacks
+
+If you have a callback URL configured with your Litmus reseller account,
+it will be called with an XML string when results are available,
+rather than needing to poll `Litmus::getEmailTest()`.
+The Callback `hydrateXml()` method can be used to create the appropriate result object.
+
 ## License
 
 This package is free software: you can redistribute it and/or modify
