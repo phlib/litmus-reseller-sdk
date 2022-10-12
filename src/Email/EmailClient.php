@@ -463,7 +463,11 @@ class EmailClient
     public function setSpamHeaders(array $values): self
     {
         foreach ($values as $spam_header_params) {
-            $this->addSpamHeader(new SpamHeader($spam_header_params));
+            $this->addSpamHeader(new SpamHeader(
+                $spam_header_params['Key'],
+                $spam_header_params['Description'],
+                $spam_header_params['Rating'],
+            ));
         }
 
         return $this;

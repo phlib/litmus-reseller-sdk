@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   which would be using the child `Email*` or `Spam*` classes instead.
 - **BC break**: Remove callback `Type` getter, as the different classes already
   give the same behaviour.
+- **BC break**: Remove setter methods, so classes behave as immutable objects.
 
 ## [2.0.1] - 2021-03-30
 

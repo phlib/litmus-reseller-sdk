@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Phlib\LitmusResellerSDK\Callback;
 
+use Phlib\LitmusResellerSDK\Spam\SpamHeader;
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
 
 /**
@@ -137,7 +138,20 @@ abstract class CallbackAbstract
      */
     public function setSpamResult(array $v): self
     {
-        $this->SpamResult = new SpamResult($v);
+        $spamHeaders = [];
+        foreach ($v['SpamHeaders'] as $spamHeader) {
+            $spamHeaders[] = new SpamHeader(
+                $spamHeader['Key'],
+                $spamHeader['Description'],
+                $spamHeader['Rating'],
+            );
+        }
+
+        $this->SpamResult = new SpamResult(
+            $v['SpamScore'],
+            $v['IsSpam'],
+            $spamHeaders,
+        );
 
         return $this;
     }

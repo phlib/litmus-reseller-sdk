@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Phlib\LitmusResellerSDK\Spam;
 
-use function Phlib\String\toBoolean;
-
 /**
  * SpamResult class
  *
@@ -20,13 +18,14 @@ class SpamResult
 
     private array $SpamHeaders;
 
-    public function __construct(array $params = [])
-    {
-        $this->SpamHeaders = [];
-
-        foreach ($params as $k => $v) {
-            $this->{'set' . $k}($v);
-        }
+    public function __construct(
+        float $spamScore,
+        bool $isSpam,
+        array $spamHeaders
+    ) {
+        $this->SpamScore = $spamScore;
+        $this->IsSpam = $isSpam;
+        $this->SpamHeaders = $spamHeaders;
     }
 
     public function getSpamScore(): float
@@ -42,35 +41,5 @@ class SpamResult
     public function getSpamHeaders(): array
     {
         return $this->SpamHeaders;
-    }
-
-    public function setSpamScore(float $v): self
-    {
-        $this->SpamScore = $v;
-
-        return $this;
-    }
-
-    public function setIsSpam(bool $v): self
-    {
-        $this->IsSpam = toBoolean($v);
-
-        return $this;
-    }
-
-    public function setSpamHeaders(array $values): self
-    {
-        foreach ($values as $spam_header_params) {
-            $this->addSpamHeader(new SpamHeader($spam_header_params));
-        }
-
-        return $this;
-    }
-
-    public function addSpamHeader(SpamHeader $SpamHeader): self
-    {
-        $this->SpamHeaders[] = $SpamHeader;
-
-        return $this;
     }
 }

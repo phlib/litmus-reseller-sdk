@@ -18,11 +18,14 @@ class SpamHeader
 
     private int $Rating;
 
-    public function __construct(array $params = [])
-    {
-        foreach ($params as $k => $v) {
-            $this->{'set' . $k}($v);
-        }
+    public function __construct(
+        string $key,
+        string $description,
+        int $rating
+    ) {
+        $this->Key = $key;
+        $this->Description = $description;
+        $this->Rating = $rating;
     }
 
     public function getKey(): string
@@ -38,26 +41,5 @@ class SpamHeader
     public function getRating(): int
     {
         return $this->Rating;
-    }
-
-    public function setKey(string $v): self
-    {
-        $this->Key = $v;
-
-        return $this;
-    }
-
-    public function setDescription(string $v): self
-    {
-        $this->Description = $v;
-
-        return $this;
-    }
-
-    public function setRating(int $v): self
-    {
-        $this->Rating = $v;
-
-        return $this;
     }
 }
