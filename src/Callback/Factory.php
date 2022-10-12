@@ -32,7 +32,6 @@ class Factory
         foreach ($xml as $key => $value) {
             $object->{'set' . $key}($value);
         }
-        $object->setType($callbackType);
 
         return $object;
     }

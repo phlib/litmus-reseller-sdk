@@ -24,8 +24,6 @@ abstract class CallbackAbstract
 
     private $State;
 
-    private $Type;
-
     private $CallbackUrl;
 
     /**
@@ -97,14 +95,6 @@ abstract class CallbackAbstract
     public function getSupportsContentBlocking()
     {
         return $this->SupportsContentBlocking;
-    }
-
-    /**
-     * @return array
-     */
-    public function getType()
-    {
-        return $this->Type;
     }
 
     /**
@@ -199,16 +189,6 @@ abstract class CallbackAbstract
     public function setSupportsContentBlocking($v)
     {
         $this->SupportsContentBlocking = toBoolean($v);
-
-        return $this;
-    }
-
-    /**
-     * @param string $v The state of the test.
-     */
-    public function setType($v)
-    {
-        $this->Type = (string)$v;
 
         return $this;
     }

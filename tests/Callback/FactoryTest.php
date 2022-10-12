@@ -41,7 +41,7 @@ class FactoryTest extends TestCase
     /**
      * @dataProvider dataAll
      */
-    public function testGetters(string $path, string $className, string $type): void
+    public function testGetters(string $path): void
     {
         $result = $this->getCallbackResult($path);
 
@@ -49,19 +49,18 @@ class FactoryTest extends TestCase
         static::assertIsString($result->getCallbackUrl());
         static::assertIsBool($result->getSupportsContentBlocking());
         static::assertIsString($result->getState());
-        static::assertEquals($type, $result->getType());
     }
 
     /**
      * @dataProvider dataAll
      */
-    public function testResultImageSet(string $path, string $className, string $type): void
+    public function testResultImageSet(string $path, string $className): void
     {
         $result = $this->getCallbackResult($path);
 
         static::assertIsArray($result->getResultImageSet());
 
-        if ($type === 'spam') {
+        if ($className === Spam::class) {
             static::assertCount(0, $result->getResultImageSet());
         }
     }
@@ -134,7 +133,6 @@ class FactoryTest extends TestCase
             yield $name => [
                 $data['path'],
                 Email::class,
-                'mail',
             ];
         }
 
@@ -142,7 +140,6 @@ class FactoryTest extends TestCase
             yield $name => [
                 $data['path'],
                 Spam::class,
-                'spam',
             ];
         }
     }

@@ -24,6 +24,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - **BC break**: Remove PageTest classes as this isn't in the Litmus API.
 - **BC break**: Remove Base* classes. This should not affect implementations,
   which would be using the child `Email*` or `Spam*` classes instead.
+- **BC break**: Remove callback `Type` getter, as the different classes already
+  give the same behaviour.
 
 ## [2.0.1] - 2021-03-30
 
