@@ -49,7 +49,7 @@ class Litmus
             $EmailTest,
         ]);
 
-        return new EmailTest($result);
+        return new EmailTest((array)$result);
     }
 
     /**
@@ -63,7 +63,7 @@ class Litmus
             $emailTestId,
         ]);
 
-        return new EmailTest($result);
+        return new EmailTest((array)$result);
     }
 
     public function getSpamSeedAddresses(): array
@@ -81,11 +81,13 @@ class Litmus
      */
     public function getResult(int $emailClientResultId): EmailClient
     {
-        return new EmailClient($this->soapClient->__soapCall('GetResult', [
+        $result = $this->soapClient->__soapCall('GetResult', [
             $this->getApiKey(),
             $this->getApiPass(),
             $emailClientResultId,
-        ]));
+        ]);
+
+        return new EmailClient((array)$result);
     }
 
     private function setupSoapClient(): self

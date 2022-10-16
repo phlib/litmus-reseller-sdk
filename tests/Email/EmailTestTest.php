@@ -13,18 +13,6 @@ use PHPUnit\Framework\TestCase;
  */
 class EmailTestTest extends TestCase
 {
-    public function testCreateEmailTest(): void
-    {
-        $EmailTest = new EmailTest();
-
-        static::assertFalse($EmailTest->getSandbox());
-        $EmailTest->setSandbox(true);
-        static::assertTrue($EmailTest->getSandbox());
-
-        static::assertIsArray($EmailTest->getResults());
-        static::assertCount(0, $EmailTest->getResults());
-    }
-
     /**
      * @dataProvider dataCreateFromResult
      */
@@ -61,5 +49,15 @@ class EmailTestTest extends TestCase
             'processing1' => [$processing1],
             'complete' => [$complete],
         ];
+    }
+
+    public function testCreateWithInvalidProperty(): void
+    {
+        $actual = new EmailTest([
+            'NotAValidProperty' => 'some-value',
+        ]);
+
+        // No errors and object is created
+        static::assertInstanceOf(EmailTest::class, $actual);
     }
 }

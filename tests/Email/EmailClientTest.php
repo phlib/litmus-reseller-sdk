@@ -62,4 +62,14 @@ class EmailClientTest extends TestCase
             'resultSpam' => [$resultSpam],
         ];
     }
+
+    public function testCreateWithInvalidProperty(): void
+    {
+        $actual = new EmailClient([
+            'NotAValidProperty' => 'some-value',
+        ]);
+
+        // No errors and object is created
+        static::assertInstanceOf(EmailClient::class, $actual);
+    }
 }

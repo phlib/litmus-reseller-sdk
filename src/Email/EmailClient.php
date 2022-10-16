@@ -14,73 +14,76 @@ use Phlib\LitmusResellerSDK\Spam\SpamHeader;
  */
 class EmailClient
 {
-    public string $ApplicationLongName;
+    private string $ApplicationLongName;
 
-    public string $ApplicationName;
+    private string $ApplicationName;
 
-    public int $AverageTimeToProcess;
+    private int $AverageTimeToProcess;
 
-    public bool $BusinessOrPopular;
+    private bool $BusinessOrPopular;
 
-    public ?bool $Completed;
+    private ?bool $Completed;
 
-    public ?bool $DesktopClient;
+    private ?bool $DesktopClient;
 
-    public ?bool $FoundInSpam;
+    private ?bool $FoundInSpam;
 
-    public ?string $FullpageImage;
+    private ?string $FullpageImage;
 
-    public ?string $FullpageImageContentBlocking;
+    private ?string $FullpageImageContentBlocking;
 
-    public ?string $FullpageImageNoContentBlocking;
+    private ?string $FullpageImageNoContentBlocking;
 
-    public ?string $FullpageImageThumb;
+    private ?string $FullpageImageThumb;
 
-    public ?string $FullpageImageThumbContentBlocking;
+    private ?string $FullpageImageThumbContentBlocking;
 
-    public ?string $FullpageImageThumbNoContentBlocking;
+    private ?string $FullpageImageThumbNoContentBlocking;
 
     /**
      * @var int Cannot use property type declaration as the SOAP service expects `long`
      */
-    public $Id;
+    private $Id;
 
-    public ?string $PlatformLongName;
+    private ?string $PlatformLongName;
 
-    public string $PlatformName;
+    private string $PlatformName;
 
-    public ?string $RenderedHtmlUrl;
+    private ?string $RenderedHtmlUrl;
 
-    public string $ResultType;
+    private string $ResultType;
 
-    public array $SpamHeaders;
+    private array $SpamHeaders = [];
 
-    public float $SpamScore;
+    private float $SpamScore;
 
-    public ?string $State;
+    private ?string $State;
 
-    public int $Status;
+    private int $Status;
 
-    public bool $SupportsContentBlocking;
+    private bool $SupportsContentBlocking;
 
-    public ?string $WindowImage;
+    private ?string $WindowImage;
 
-    public ?string $WindowImageContentBlocking;
+    private ?string $WindowImageContentBlocking;
 
-    public ?string $WindowImageNoContentBlocking;
+    private ?string $WindowImageNoContentBlocking;
 
-    public ?string $WindowImageThumb;
+    private ?string $WindowImageThumb;
 
-    public ?string $WindowImageThumbContentBlocking;
+    private ?string $WindowImageThumbContentBlocking;
 
-    public ?string $WindowImageThumbNoContentBlocking;
+    private ?string $WindowImageThumbNoContentBlocking;
 
     public function __construct(array $params = [])
     {
-        $this->SpamHeaders = [];
+        foreach ($params as $property => $value) {
+            // Only set expected properties
+            if (!property_exists($this, $property)) {
+                continue;
+            }
 
-        foreach ($params as $k => $v) {
-            $this->{'set' . $k}($v);
+            $this->{$property} = $value;
         }
     }
 
@@ -332,214 +335,5 @@ class EmailClient
     public function getWindowImageThumbNoContentBlocking(): ?string
     {
         return $this->WindowImageThumbNoContentBlocking;
-    }
-
-    public function setApplicationLongName(string $value): self
-    {
-        $this->ApplicationLongName = $value;
-
-        return $this;
-    }
-
-    public function setApplicationName(string $value): self
-    {
-        $this->ApplicationName = $value;
-
-        return $this;
-    }
-
-    public function setAverageTimeToProcess(int $value): self
-    {
-        $this->AverageTimeToProcess = $value;
-
-        return $this;
-    }
-
-    public function setBusinessOrPopular(bool $value): self
-    {
-        $this->BusinessOrPopular = $value;
-
-        return $this;
-    }
-
-    public function setCompleted(?bool $value): self
-    {
-        $this->Completed = $value;
-
-        return $this;
-    }
-
-    public function setDesktopClient(?bool $value): self
-    {
-        $this->DesktopClient = $value;
-
-        return $this;
-    }
-
-    public function setFoundInSpam(?bool $value): self
-    {
-        $this->FoundInSpam = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImage(?string $value): self
-    {
-        $this->FullpageImage = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageContentBlocking(?string $value): self
-    {
-        $this->FullpageImageContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageNoContentBlocking(?string $value): self
-    {
-        $this->FullpageImageNoContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageThumb(?string $value): self
-    {
-        $this->FullpageImageThumb = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageThumbContentBlocking(?string $value): self
-    {
-        $this->FullpageImageThumbContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageThumbNoContentBlocking(?string $value): self
-    {
-        $this->FullpageImageThumbNoContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setId(int $value): self
-    {
-        $this->Id = $value;
-
-        return $this;
-    }
-
-    public function setPlatformLongName(?string $value): self
-    {
-        $this->PlatformLongName = $value;
-
-        return $this;
-    }
-
-    public function setPlatformName(string $value): self
-    {
-        $this->PlatformName = $value;
-
-        return $this;
-    }
-
-    public function setRenderedHtmlUrl(?string $value): self
-    {
-        $this->RenderedHtmlUrl = $value;
-
-        return $this;
-    }
-
-    public function setResultType(string $value): self
-    {
-        $this->ResultType = $value;
-
-        return $this;
-    }
-
-    public function setSpamHeaders(array $values): self
-    {
-        foreach ($values as $spam_header_params) {
-            $this->addSpamHeader(new SpamHeader(
-                $spam_header_params['Key'],
-                $spam_header_params['Description'],
-                $spam_header_params['Rating'],
-            ));
-        }
-
-        return $this;
-    }
-
-    public function setSpamScore(float $value): self
-    {
-        $this->SpamScore = $value;
-
-        return $this;
-    }
-
-    public function setState(?string $value): self
-    {
-        $this->State = $value;
-
-        return $this;
-    }
-
-    public function setStatus(int $value): self
-    {
-        $this->Status = $value;
-
-        return $this;
-    }
-
-    public function setSupportsContentBlocking(bool $value): self
-    {
-        $this->SupportsContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setWindowImage(?string $value): self
-    {
-        $this->WindowImage = $value;
-
-        return $this;
-    }
-
-    public function setWindowImageContentBlocking(?string $value): self
-    {
-        $this->WindowImageContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setWindowImageNoContentBlocking(?string $value): self
-    {
-        $this->WindowImageNoContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setWindowImagethumb(?string $value): self
-    {
-        $this->WindowImageThumb = $value;
-
-        return $this;
-    }
-
-    public function setWindowImageThumbContentBlocking(?string $value): self
-    {
-        $this->WindowImageThumbContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setWindowImageThumbNoContentBlocking(?string $value): self
-    {
-        $this->WindowImageThumbNoContentBlocking = $value;
-
-        return $this;
     }
 }
