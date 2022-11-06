@@ -20,8 +20,5 @@ class EmailTestTest extends TestCase
 
         static::assertIsArray($EmailTest->getResults());
         static::assertCount(0, $EmailTest->getResults());
-
-        $EmailTest->initializeFreeTest();
-        static::assertCount(2, $EmailTest->getResults());
     }
 }

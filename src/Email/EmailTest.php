@@ -361,18 +361,4 @@ class EmailTest
 
         return $this;
     }
-
-    /**
-     * Initialize clients to request a free test.
-     */
-    public function initializeFreeTest()
-    {
-        foreach (['gmailnew', 'ol2003'] as $client_name) {
-            $LitmusClient = new EmailClient();
-            $LitmusClient->setApplicationName($client_name);
-            $this->addResult($LitmusClient);
-        }
-
-        return $this;
-    }
 }
