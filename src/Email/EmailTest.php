@@ -20,8 +20,6 @@ class EmailTest
     /**
      * This is the most important property. It's the unique identifer for your
      * test. You'll use it later to poll for updates for your test.
-     *
-     * @var
      */
     private $ID;
 

@@ -386,9 +386,6 @@ class EmailClient
         return $this->WindowImageThumbNoContentBlocking;
     }
 
-    /**
-     * @return
-     */
     public function setApplicationLongName($value)
     {
         $this->ApplicationLongName = $value;
@@ -396,9 +393,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setApplicationName($value)
     {
         $this->ApplicationName = $value;
@@ -406,9 +400,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setAverageTimeToProcess($value)
     {
         $this->AverageTimeToProcess = $value;
@@ -416,9 +407,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setBusinessOrPopular($value)
     {
         $this->BusinessOrPopular = $value;
@@ -426,9 +414,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setCompleted($value)
     {
         $this->Completed = $value;
@@ -436,9 +421,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setDesktopClient($value)
     {
         $this->DesktopClient = $value;
@@ -446,9 +428,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setFoundInSpam($value)
     {
         $this->FoundInSpam = $value;
@@ -456,9 +435,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setFullpageImage($value)
     {
         $this->FullpageImage = $value;
@@ -466,9 +442,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setFullpageImageContentBlocking($value)
     {
         $this->FullpageImageContentBlocking = $value;
@@ -476,9 +449,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setFullpageImageNoContentBlocking($value)
     {
         $this->FullpageImageNoContentBlocking = $value;
@@ -486,9 +456,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setFullpageImageThumb($value)
     {
         $this->FullpageImageThumb = $value;
@@ -496,9 +463,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setFullpageImageThumbContentBlocking($value)
     {
         $this->FullpageImageThumbContentBlocking = $value;
@@ -506,9 +470,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setFullpageImageThumbNoContentBlocking($value)
     {
         $this->FullpageImageThumbNoContentBlocking = $value;
@@ -516,9 +477,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setId($value)
     {
         $this->Id = $value;
@@ -526,9 +484,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setPlatformLongName($value)
     {
         $this->PlatformLongName = $value;
@@ -536,9 +491,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setPlatformName($value)
     {
         $this->PlatformName = $value;
@@ -546,9 +498,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setRenderedHtmlUrl($value)
     {
         $this->RenderedHtmlUrl = $value;
@@ -556,9 +505,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setResultType($value)
     {
         $this->ResultType = $value;
@@ -578,9 +524,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setSpamScore($value)
     {
         $this->SpamScore = (float)$value;
@@ -588,9 +531,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setState($value)
     {
         $this->State = $value;
@@ -598,9 +538,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setStatus($value)
     {
         $this->Status = $value;
@@ -608,9 +545,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setSupportsContentBlocking($value)
     {
         $this->SupportsContentBlocking = $value;
@@ -618,9 +552,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setWindowImage($value)
     {
         $this->WindowImage = $value;
@@ -628,9 +559,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setWindowImageContentBlocking($value)
     {
         $this->WindowImageContentBlocking = $value;
@@ -638,9 +566,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setWindowImageNoContentBlocking($value)
     {
         $this->WindowImageNoContentBlocking = $value;
@@ -648,9 +573,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setWindowImagethumb($value)
     {
         $this->WindowImageThumb = $value;
@@ -658,9 +580,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setWindowImageThumbContentBlocking($value)
     {
         $this->WindowImageThumbContentBlocking = $value;
@@ -668,9 +587,6 @@ class EmailClient
         return $this;
     }
 
-    /**
-     * @return
-     */
     public function setWindowImageThumbNoContentBlocking($value)
     {
         $this->WindowImageThumbNoContentBlocking = $value;
