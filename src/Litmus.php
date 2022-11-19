@@ -90,16 +90,16 @@ class Litmus
     /**
      * Fetch an email test.
      *
-     * @param  string    $id The unique identifier of the email test (as returned by createEmailTest()).
+     * @param  string $emailTestId The unique identifier of the email test (as returned by createEmailTest()).
      *
      * @return EmailTest The EmailTest object with data filled in.
      */
-    public function getEmailTest($id)
+    public function getEmailTest($emailTestId)
     {
         $result = $this->soapClient->__soapCall('GetEmailTest', [
             $this->getApiKey(),
             $this->getApiPass(),
-            $id,
+            $emailTestId,
         ]);
 
         return new EmailTest($result);
@@ -123,16 +123,16 @@ class Litmus
     /**
      * Gets the result of one email or page client
      *
-     * @param  string                   $id ID of the individual result
+     * @param  string $emailClientResultId ID of the individual email client result
      *
      * @return EmailClient Client with the data
      */
-    public function getResult($id)
+    public function getResult($emailClientResultId)
     {
         return new EmailClient($this->soapClient->__soapCall('GetResult', [
             $this->getApiKey(),
             $this->getApiPass(),
-            $id,
+            $emailClientResultId,
         ]));
     }
 
