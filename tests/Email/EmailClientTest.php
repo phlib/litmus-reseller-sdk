@@ -28,7 +28,7 @@ class EmailClientTest extends TestCase
 
     public function dataCreateFromResult(): array
     {
-        $available = require __DIR__ . '/_files/client-available.php';
+        $available = require __DIR__ . '/../_files/client-available.php';
 
         // Verify expected clients
         $availableMail = $available[31];
@@ -44,12 +44,12 @@ class EmailClientTest extends TestCase
             );
         }
 
-        $waiting = require __DIR__ . '/_files/test-sandbox-waiting.php';
-        $processing0 = require __DIR__ . '/_files/test-sandbox-processing-0.php';
-        $processing1 = require __DIR__ . '/_files/test-sandbox-processing-1.php';
-        $complete = require __DIR__ . '/_files/test-sandbox-complete.php';
-        $resultEmail = require __DIR__ . '/_files/client-sandbox-complete-email.php';
-        $resultSpam = require __DIR__ . '/_files/client-sandbox-complete-spam.php';
+        $waiting = require __DIR__ . '/../_files/test-sandbox-waiting.php';
+        $processing0 = require __DIR__ . '/../_files/test-sandbox-processing-0.php';
+        $processing1 = require __DIR__ . '/../_files/test-sandbox-processing-1.php';
+        $complete = require __DIR__ . '/../_files/test-sandbox-complete.php';
+        $resultEmail = require __DIR__ . '/../_files/client-sandbox-complete-email.php';
+        $resultSpam = require __DIR__ . '/../_files/client-sandbox-complete-spam.php';
 
         return [
             'availableMail' => [$availableMail],
