@@ -25,33 +25,4 @@ class LitmusTest extends TestCase
         $this->expectExceptionMessage('You must specify an API password');
         new Litmus('keykey', '');
     }
-
-    /**
-     * @group integration
-     */
-    public function testGetSpamSeedAddresses(): void
-    {
-        if (!getenv('INTEGRATION_ENABLED')) {
-            static::markTestSkipped('You must provide your own Litmus API credentials to test connection.');
-        }
-
-        $litmusAPI = new Litmus(getenv('LITMUS_API_KEY'), getenv('LITMUS_API_PASS'));
-        $spamSeedAddresses = $litmusAPI->getSpamSeedAddresses();
-        static::assertIsArray($spamSeedAddresses);
-        static::assertNotCount(0, $spamSeedAddresses);
-    }
-
-    /**
-     * @group integration
-     */
-    public function testGetEmailClients(): void
-    {
-        if (!getenv('INTEGRATION_ENABLED')) {
-            static::markTestSkipped('You must provide your own Litmus API credentials to test connection.');
-        }
-
-        $litmusAPI = new Litmus(getenv('LITMUS_API_KEY'), getenv('LITMUS_API_PASS'));
-        $clients = $litmusAPI->getEmailClients();
-        static::assertIsArray($clients);
-    }
 }
