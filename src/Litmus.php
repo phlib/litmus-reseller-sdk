@@ -102,4 +102,12 @@ class Litmus
 
         return new EmailClient((array)$result);
     }
+
+    /**
+     * @internal This method is not part of the BC promise. Used for DI for unit tests only.
+     */
+    public function setTestSoapClient(\SoapClient $soapClient): void
+    {
+        $this->soapClient = $soapClient;
+    }
 }
