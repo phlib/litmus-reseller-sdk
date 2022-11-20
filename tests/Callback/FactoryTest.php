@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phlib\LitmusResellerSDK\Test\Callback;
 
 use Phlib\LitmusResellerSDK\Callback\CallbackAbstract;
@@ -52,17 +54,13 @@ class FactoryTest extends TestCase
     }
 
     /**
-     * @dataProvider dataAll
+     * @dataProvider dataEmail
      */
-    public function testResultImageSet(string $path, string $className): void
+    public function testResultImageSet(string $path): void
     {
         $result = $this->getCallbackResult($path);
 
         static::assertIsArray($result->getResultImageSet());
-
-        if ($className === Spam::class) {
-            static::assertCount(0, $result->getResultImageSet());
-        }
     }
 
     /**
@@ -93,7 +91,7 @@ class FactoryTest extends TestCase
             static::assertInstanceOf(SpamHeader::class, $spamHeader);
             static::assertIsString($spamHeader->getKey());
             static::assertIsString($spamHeader->getDescription());
-            static::assertIsString($spamHeader->getRating());
+            static::assertIsInt($spamHeader->getRating());
         }
     }
 

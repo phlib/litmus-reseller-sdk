@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phlib\LitmusResellerSDK\Email;
+
+use Phlib\LitmusResellerSDK\Spam\SpamHeader;
 
 /**
  * EmailClient class
@@ -10,75 +14,76 @@ namespace Phlib\LitmusResellerSDK\Email;
  */
 class EmailClient
 {
-    public $ApplicationLongName;
+    private string $ApplicationLongName;
 
-    public $ApplicationName;
+    private string $ApplicationName;
 
-    public $AverageTimeToProcess;
+    private int $AverageTimeToProcess;
 
-    public $BusinessOrPopular;
+    private bool $BusinessOrPopular;
 
-    public $Completed;
+    private ?bool $Completed;
 
-    public $DesktopClient;
+    private ?bool $DesktopClient;
 
-    public $FoundInSpam;
+    private ?bool $FoundInSpam;
 
-    public $FullpageImage;
+    private ?string $FullpageImage;
 
-    public $FullpageImageContentBlocking;
+    private ?string $FullpageImageContentBlocking;
 
-    public $FullpageImageNoContentBlocking;
+    private ?string $FullpageImageNoContentBlocking;
 
-    public $FullpageImageThumb;
+    private ?string $FullpageImageThumb;
 
-    public $FullpageImageThumbContentBlocking;
+    private ?string $FullpageImageThumbContentBlocking;
 
-    public $FullpageImageThumbNoContentBlocking;
-
-    public $Id;
-
-    public $PlatformLongName;
-
-    public $PlatformName;
-
-    public $RenderedHtmlUrl;
-
-    public $ResultType;
-
-    public $SpamHeaders;
-
-    public $SpamScore;
-
-    public $State;
-
-    public $Status;
-
-    public $SupportsContentBlocking;
-
-    public $WindowImage;
-
-    public $WindowImageContentBlocking;
-
-    public $WindowImageNoContentBlocking;
-
-    public $WindowImageThumb;
-
-    public $WindowImageThumbContentBlocking;
-
-    public $WindowImageThumbNoContentBlocking;
+    private ?string $FullpageImageThumbNoContentBlocking;
 
     /**
-     * @param array $params
+     * @var int Cannot use property type declaration as the SOAP service expects `long`
      */
-    public function __construct($params = [])
-    {
-        $this->SpamHeaders = [];
+    private $Id;
 
-        if ($params != []) {
-            foreach ($params as $k => $v) {
-                $this->{'set' . $k}($v);
+    private ?string $PlatformLongName;
+
+    private string $PlatformName;
+
+    private ?string $RenderedHtmlUrl;
+
+    private string $ResultType;
+
+    private array $SpamHeaders = [];
+
+    private float $SpamScore;
+
+    private ?string $State;
+
+    private int $Status;
+
+    private bool $SupportsContentBlocking;
+
+    private ?string $WindowImage;
+
+    private ?string $WindowImageContentBlocking;
+
+    private ?string $WindowImageNoContentBlocking;
+
+    private ?string $WindowImageThumb;
+
+    private ?string $WindowImageThumbContentBlocking;
+
+    private ?string $WindowImageThumbNoContentBlocking;
+
+    public function __construct(array $params = [])
+    {
+        foreach ($params as $property => $value) {
+            // Only set expected properties
+            if (!property_exists($this, $property)) {
+                continue;
             }
+
+            $this->{$property} = $value;
         }
     }
 
@@ -94,45 +99,37 @@ class EmailClient
 
     /**
      * Return the longer, friendlier name of this client that you can show to your users.
-     *
-     * @return string
      */
-    public function getApplicationLongName()
+    public function getApplicationLongName(): string
     {
         return $this->ApplicationLongName;
     }
 
     /**
      * Return a unique identifier for this client.
-     *
-     * @return string
      */
-    public function getApplicationName()
+    public function getApplicationName(): string
     {
         return $this->ApplicationName;
     }
 
     /**
      * Return the average amount of time (in seconds) it is currently taking to process a result in this client.
-     *
-     * @return int
      */
-    public function getAverageTimeToProcess()
+    public function getAverageTimeToProcess(): int
     {
         return $this->AverageTimeToProcess;
     }
 
-    public function getBusinessOrPopular()
+    public function getBusinessOrPopular(): bool
     {
         return $this->BusinessOrPopular;
     }
 
     /**
      * Return if the test is completed.
-     *
-     * @return boolean
      */
-    public function getCompleted()
+    public function getCompleted(): ?bool
     {
         return $this->Completed;
     }
@@ -141,10 +138,8 @@ class EmailClient
      * Desktop clients are those that run locally, on the desktop.
      * Examples include Outlook, Lotus Notes, Apple Mail and Thunderbird.
      * Email clients such as Gmail, AOL and Hotmail would have a DesktopClient value of false.
-     *
-     * @return boolean
      */
-    public function getDesktopClient()
+    public function getDesktopClient(): ?bool
     {
         return $this->DesktopClient;
     }
@@ -152,10 +147,8 @@ class EmailClient
     /**
      * Indicates if the email was found in this client's spam folder.
      * Since not all clients support this property, it may always be false for some cilents.
-     *
-     * @return boolean
      */
-    public function getFoundInSpam()
+    public function getFoundInSpam(): ?bool
     {
         return $this->FoundInSpam;
     }
@@ -163,10 +156,8 @@ class EmailClient
     /**
      * The uri of a capture of the email opened in the client.
      * You should only use this property if SupportsContentBlocking is false.
-     *
-     * @return string
      */
-    public function getFullpageImage()
+    public function getFullpageImage(): ?string
     {
         return $this->FullpageImage;
     }
@@ -174,10 +165,8 @@ class EmailClient
     /**
      * The url of a capture of the email opened by the client with external content blocking enabled,
      * this is the "images off" capture. You should only use this property if SupportsContentBlocking is true.
-     *
-     * @return string
      */
-    public function getFullpageImageContentBlocking()
+    public function getFullpageImageContentBlocking(): ?string
     {
         return $this->FullpageImageContentBlocking;
     }
@@ -185,95 +174,77 @@ class EmailClient
     /**
      * The url of a capture of the email opened by the client with external content blocking disabled,
      * this is the "images on" capture. You should only use this property if SupportsContentBlocking is true.
-     *
-     * @return string
      */
-    public function getFullpageImageNoContentBlocking()
+    public function getFullpageImageNoContentBlocking(): ?string
     {
         return $this->FullpageImageNoContentBlocking;
     }
 
     /**
      * Return the url of the full page image thumbnail with content blocking.
-     *
-     * @return string
      */
-    public function getFullpageImageThumb()
+    public function getFullpageImageThumb(): ?string
     {
         return $this->FullpageImageThumb;
     }
 
     /**
      * Return the url of the full page image thumbnail with content blocking.
-     *
-     * @return string
      */
-    public function getFullpageImageThumbContentBlocking()
+    public function getFullpageImageThumbContentBlocking(): ?string
     {
         return $this->FullpageImageThumbContentBlocking;
     }
 
     /**
      * Return the url of the full page image thumbnail without content blocking.
-     *
-     * @return string
      */
-    public function getFullpageImageThumbNoContentBlocking()
+    public function getFullpageImageThumbNoContentBlocking(): ?string
     {
         return $this->FullpageImageThumbNoContentBlocking;
     }
 
     /**
      * Return the unique identifier of this client test.
-     *
-     * @return string
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->Id;
     }
 
     /**
      * The long, friendly name of the platform this client is running on.
-     *
-     * @return string
      */
-    public function getPlatformLongName()
+    public function getPlatformLongName(): ?string
     {
         return $this->PlatformLongName;
     }
 
     /**
      * The shorter name of the platform, usually excludes the manufacturer of the operating system.
-     *
-     * @return string
      */
-    public function getPlatformName()
+    public function getPlatformName(): string
     {
         return $this->PlatformName;
     }
 
     /**
      * Reserved. Please ignore.
-     *
-     * @return string
      */
-    public function getRenderedHtmlUrl()
+    public function getRenderedHtmlUrl(): ?string
     {
         return $this->RenderedHtmlUrl;
     }
 
     /**
      * Return the result type of the client test. Contains either "email", "spam" or "page".
-     *
-     * @return string
      */
-    public function getResultType()
+    public function getResultType(): string
     {
         return $this->ResultType;
     }
 
-    public function getSpamHeaders()
+    public function getSpamHeaders(): array
     {
         return $this->SpamHeaders;
     }
@@ -281,20 +252,16 @@ class EmailClient
     /**
      * If the ResultType was equal to "spam", this property may contain a score
      * left by the spam filter this Client object represents.
-     *
-     * @return double
      */
-    public function getSpamScore()
+    public function getSpamScore(): float
     {
         return $this->SpamScore;
     }
 
     /**
      * Return the current state of the result test, it can be either "pending", "complete" or "error".
-     *
-     * @return string
      */
-    public function getState()
+    public function getState(): ?string
     {
         return $this->State;
     }
@@ -306,30 +273,24 @@ class EmailClient
      * client is currently unavailable, you should avoid ordering new tests for
      * this client, but any ordered tests will be honored when the client
      * recovers.
-     *
-     * @return string
      */
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->Status;
     }
 
     /**
      * Return if the client test support content blocking.
-     *
-     * @return int
      */
-    public function getSupportsContentBlocking()
+    public function getSupportsContentBlocking(): bool
     {
         return $this->SupportsContentBlocking;
     }
 
     /**
      * Return the url of the window image.
-     *
-     * @return string
      */
-    public function getWindowImage()
+    public function getWindowImage(): ?string
     {
         return $this->WindowImage;
     }
@@ -337,10 +298,8 @@ class EmailClient
     /**
      * The url of a capture of the client's inbox with external content blocking disabled,
      * this is the "images on" capture. You should only use this property if SupportsContentBlocking is true.
-     *
-     * @return string
      */
-    public function getWindowImageContentBlocking()
+    public function getWindowImageContentBlocking(): ?string
     {
         return $this->WindowImageContentBlocking;
     }
@@ -348,249 +307,33 @@ class EmailClient
     /**
      * The url of a capture of the client's inbox with external content blocking enabled,
      * this is the "images off" capture. You should only use this property if SupportsContentBlocking is true.
-     *
-     * @return string
      */
-    public function getWindowImageNoContentBlocking()
+    public function getWindowImageNoContentBlocking(): ?string
     {
         return $this->WindowImageNoContentBlocking;
     }
 
     /**
      * Return the url of the window image thumbnail.
-     *
-     * @return string
      */
-    public function getWindowImageThumb()
+    public function getWindowImageThumb(): ?string
     {
         return $this->WindowImageThumb;
     }
 
     /**
      * Return the url of the window image thumbnail with content blocking.
-     *
-     * @return string
      */
-    public function getWindowImageThumbContentBlocking()
+    public function getWindowImageThumbContentBlocking(): ?string
     {
         return $this->WindowImageThumbContentBlocking;
     }
 
     /**
      * Return the url of the window image thumbnail without content blocking.
-     *
-     * @return string
      */
-    public function getWindowImageThumbNoContentBlocking()
+    public function getWindowImageThumbNoContentBlocking(): ?string
     {
         return $this->WindowImageThumbNoContentBlocking;
-    }
-
-    public function setApplicationLongName($value)
-    {
-        $this->ApplicationLongName = $value;
-
-        return $this;
-    }
-
-    public function setApplicationName($value)
-    {
-        $this->ApplicationName = $value;
-
-        return $this;
-    }
-
-    public function setAverageTimeToProcess($value)
-    {
-        $this->AverageTimeToProcess = $value;
-
-        return $this;
-    }
-
-    public function setBusinessOrPopular($value)
-    {
-        $this->BusinessOrPopular = $value;
-
-        return $this;
-    }
-
-    public function setCompleted($value)
-    {
-        $this->Completed = $value;
-
-        return $this;
-    }
-
-    public function setDesktopClient($value)
-    {
-        $this->DesktopClient = $value;
-
-        return $this;
-    }
-
-    public function setFoundInSpam($value)
-    {
-        $this->FoundInSpam = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImage($value)
-    {
-        $this->FullpageImage = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageContentBlocking($value)
-    {
-        $this->FullpageImageContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageNoContentBlocking($value)
-    {
-        $this->FullpageImageNoContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageThumb($value)
-    {
-        $this->FullpageImageThumb = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageThumbContentBlocking($value)
-    {
-        $this->FullpageImageThumbContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setFullpageImageThumbNoContentBlocking($value)
-    {
-        $this->FullpageImageThumbNoContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setId($value)
-    {
-        $this->Id = $value;
-
-        return $this;
-    }
-
-    public function setPlatformLongName($value)
-    {
-        $this->PlatformLongName = $value;
-
-        return $this;
-    }
-
-    public function setPlatformName($value)
-    {
-        $this->PlatformName = $value;
-
-        return $this;
-    }
-
-    public function setRenderedHtmlUrl($value)
-    {
-        $this->RenderedHtmlUrl = $value;
-
-        return $this;
-    }
-
-    public function setResultType($value)
-    {
-        $this->ResultType = $value;
-
-        return $this;
-    }
-
-    /**
-     * @param string $values The spam headers.
-     */
-    public function setSpamHeaders($values)
-    {
-        foreach ($values as $spam_header_params) {
-            $this->addSpamHeader(new SpamHeader($spam_header_params));
-        }
-
-        return $this;
-    }
-
-    public function setSpamScore($value)
-    {
-        $this->SpamScore = (float)$value;
-
-        return $this;
-    }
-
-    public function setState($value)
-    {
-        $this->State = $value;
-
-        return $this;
-    }
-
-    public function setStatus($value)
-    {
-        $this->Status = $value;
-
-        return $this;
-    }
-
-    public function setSupportsContentBlocking($value)
-    {
-        $this->SupportsContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setWindowImage($value)
-    {
-        $this->WindowImage = $value;
-
-        return $this;
-    }
-
-    public function setWindowImageContentBlocking($value)
-    {
-        $this->WindowImageContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setWindowImageNoContentBlocking($value)
-    {
-        $this->WindowImageNoContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setWindowImagethumb($value)
-    {
-        $this->WindowImageThumb = $value;
-
-        return $this;
-    }
-
-    public function setWindowImageThumbContentBlocking($value)
-    {
-        $this->WindowImageThumbContentBlocking = $value;
-
-        return $this;
-    }
-
-    public function setWindowImageThumbNoContentBlocking($value)
-    {
-        $this->WindowImageThumbNoContentBlocking = $value;
-
-        return $this;
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phlib\LitmusResellerSDK\Spam;
 
 /**
@@ -10,75 +12,34 @@ namespace Phlib\LitmusResellerSDK\Spam;
  */
 class SpamHeader
 {
-    private $Key;
+    private string $Key;
 
-    private $Description;
+    private string $Description;
 
-    private $Rating;
+    private int $Rating;
 
-    /**
-     * @param array $params
-     */
-    public function __construct($params = [])
-    {
-        if ($params != []) {
-            foreach ($params as $k => $v) {
-                $this->{'set' . $k}($v);
-            }
-        }
+    public function __construct(
+        string $key,
+        string $description,
+        int $rating
+    ) {
+        $this->Key = $key;
+        $this->Description = $description;
+        $this->Rating = $rating;
     }
 
-    /**
-     * @return string
-     */
-    public function getKey()
+    public function getKey(): string
     {
         return $this->Key;
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->Description;
     }
 
-    /**
-     * @return string
-     */
-    public function getRating()
+    public function getRating(): int
     {
         return $this->Rating;
-    }
-
-    /**
-     * @param string $v The key.
-     */
-    public function setKey($v)
-    {
-        $this->Key = (string)$v;
-
-        return $this;
-    }
-
-    /**
-     * @param string $v The description.
-     */
-    public function setDescription($v)
-    {
-        $this->Description = (string)$v;
-
-        return $this;
-    }
-
-    /**
-     * @param string $v The rating.
-     */
-    public function setRating($v)
-    {
-        $this->Rating = (string)$v;
-
-        return $this;
     }
 }

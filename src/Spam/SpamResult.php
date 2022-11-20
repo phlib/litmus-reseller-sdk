@@ -1,8 +1,8 @@
 <?php
 
-namespace Phlib\LitmusResellerSDK\Spam;
+declare(strict_types=1);
 
-use function Phlib\String\toBoolean;
+namespace Phlib\LitmusResellerSDK\Spam;
 
 /**
  * SpamResult class
@@ -12,89 +12,34 @@ use function Phlib\String\toBoolean;
  */
 class SpamResult
 {
-    private $SpamScore;
+    private float $SpamScore;
 
-    private $IsSpam;
+    private bool $IsSpam;
 
-    private $SpamHeaders;
+    private array $SpamHeaders;
 
-    /**
-     * @param array $params
-     */
-    public function __construct($params = [])
-    {
-        $this->SpamHeaders = [];
-
-        if ($params != []) {
-            foreach ($params as $k => $v) {
-                $this->{'set' . $k}($v);
-            }
-        }
+    public function __construct(
+        float $spamScore,
+        bool $isSpam,
+        array $spamHeaders
+    ) {
+        $this->SpamScore = $spamScore;
+        $this->IsSpam = $isSpam;
+        $this->SpamHeaders = $spamHeaders;
     }
 
-    /**
-     * @return string
-     */
-    public function getSpamScore()
+    public function getSpamScore(): float
     {
         return $this->SpamScore;
     }
 
-    /**
-     * @return string
-     */
-    public function getIsSpam()
+    public function getIsSpam(): bool
     {
         return $this->IsSpam;
     }
 
-    /**
-     * @return string
-     */
-    public function getSpamHeaders()
+    public function getSpamHeaders(): array
     {
         return $this->SpamHeaders;
-    }
-
-    /**
-     * @param string $v The spam score.
-     */
-    public function setSpamScore($v)
-    {
-        $this->SpamScore = (float)$v;
-
-        return $this;
-    }
-
-    /**
-     * @param string $v The spam state.
-     */
-    public function setIsSpam($v)
-    {
-        $this->IsSpam = toBoolean($v);
-
-        return $this;
-    }
-
-    /**
-     * @param string $values The spam headers.
-     */
-    public function setSpamHeaders($values)
-    {
-        foreach ($values as $spam_header_params) {
-            $this->addSpamHeader(new SpamHeader($spam_header_params));
-        }
-
-        return $this;
-    }
-
-    /**
-     * Add a SpamHeader to the SpamHeaders array
-     */
-    public function addSpamHeader(SpamHeader $SpamHeader)
-    {
-        $this->SpamHeaders[] = $SpamHeader;
-
-        return $this;
     }
 }

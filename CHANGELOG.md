@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Support PHP v8.
+- Type declarations to all methods and properties.
 ### Fixed
 - Creating callback object from XML did not correctly read boolean values.
 ### Changed
@@ -28,6 +29,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   which would be using the child `Email*` or `Spam*` classes instead.
 - **BC break**: Remove callback `Type` getter, as the different classes already
   give the same behaviour.
+- **BC break**: Remove public properties from `EmailClient`; use getters.
+- **BC break**: Remove setter methods, so classes behave as immutable objects.
 
 ## [2.0.1] - 2021-03-30
 
