@@ -8,10 +8,7 @@ use Phlib\LitmusResellerSDK\Email\EmailClient;
 use Phlib\LitmusResellerSDK\Email\EmailTest;
 
 /**
- * Litmus class. This is the core class for the Litmus Reseller API
- *
  * @package Phlib\Litmus-Reseller-SDK
- * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
 class Litmus
 {

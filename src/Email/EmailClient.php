@@ -7,10 +7,7 @@ namespace Phlib\LitmusResellerSDK\Email;
 use Phlib\LitmusResellerSDK\Spam\SpamHeader;
 
 /**
- * EmailClient class
- *
  * @package Phlib\Litmus-Reseller-SDK
- * @author    Benjamin Laugueux <benjamin@yzalis.com>
  */
 class EmailClient
 {
