@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Phlib\LitmusResellerSDK\Callback;
 
+use Phlib\LitmusResellerSDK\Exception\InvalidArgumentException;
 use Phlib\LitmusResellerSDK\Spam\SpamHeader;
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
 
@@ -17,7 +18,7 @@ class Factory
     public function createFromXml(string $xmlCallback): CallbackAbstract
     {
         if (empty($xmlCallback)) {
-            throw new \InvalidArgumentException('You must provide a callback string.');
+            throw new InvalidArgumentException('You must provide a callback string.');
         }
 
         // convert the utf-16 to utf-8
@@ -43,7 +44,7 @@ class Factory
                 return new Spam(...$params);
         }
 
-        throw new \InvalidArgumentException(sprintf('Unknown callback type "%s"', $callbackType));
+        throw new InvalidArgumentException(sprintf('Unknown callback type "%s"', $callbackType));
     }
 
     private function createSpamResult(\SimpleXMLElement $xml): SpamResult

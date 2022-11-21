@@ -6,6 +6,7 @@ namespace Phlib\LitmusResellerSDK;
 
 use Phlib\LitmusResellerSDK\Email\EmailClient;
 use Phlib\LitmusResellerSDK\Email\EmailTest;
+use Phlib\LitmusResellerSDK\Exception\InvalidArgumentException;
 
 /**
  * @package Phlib\Litmus-Reseller-SDK
@@ -23,10 +24,10 @@ class Litmus
     public function __construct(string $apiKey, string $apiPass)
     {
         if (empty($apiKey)) {
-            throw new \InvalidArgumentException('You must specify an API key');
+            throw new InvalidArgumentException('You must specify an API key');
         }
         if (empty($apiPass)) {
-            throw new \InvalidArgumentException('You must specify an API password');
+            throw new InvalidArgumentException('You must specify an API password');
         }
 
         $this->apiKey = $apiKey;
