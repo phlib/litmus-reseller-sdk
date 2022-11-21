@@ -38,10 +38,10 @@ class EmailTestTest extends TestCase
 
     public function dataCreateFromResult(): array
     {
-        $waiting = require __DIR__ . '/_files/test-sandbox-waiting.php';
-        $processing0 = require __DIR__ . '/_files/test-sandbox-processing-0.php';
-        $processing1 = require __DIR__ . '/_files/test-sandbox-processing-1.php';
-        $complete = require __DIR__ . '/_files/test-sandbox-complete.php';
+        $waiting = require __DIR__ . '/../_files/test-sandbox-waiting.php';
+        $processing0 = require __DIR__ . '/../_files/test-sandbox-processing-0.php';
+        $processing1 = require __DIR__ . '/../_files/test-sandbox-processing-1.php';
+        $complete = require __DIR__ . '/../_files/test-sandbox-complete.php';
 
         return [
             'waiting' => [$waiting],
