@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [3.0.0] - 2022-11-21
 ### Added
 - Support PHP v8.
 - New method `createEmailTestForClients()` as the recommended and simpler way to
@@ -18,7 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Creating callback object from XML did not correctly read boolean values.
 ### Changed
 - **BC break**: Namespace changed to `Phlib\LitmusResellerSDK`.
-- **BC break**: Simplify the paramters for `createEmailTest()` to accept a list
+- **BC break**: Simplify the parameters for `createEmailTest()` to accept a list
   of client ApplicationNames and sandbox flag in native types. The previous
   behaviour is deprecated and available as `createEmailTestRaw()`.
 - **BC break**: Callback result objects are created using `Callback\Factory`.
@@ -41,18 +42,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - **BC break**: Remove setter methods, so classes behave as immutable objects.
 
 ## [2.0.1] - 2021-03-30
-
 - Update maintainer info to Phlib.
   Thanks to [blaugueux](https://github.com/blaugueux)!
 
 ## [2.0.0] - 2016-12-13
-
  * Renamed package to `yzalis/litmus`.
  * Changed namespace to `Litmus` only.
  * Changed licence to MIT.
 
 ## [1.1.0] - 2012-06-07
-
  * Added namespace support
  * Added phpunit tests
  * Added boostrap class using php spl_autoload_register
@@ -65,5 +63,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  * Improved typo
 
 ## [1.0.0] - 2011-03-16
-
  * Initial version !
