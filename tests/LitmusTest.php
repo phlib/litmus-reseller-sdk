@@ -90,7 +90,111 @@ class LitmusTest extends TestCase
         static::assertSame($expected, $actual);
     }
 
-    public function testCreateEmailTest(): void
+    public function testCreateEmailTestDefault(): void
+    {
+        // Test with no parameters provided to createEmailTest()
+
+        $apiKey = sha1(uniqid('key'));
+        $apiPass = sha1(uniqid('pass'));
+        $soapClient = $this->createMock(\SoapClient::class);
+
+        $litmusAPI = new Litmus($apiKey, $apiPass);
+        $litmusAPI->setTestSoapClient($soapClient);
+
+        $expectedRequest = new EmailTest([
+            'Sandbox' => false,
+        ]);
+
+        $id = rand();
+        $state = 'waiting';
+        $apiResponse = (object)[
+            'ID' => $id,
+            'State' => $state,
+        ];
+
+        $soapClient->expects(static::once())
+            ->method('__soapCall')
+            ->with('CreateEmailTest', [
+                $apiKey,
+                $apiPass,
+                $expectedRequest,
+            ])
+            ->willReturn($apiResponse);
+
+        $actual = $litmusAPI->createEmailTest();
+
+        // Basic verification that the result data has been created as an instance of EmailTest
+        static::assertSame($id, $actual->getID());
+        static::assertSame($state, $actual->getState());
+    }
+
+    /**
+     * @dataProvider dataCreateEmailTest
+     */
+    public function testCreateEmailTest(array $clientNames, bool $sandbox): void
+    {
+        $apiKey = sha1(uniqid('key'));
+        $apiPass = sha1(uniqid('pass'));
+        $soapClient = $this->createMock(\SoapClient::class);
+
+        $litmusAPI = new Litmus($apiKey, $apiPass);
+        $litmusAPI->setTestSoapClient($soapClient);
+
+        $data = [
+            'Sandbox' => $sandbox,
+        ];
+        if (!empty($clientNames)) {
+            $data['Results'] = [];
+            foreach ($clientNames as $applicationName) {
+                $data['Results'][] = new EmailClient([
+                    'ApplicationName' => $applicationName,
+                ]);
+            }
+        }
+        $expectedRequest = new EmailTest($data);
+
+        $id = rand();
+        $state = 'waiting';
+        $apiResponse = (object)[
+            'ID' => $id,
+            'State' => $state,
+        ];
+
+        $soapClient->expects(static::once())
+            ->method('__soapCall')
+            ->with('CreateEmailTest', [
+                $apiKey,
+                $apiPass,
+                $expectedRequest,
+            ])
+            ->willReturn($apiResponse);
+
+        $actual = $litmusAPI->createEmailTest($clientNames, $sandbox);
+
+        // Basic verification that the result data has been created as an instance of EmailTest
+        static::assertSame($id, $actual->getID());
+        static::assertSame($state, $actual->getState());
+    }
+
+    public function dataCreateEmailTest(): array
+    {
+        return [
+            'all-live' => [[], false],
+            'all-sandbox' => [[], true],
+            'specific-live' => [[
+                'gmail',
+                'outlook',
+                'spamassassin3',
+            ], true],
+            'specific-sandbox' => [[
+                'android11',
+                'iphone14',
+                'messagelabs',
+            ], true],
+        ];
+    }
+
+    public function testCreateEmailTestRaw(): void
     {
         $apiKey = sha1(uniqid('key'));
         $apiPass = sha1(uniqid('pass'));
@@ -116,7 +220,7 @@ class LitmusTest extends TestCase
             ])
             ->willReturn($apiResponse);
 
-        $actual = $litmusAPI->createEmailTest($emailTestRequest);
+        $actual = $litmusAPI->createEmailTestRaw($emailTestRequest);
 
         static::assertSame($id, $actual->getID());
         static::assertSame($state, $actual->getState());

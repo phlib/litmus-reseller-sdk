@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Support PHP v8.
+- New method `createEmailTestForClients()` as the recommended and simpler way to
+  create new tests with just an array of EmailClient ApplicationNames.
 - Type declarations to all methods and properties.
 - Namespaced exceptions for errors thrown within this package.
 - Throw `NotFoundException` for `getEmailTest()` and `getResult()` when Litmus
@@ -16,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Creating callback object from XML did not correctly read boolean values.
 ### Changed
 - **BC break**: Namespace changed to `Phlib\LitmusResellerSDK`.
+- **BC break**: Simplify the paramters for `createEmailTest()` to accept a list
+  of client ApplicationNames and sandbox flag in native types. The previous
+  behaviour is deprecated and available as `createEmailTestRaw()`.
 - **BC break**: Callback result objects are created using `Callback\Factory`.
 - Change licence to LGPLv3 to match other Phlib projects.
 ### Removed

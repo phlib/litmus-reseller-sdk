@@ -35,7 +35,7 @@ $ composer require phlib/litmus-reseller-sdk
 See the [Legacy litmus SOAP API docs](https://litmus.github.io/legacy-litmus-api-docs/SOAP/Legacy%20SOAP%20Web%20Service%3A%20Process%20for%20running%20email%20tests)
 for an example workflow.
 
-* Create an empty `EmailTest` object and pass it to `Litmus::createEmailTest()`.
+* Call `Litmus::createEmailTest()`.
 * This will return a new `EmailTest` object containing the unique ID.
 * The ID can be used when calling `Litmus::getEmailTest()` to view the state.
 * The `EmailTest::getResults()` method can be used to get details on the state
