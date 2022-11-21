@@ -6,6 +6,7 @@ namespace Phlib\LitmusResellerSDK\Test;
 
 use Phlib\LitmusResellerSDK\Email\EmailClient;
 use Phlib\LitmusResellerSDK\Email\EmailTest;
+use Phlib\LitmusResellerSDK\Exception\NotFoundException;
 use Phlib\LitmusResellerSDK\Litmus;
 use PHPUnit\Framework\TestCase;
 
@@ -152,6 +153,32 @@ class LitmusTest extends TestCase
         static::assertSame($state, $actual->getState());
     }
 
+    public function testGetEmailTestNotFound(): void
+    {
+        $this->expectException(NotFoundException::class);
+        $this->expectExceptionMessage('Email Test not found');
+
+        $apiKey = sha1(uniqid('key'));
+        $apiPass = sha1(uniqid('pass'));
+        $soapClient = $this->createMock(\SoapClient::class);
+
+        $litmusAPI = new Litmus($apiKey, $apiPass);
+        $litmusAPI->setTestSoapClient($soapClient);
+
+        $id = rand();
+
+        $soapClient->expects(static::once())
+            ->method('__soapCall')
+            ->with('GetEmailTest', [
+                $apiKey,
+                $apiPass,
+                $id,
+            ])
+            ->willReturn(null);
+
+        $litmusAPI->getEmailTest($id);
+    }
+
     public function testGetResult(): void
     {
         $apiKey = sha1(uniqid('key'));
@@ -181,5 +208,31 @@ class LitmusTest extends TestCase
 
         static::assertSame($id, $actual->getId());
         static::assertSame($state, $actual->getState());
+    }
+
+    public function testGetResultNotFound(): void
+    {
+        $this->expectException(NotFoundException::class);
+        $this->expectExceptionMessage('Email Client result not found');
+
+        $apiKey = sha1(uniqid('key'));
+        $apiPass = sha1(uniqid('pass'));
+        $soapClient = $this->createMock(\SoapClient::class);
+
+        $litmusAPI = new Litmus($apiKey, $apiPass);
+        $litmusAPI->setTestSoapClient($soapClient);
+
+        $id = rand();
+
+        $soapClient->expects(static::once())
+            ->method('__soapCall')
+            ->with('GetResult', [
+                $apiKey,
+                $apiPass,
+                $id,
+            ])
+            ->willReturn(null);
+
+        $litmusAPI->getResult($id);
     }
 }

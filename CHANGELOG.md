@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Support PHP v8.
 - Type declarations to all methods and properties.
 - Namespaced exceptions for errors thrown within this package.
+- Throw `NotFoundException` for `getEmailTest()` and `getResult()` when Litmus
+  has no matching data for the given ID.
 ### Fixed
 - Creating callback object from XML did not correctly read boolean values.
 ### Changed

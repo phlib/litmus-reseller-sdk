@@ -7,6 +7,7 @@ namespace Phlib\LitmusResellerSDK;
 use Phlib\LitmusResellerSDK\Email\EmailClient;
 use Phlib\LitmusResellerSDK\Email\EmailTest;
 use Phlib\LitmusResellerSDK\Exception\InvalidArgumentException;
+use Phlib\LitmusResellerSDK\Exception\NotFoundException;
 
 /**
  * @package Phlib\Litmus-Reseller-SDK
@@ -74,6 +75,10 @@ class Litmus
             $emailTestId,
         ]);
 
+        if ($result === null) {
+            throw new NotFoundException('Email Test not found: ' . $emailTestId);
+        }
+
         return new EmailTest((array)$result);
     }
 
@@ -97,6 +102,10 @@ class Litmus
             $this->apiPass,
             $emailClientResultId,
         ]);
+
+        if ($result === null) {
+            throw new NotFoundException('Email Client result not found: ' . $emailClientResultId);
+        }
 
         return new EmailClient((array)$result);
     }
