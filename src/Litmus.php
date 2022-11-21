@@ -53,7 +53,30 @@ class Litmus
         return $clients;
     }
 
-    public function createEmailTest(EmailTest $EmailTest): EmailTest
+    public function createEmailTest(array $clientNames = [], bool $sandbox = false)
+    {
+        $clients = [];
+        foreach ($clientNames as $applicationName) {
+            $clients[] = new EmailClient([
+                'ApplicationName' => $applicationName,
+            ]);
+        }
+
+        $emailTest = new EmailTest([
+            'Sandbox' => $sandbox,
+            'Results' => $clients,
+        ]);
+
+        return $this->createEmailTestRaw($emailTest);
+    }
+
+    /**
+     * @deprecated 3.0.0 This behaviour was previously available as `createEmailTest()`
+     *     but left here for any implementations that need non-standard behaviour
+     *     and may be removed in future if no use-cases are shown.
+     * @see createEmailTest()
+     */
+    public function createEmailTestRaw(EmailTest $EmailTest): EmailTest
     {
         $result = $this->soapClient->__soapCall('CreateEmailTest', [
             $this->apiKey,
