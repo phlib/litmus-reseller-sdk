@@ -7,7 +7,6 @@ namespace Phlib\LitmusResellerSDK\Callback;
 use Phlib\LitmusResellerSDK\Exception\InvalidArgumentException;
 use Phlib\LitmusResellerSDK\Spam\SpamHeader;
 use Phlib\LitmusResellerSDK\Spam\SpamResult;
-
 use function Phlib\String\toBoolean;
 
 /**
