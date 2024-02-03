@@ -5,12 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- Remove incorrect entry in Change Log for v3.0.0 that described a method which
+  doesn't exist.
 
 ## [3.0.0] - 2022-11-21
 ### Added
 - Support PHP v8.
-- New method `createEmailTestForClients()` as the recommended and simpler way to
-  create new tests with just an array of EmailClient ApplicationNames.
 - Type declarations to all methods and properties.
 - Namespaced exceptions for errors thrown within this package.
 - Throw `NotFoundException` for `getEmailTest()` and `getResult()` when Litmus
